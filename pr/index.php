@@ -19,7 +19,7 @@ $app = array();
 $app['mysql'] = $mysql;
 $app['mail'] = $mail;
 $app['pagina'] = $pagina;
-$app['lenguaje'] = $lenguajes['pr'];
+$app['lenguaje'] = $lenguajes['es'];
 
 if (0 === strpos($pagina, 'pdf')) {
    $datos = explode('pdf', $pagina);
