@@ -34,6 +34,7 @@ switch ($accion) {
 		echo json_encode(array('estado' => $estado));
 	break;
 	case 'ingresar':
+		//$query='SELECT * FROM usuarios WHERE email = "'.$_POST['_correo'].'" AND pass = "'.$_POST['_pass'].'"';
 		$login = $mysql->runQuery('SELECT * FROM usuarios WHERE email = "'.$_POST['_correo'].'" AND pass = "'.$_POST['_pass'].'"')->getRows();
 		$experiencia = $mysql->runQuery('SELECT *, YEAR(inicio) as fecha_inicio FROM experiencias WHERE CURDATE() BETWEEN inicio AND fin')->getRows();
 		if (is_array($login)){
@@ -58,7 +59,8 @@ switch ($accion) {
 		}else{
 			$estado = 0;
 		}
-		echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
+		//echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
+		//echo $query;
 	break;
 	case 'obtener_usuarios':
 		$usuarios = $mysql->runQuery('SELECT * FROM usuarios LIMIT '.$_POST['_pagina'].' , '.$_POST['_items'].' ')->getRows();
