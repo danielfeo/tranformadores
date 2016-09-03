@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Transformadores</title>
-    <script src="public/js/jquery.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/simple-modal.js"></script>
-    <script src="public/js/app.js"></script>
-    <script src="public/js/usuarios.js"></script>
-    <link rel="stylesheet" href="public/css/normalize.css">
-    <link rel="stylesheet" href="public/css/bootstrap.css">
-    <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
-    <link rel="stylesheet" href="public/css/app.css">
-</head>
-<body>
-    <nav>
+
+        
         <?php include 'sections/fake_head.php' ?>
-    </nav>
+    
     <section>
         <div id="breadcrump">
             <div class="container">
@@ -57,4 +41,33 @@
         </div>
     </section>
 </body>
+
+    <script src="public/js/jquery-1.11.0.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/js/moment.min.js"></script>
+    <script src="public/js/pt-br.js"></script>
+    <script src="public/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="public/js/bootstrap-select.js"></script>
+    <script src="public/js/jquery.scrollUp.js"></script>
+    <script src="public/js/callScrollUp.js"></script>
+    <script src="public/js/collapse.js"></script>
+    <script src="public/js/menuTop.js"></script>
+    <script src="public/js/analytics.js"></script>
+    <script>
+    $('#datetimepicker1').datetimepicker();
+    </script>
+    <script type="text/javascript">
+                                (function($){
+                                    $(document).ready(function(){
+                                        $(".nav-pills > li a").on("mouseover", function(event){
+                                            var $this = $(this).parent().find(">ul");
+                                            if($this.length == 0) return;
+                                            dnn.addIframeMask($this[0]);
+                                        });
+                                        $(".dropdown").attr("aria-haspopup", "true");
+                                        $(".dropdownactive").attr("aria-haspopup", "true");
+                                        $(".dropdown-menu").attr("aria-haspopup", "false");
+                                    });
+                                })(jQuery);
+                                </script>
 </html>
