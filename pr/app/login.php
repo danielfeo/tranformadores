@@ -20,19 +20,19 @@
                         <div class="col-xs-4"></div>
                         <div class="col-xs-4">
                             <label for="organizacion" class="oculto">Organización<input type="text" placeholder="Organización" name="organizacion"></label>
-                            <label for="usuario">E-mail<input type="text" placeholder="E-mail" name="usuario"></label>
-                            <label for="clave">Senha<input type="password" placeholder="Senha" name="clave"></label>
+                            <label for="usuario">Correo<input type="text" placeholder="Correo" name="usuario"></label>
+                            <label for="clave">Contraseña<input type="password" placeholder="Contraseña" name="clave"></label>
                             <input type="hidden" value="ingresar" name="accion"> 
-                            <input class="jbtn green" type="button" value="Entrar" name="guardar">
-                            <a id="olvido" class="pull-right" style="padding-top:15px;"href="Recordar">Esqueceu a senha?</a>
+                            <input class="jbtn green" type="button" value="Ingresar" name="guardar">
+                            <a id="olvido" class="pull-right" style="padding-top:15px;"href="Recordar">Olvido su contraseña</a>
                         </div>
                         <div class="col-xs-4"></div>
                     </div>
                     <div class="col-xs-12">
                         <div class="col-xs-4"></div>
                         <div class="col-xs-4">
-                            <hr><button class="jbtn orange" id="registro">Cadastre-se</button>
-                            <p>Apenas para membros da rede</p>
+                            <hr><button class="jbtn orange" id="registro">Registrese</button>
+                            <p>Solo para miembros de la Red</p>
                         </div>
                         <div class="col-xs-4"></div>
                     </div>

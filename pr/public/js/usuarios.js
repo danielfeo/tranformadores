@@ -70,7 +70,7 @@ $(function(){
 							$.fn.SimpleModal({
 								btn_ok:   'Aceptar',
 								title:    'Gracias',
-								contents: 'Registo foi bem sucedido quando seu usuário está habilitado você será enviado um email de notificação e pode acessar o formulário.'
+								contents: 'El registro se ha realizado satisfactoriamente, cuando su usuario sea habilitado se le enviará una notificación por correo y podrá acceder al formulario.'
 							}).showModal();
 
 						}else if(data.estado == 2){
