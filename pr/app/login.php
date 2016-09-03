@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="public/css/bootstrap.css">
     <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">
+    
 </head>
 <body>
     <nav>

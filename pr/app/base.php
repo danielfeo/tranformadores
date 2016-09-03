@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="public/css/app.css">
+    <link rel="stylesheet" href="public/css/estilosTr.css">
 </head>
 <body>
     <nav>
@@ -51,6 +52,7 @@
                             include 'sections/menu.php'; 
                         ?>
                     </div>
+
                     <div class="col-xs-9">
                         <div class="row formulario">
                             <?php
