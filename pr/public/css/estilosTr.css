@@ -2574,13 +2574,13 @@ nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; tex
     margin: 0;
     background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/Breadcrumb-FirstSep.png) no-repeat 0 0;
 }
-
+/*
 .container {
     margin: 0 auto;
     width: 990px !important;
     max-width: 990px;
 }
-
+*/
 .fr {float: right;}
 .fl {float: left;}
 
