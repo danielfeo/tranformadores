@@ -42,8 +42,6 @@
     </section>
 </body>
 
-    <script src="public/js/jquery-1.11.0.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
     <script src="public/js/moment.min.js"></script>
     <script src="public/js/pt-br.js"></script>
     <script src="public/js/bootstrap-datetimepicker.min.js"></script>
