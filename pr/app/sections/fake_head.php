@@ -36,17 +36,20 @@
                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> (57 1) 310 0379
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 intranet" id="ingresarTransformadores">
+                
+
+
                <div class="text-center">
                   <?php if ( isset($_SESSION['usuario']) ){?>
                   <a data-toggle="modal" href="#defaultModal2" href="CambiarDatosUsuario" class="senha">
                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                      Cambiar clave
                   </a>
-                  <?php }  ?>
                   <a href="#" class="saida">
                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                      Salir
                   </a>
+                  <?php }  ?>
                </div>
             </div>
             <div class="col-xs-2 idioma" id="idioma">
