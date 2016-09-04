@@ -2180,3 +2180,408 @@ form#form {
     	width: 410px;
 	}
 }
+
+
+/*estilos viejos*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.secciones li {
+    float: left;
+    position: relative;
+    width: 100%;
+    border-bottom: 2px solid #fff;
+    -webkit-border-radius: 0 10px 0 0;
+       -moz-border-radius: 0 10px 0 0;
+            border-radius: 0 10px 0 0;
+}
+
+ul.secciones li.active,
+ul.secciones li:hover {
+    cursor: pointer;
+    width: 105%;
+}
+
+ul.secciones li:hover,
+ul.secciones li:hover a {
+    -webkit-transition: all .4s ease-in-out;
+       -moz-transition: all .4s ease-in-out;
+         -o-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+}
+
+ul.secciones li:hover a {
+    width: 100%;
+    padding-left: 20px;
+}
+
+ul.secciones li a {
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+    line-height: 110%;
+    text-decoration: none;
+    font-family:'Exo', sans-serif;
+    font-size: 1.41em;
+    color: #fff;
+}
+
+ul.archivos li a:hover {
+    text-decoration: none;
+    color: #f00;
+}
+
+ul.archivos li a:nth-child(2):hover {
+    color: #000;
+}
+
+
+.formulario h1,
+.formulario h3 {
+    margin: 0px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family:'Exo', sans-serif;
+    font-size: 2.16em;
+    font-weight: 400;
+    border: none;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+.formulario h3 {
+    margin: 15px 0 0;
+    padding-bottom: 0;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: 500;
+    border-bottom: none;
+}
+
+.formulario .col-xs-12:nth-child(3) h3{
+    margin-top: 20px;
+}
+
+.formulario p.descripcion {
+    margin: 0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    color: #999;
+}
+
+.formulario h4 {
+    margin: 5px 0 0;
+    padding: 15px 0 12px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1.25em;
+    font-weight: normal;
+    color: #4d4d4d;
+}
+
+.formulario h4.pendiente {
+    color: #f00;
+}
+.formulario h4.pendiente:before {
+    content: '*';
+}
+
+.formulario h4 span {
+    font-size: .8em;
+    font-weight: 300;
+    color: #999;
+}
+
+.formulario textarea,
+.formulario input[type="text"],
+.formulario input[type="password"],
+.formulario select{
+    width: 100%;
+    padding: 5px 10px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    border: 1px solid #b3b3b3;
+    color: #333;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+
+.formulario textarea{
+    resize: vertical;
+    height: 4.3em;
+}
+
+.formulario label.radio {
+    margin: 0px 10px 0px 4px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1.16em;
+    color: #808080;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.login label,
+.login input[type="text"],
+.login input[type="password"]{
+    margin-bottom: 5px;
+    display: block;
+    font-size: 1.2em;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+}
+
+.login label.oculto{
+    display: none;
+}
+
+.login input[type="text"],
+.login input[type="password"]{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    width: 100%;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+input[type="text"],
+input[type="password"],
+textarea{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.menu_admin {
+    border-collapse: collapse;
+}
+
+.menu_admin tr th{
+    border-right: 1px solid rgba(62,114,166,1);
+    border-bottom: 1px solid rgba(62,114,166,1);
+}
+
+.menu_admin tr th:last-child {
+    border-right: none;
+}
+
+.menu_admin tr th a{
+    padding: 10px 10px 5px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 1.3em;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-family:'Exo', sans-serif;
+}
+
+.menu_admin tr th a.active,
+.menu_admin tr th a:hover{
+    text-decoration: none;
+    background-color: rgba(62,114,166,1);
+    color: #fff;
+}
+
+.menu_admin tr th a:hover{
+    background-color: rgba(62,114,166,.6);
+}
+
+.datos_administrador{
+    border-collapse: collapse;
+    margin-top: 20px;
+    float: left;
+}
+
+.datos_administrador tr th,
+.datos_administrador tr td{
+    height: 100%;
+    font-weight: 400;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #ccc;
+}
+
+.datos_administrador tr td i{
+    font-size: 1.3em;
+}
+
+.datos_administrador tr th{
+    padding: 10px 10px 5px;
+    text-transform: uppercase;
+    background-color: #ccc;
+}
+
+.datos_administrador tr td{
+    padding: 10px 10px;
+}
+
+#guardar,
+#enviar {
+    margin: 0 auto;
+    width: 140px;
+    height: 50px;
+    border: none;
+    background: url('../img/botones.png') no-repeat 0 0 transparent;
+}
+
+#enviar {background-position: 0px -50px;}
+
+#guardar:hover {background-position: -140px 0px;}
+
+#enviar:hover {background-position: -140px -50px;}
+
+a.jbtn,
+input[type="button"].jbtn,
+button.jbtn {
+    min-width: 100px;
+    height: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+
+.jbtn.green {background-color: #39b54a;}
+.jbtn.green:hover {background-color: #007c0c;}
+
+.jbtn.orange {background-color: #ff931e;}
+.jbtn.orange:hover {background-color: #ff0000;}
+
+.jbtn.red {background-color: #ff0000;}
+.jbtn.red:hover {background-color: #d40000;}
+
+.botones {
+    margin-top: 40px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    border-top-width: 2px;
+    border-top-style: solid;
+}
+
+.paginador {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginador a{
+    display: inline-block;
+    padding: 2px 5px 1px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 300;
+    margin-left: 3px;
+    margin-bottom: 40px;
+    color: #333;
+    background-color: #ccc;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
+
+.paginador a.active,
+.paginador a:hover{
+    background-color: rgba(62,114,166,1);
+    color: #fff;
+    text-decoration: none;
+}
+
+.centrar { text-align: center; }
+
+.oculto { display: none; }
+
+/*estilos tomados de redeamerica*/
+nav div.menu ul.Intranet { height:30px; margin: 0; padding: 0; float: left; width:100%;}
+nav div.menu ul.Intranet li{display: inline; height:100%; text-transform:uppercase; position: relative;}
+nav div.menu ul.Intranet li span{ float: left; color:#E87817; padding:0; margin: .3em 1.1em; text-shadow: 1px 1px 0px #CCC; font-size:14px; }
+nav div.menu ul.Intranet li a{ float: left; text-decoration: none; color:#FFF !important; padding:0;margin:.4em 0 0;font-size:16px;font-family:'Exo', sans-serif; font-weight:500; line-height: 24px;}
+nav div.menu ul.Intranet li a:hover{ color: #D9261C!important;}  
+nav div.menu ul.Intranet li a.current{ color: #000000 !important;}
+
+nav div.menu ul.Intranet li a.idioma_pt, nav div.menu ul.Intranet li a.idioma_es {
+    float:right; padding:0; margin:0;height:30px; width:150px; background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/Flag_idioma_01.png) 0 0 no-repeat;}
+nav div.menu ul.Intranet li a.idioma_es {
+    background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/Flag_idioma_02.png) 0 0 no-repeat;}
+nav div.menu ul.Intranet li a.idioma_pt:hover, nav div.menu ul.Intranet li a.idioma_es:hover { background-position: -150px 0;}
+
+nav div.menu ul.Intranet li ul.Sub_Intranet          { display:none; padding:0; margin: 0; background: #FFF; border: 1px solid #CCC; border-top:none; position:absolute !important; left: -120px;
+top: 30px;
+width: 140px;
+padding: 0 15px; }
+nav div.menu ul.Intranet li ul.Sub_Intranet li   { width:100%; list-style-type: none; display: block; cursor:pointer;}
+nav div.menu ul.Intranet li ul.Sub_Intranet li a { font-size:15px; font-family:'Exo', sans-serif; font-weight:400;
+    width:100%; display:block; text-decoration: none; color:#707070 !important; margin:0 !important; padding:10px 0 !important; text-align:center; }
+nav div.menu ul.Intranet li ul.Sub_Intranet li a.line  { border-top:1px solid #DDD; }        
+nav div.menu ul.Intranet li ul.Sub_Intranet li:hover a { color:#e87817 !important; }     
+
+nav div.menu ul.Intranet li:hover ul.Sub_Intranet { display:block; }
+
+nav div.banner #LogoRow{width:960px;height:130px; margin: auto; padding:0;}
+nav div.banner .LogoRowLeft{float:left;width:300px;height:130px;}
+nav div.banner .LogoRowRight{float:right;width:600px;height:130px; font-size:11px;}
+nav div.banner .RedesSociales { width:600px; height:60px; float:right;}
+nav div.banner .Fecha { width:230px; height:60px;float:right; margin-right:10px; }
+nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; text-align:right; float:right; }
+
+.RedesSociales a.RSFacebook, .RedesSociales a.RSTwitter, .RedesSociales a.RSYoutube, .RedesSociales a.RSMail {
+    width:30px;
+    height:32px;
+    background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/RedesSocialesTop.png) no-repeat 0 0;
+    display:block; 
+    float:right;
+    margin:22px 6px 0;
+}
+.RedesSociales a.RSTwitter  { background-position:-30px 0; }
+.RedesSociales a.RSYoutube  { background-position:-60px 0; }
+.RedesSociales a.RSMail     { background-position: -90px 0; margin:22px 0 0 6px;}
+
+.RedesSocialesFooter a.RSFacebook,.RedesSocialesFooter a.RSTwitter, .RedesSocialesFooter a.RSYoutube, .RedesSocialesFooter a.RSMail {
+    width:30px;
+    height:32px;
+    background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/RedesSocialesTop.png) no-repeat 0 0;
+    display:block;
+    float:left;
+    margin:0 6px 0;
+}
+
+.RedesSocialesFooter a.RSTwitter { background-position:-30px 0; }
+.RedesSocialesFooter a.RSYoutube { background-position:-60px 0; }
+.RedesSocialesFooter a.RSMail    { background-position:-90px 0; }
+
+.RedesSociales a.RSFacebook:hover, .RedesSocialesFooter a.RSFacebook:hover { background-position:0 -32px;}
+.RedesSociales a.RSTwitter:hover, .RedesSocialesFooter a.RSTwitter:hover   { background-position:-30px -32px;}
+.RedesSociales a.RSYoutube:hover, .RedesSocialesFooter a.RSYoutube:hover   { background-position:-60px -32px;}
+.RedesSociales a.RSMail:hover, .RedesSocialesFooter a.RSMail:hover         { background-position:-90px -32px;}
+
+#breadcrump{height:20px;line-height:20px;margin:20px 0 20px 0;font-size:12px;}
+#breadcrump span{display:inline-block;height:20px;float:left;font-weight:normal;}
+#breadcrump .SkinObject{display:inline-block;color: #999;height:20px;float:left;font-weight: normal;font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+#breadcrump .SkinObject:hover{ color:#6EA443; text-decoration: none;}
+#breadcrump span.Sep{width:20px;background:url(images/Breadcrumb-Sep.png) no-repeat 0 0; margin:0 px;}
+#breadcrump .intro{
+    width: 37px;
+    margin: 0;
+    background: url(http://www.redeamerica.org/Portals/_default/Skins/DarkKnight/Images/Breadcrumb-FirstSep.png) no-repeat 0 0;
+}
+
+.container {
+    margin: 0 auto;
+    width: 990px !important;
+    max-width: 990px;
+}
+
+.fr {float: right;}
+.fl {float: left;}
+
+/*fin estilos viejos*/
