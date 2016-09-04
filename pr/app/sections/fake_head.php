@@ -29,19 +29,6 @@
    <div class="fluidTop">
       <div class="container">
          <div class="row">
-            <div class="col-xs-12">
-               <ul class="fr">
-                  <?php 
-                     if ( isset($_SESSION['usuario']) ){
-                     echo '<li><a href="CambiarDatosUsuario">Cambiar contraseña</a>';
-                     echo '</li><li><a href="#" class="salir">Salir</a>';
-                     echo '</li>';
-                     }
-                     ?>
-               </ul>
-            </div>
-         </div>
-         <div class="row">
             <div class="hidden-sm hidden-xs col-md-3 col-lg-2 fecha">
                miércoles, 24 de agosto de 2016
             </div>
@@ -50,10 +37,12 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 intranet" id="ingresarTransformadores">
                <div class="text-center">
-                  <a data-toggle="modal" href="#defaultModal2" class="senha">
+                  <?php if ( isset($_SESSION['usuario']) ){?>
+                  <a data-toggle="modal" href="#defaultModal2" href="CambiarDatosUsuario" class="senha">
                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                      Cambiar clave
                   </a>
+                  <?php }  ?>
                   <a href="#" class="saida">
                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                      Salir
