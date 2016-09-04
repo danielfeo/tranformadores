@@ -12,13 +12,14 @@
     <script src="public/js/usuarios.js"></script>
    <!-- <link rel="stylesheet" href="public/css/normalize.css">
     <link rel="stylesheet" href="public/css/bootstrap.css">-->
+
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/bootstrap-select.css"><!-- 1 -->
     <link rel="stylesheet" href="public/css/bootstrap-datetimepicker.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/estilosTr.css"><!-- 3 -->
    <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">-->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
      
     
     
