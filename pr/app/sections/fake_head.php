@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Transformadores :: Dados Gerais da Experiência</title>
-    <script src="public/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="public/js/bootstrap.min.js"></script>
     <script src="public/js/simple-modal.js"></script>
@@ -19,8 +19,7 @@
    <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">-->
 
-
-    
+     
     
     
 </head>
