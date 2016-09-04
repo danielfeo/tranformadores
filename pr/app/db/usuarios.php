@@ -1,5 +1,5 @@
 <?php session_start();
-error_reporting(0);
+error_reporting(1);
 include ('../../database.php');
 include ('../../mailserver.php');
 include ('../../clases/mysql.php');
@@ -59,7 +59,8 @@ switch ($accion) {
 		}else{
 			$estado = 0;
 		}
-		//echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
+		
+		echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
 		//echo $query;
 	break;
 	case 'obtener_usuarios':
