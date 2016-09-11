@@ -1,5 +1,5 @@
 $(function(){
-    var url = "tranformadores";
+    var url = "/tranformadores";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
@@ -197,7 +197,7 @@ $(function(){
         dateFormat: 'yy-mm-dd'
     });
 
-    $('.salir').on('click' , function(e){
+    $('.saida').on('click' , function(e){
         $.ajax({
             type: 'post',
             url:  'app/db/usuarios.php',

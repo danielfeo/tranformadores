@@ -1,6 +1,6 @@
 $(function(){
-
-	var url = 'tranformadores';
+	
+	var url = '/tranformadores';
 	var items_paginas = 10;
 
 	function paginador(pagina, items){

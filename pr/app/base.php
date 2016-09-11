@@ -1,10 +1,9 @@
 
-        <?php include 'sections/fake_head.php' ?>
-    </nav>
+    <?php include 'sections/fake_head.php' ?>
     <div class="fluidBlanco">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-sm-12">
                     <?php 
                         $usuario = $_SESSION['usuario']['id'];
                         $archivos = glob('public/archivos/'.$usuario.'/*');
@@ -21,10 +20,11 @@
                         include 'sections/menu.php'; 
                     ?>
                 </div>
-                <div class="col-xs-12">
-                    <div class="row formulario">
+                <div class="col-sm-12">
+                    <div class="row formularioTransf">
                         <?php
-                            if($pagina != 'inicio'){
+                            if($pagina != 'inicio')
+                            {
                                 $app['pagina'] = $app['pagina'] == 'login' ? 'DatosGeneralesExperiencia' : $app['pagina'];
                                 $grupo = $app['mysql']->runQuery('SELECT id_grupo FROM grupos WHERE url = "'.$app['pagina'].'" AND id_lenguaje = '.$app['lenguaje'])->getRows();
                                 $sub_grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo_padre = '.$grupo[0]['id_grupo'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
@@ -33,13 +33,13 @@
                                     echo '<div class="col-xs-12" style="text-align:center">';
                                         echo '<a style="font-size:1.4em; display:block; width:100%; text-align:center; margin-top:20px; float:left" target="_blank" href="pdf'.$usuario.'-'.$experiencia_fecha.'"><i class="fa fa-file-pdf-o"></i> Descargue aquí su formulario</a>';
                                     echo '</div>';
-                                }else{
+                                } else {
                                     foreach($sub_grupos as &$grupo){
                                         echo '<div class="col-xs-12">';
                                             if($grupo['id_grupo'] == $grupo['id_grupo_padre'])
-                                                echo '<h1 style="color:'.$grupo['color'].'; border-bottom-color:'.$grupo['color'].'; '.($grupo['id_grupo'] == 4 ? 'font-size:1.8em;' : '').'">'.str_replace('<br>', '', $grupo['titulo']).'</h1>';
+                                                echo '<h1 class="tituloForm" style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h1>';
                                             else
-                                                echo '<h3>'.$grupo['titulo'].'</h3>';
+                                                echo '<h4 style="color:'.$grupo['color'].';">'.$grupo['titulo'].'</h4>';
                                         echo '</div>';
                                         echo '<div class="col-xs-12">';
                                             if($grupo['descripcion'] != '')
@@ -58,35 +58,35 @@
 
                                                 echo '<div class="col-xs-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                     echo '<div class="row">';
-                                                        echo '<div class="col-xs-12">';
-                                                                echo '<h4 class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'<br><span>'.$preguntas[$i]['comentarios'].'</span></h4>';
-                                                        echo '</div>';
-                                                        echo '<div class="col-xs-12">';
+                                                        echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].'">';
+                                                            echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label><p><small>'.$preguntas[$i]['comentarios'].'</small></p>';
                                                             switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                 case 'textarea':
-                                                                    echo '<textarea data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
+                                                                    echo '<textarea class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
                                                                 break;
                                                                 case 'text':
-                                                                    echo '<input type="text" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<input type="text" class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
                                                                 case 'radio':
-                                                                    $opciones_respuesta = $app['mysql']->runQuery('SELECT opciones FROM opciones WHERE id_pregunta = "'.$preguntas[$i]['id_pregunta'].'" ')->getRows();
-                                                                    $opciones = explode(",", $opciones_respuesta[0]['opciones']);
-                                                                    $opcion_seleccionada = $conres ? $respuesta[0]['respuesta'] : '';
-                                                                    if(is_array($opciones_respuesta) > 0){
-                                                                        for($j=0; $j<count($opciones); $j++){
-                                                                            echo '<input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'><label class="radio" for="pregunta_'.$preguntas[$i]['id_pregunta'].'">'.$opciones[$j].'</label>';
+                                                                    echo '<div class="radio">';
+                                                                        $opciones_respuesta = $app['mysql']->runQuery('SELECT opciones FROM opciones WHERE id_pregunta = "'.$preguntas[$i]['id_pregunta'].'" ')->getRows();
+                                                                        $opciones = explode(",", $opciones_respuesta[0]['opciones']);
+                                                                        $opcion_seleccionada = $conres ? $respuesta[0]['respuesta'] : '';
+                                                                        if(is_array($opciones_respuesta) > 0){
+                                                                            for($j=0; $j<count($opciones); $j++){
+                                                                                echo '<label class="radio-inline"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'>'.$opciones[$j].'</label>';
+                                                                            }
+                                                                        }else{
+                                                                            for($k=1; $k<=5; $k++){
+                                                                                echo '<label class="radio-inline"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'>'.$k.'&nbsp;</label>';
+                                                                            }
                                                                         }
-                                                                    }else{
-                                                                        for($k=1; $k<=5; $k++){
-                                                                            echo '<input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'><label class="radio" for="pregunta_'.$preguntas[$i]['id_pregunta'].'">'.$k.'</label>';
-                                                                        }
-                                                                    }
+                                                                    echo '</div>';
                                                                 break;
                                                                 case 'select':
                                                                     $opciones_respuesta = $app['mysql']->runQuery('SELECT opciones FROM opciones WHERE id_pregunta = "'.$preguntas[$i]['id_pregunta'].'" ')->getRows();
                                                                     $opciones = explode(",", $opciones_respuesta[0]['opciones']);
-                                                                    echo '<select data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<select class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                         echo '<option value="">Seleccionar</option>';
                                                                         for($j=0; $j<count($opciones); $j++){
                                                                             echo'<option value="'.$opciones[$j].'">'.$opciones[$j].'</option>';
@@ -94,7 +94,7 @@
                                                                     echo '</select>';
                                                                 break;
                                                                 case 'date':
-                                                                    echo '<input type="text" data-type="date" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<input type="text" class="form-control" data-type="date" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
                                                                 case 'file':
                                                                     echo '<div class="file_uploader">';
@@ -138,13 +138,11 @@
                                                                 $conderes = is_array($respuesta_dependiente); 
 
                                                                 echo '<div class="'.($conderes || $conres ? '' : 'oculto').'" data-role="pregunta" data-dependiente="'.$preguntas_dependientes[$p]['id_pregunta_dependiente'].'" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'" data-type="'.$tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo'].'">';
-                                                                    echo '<div class="col-xs-12">';
-                                                                        echo '<h4 class="'.(!$conderes && $pendiente ? 'pendiente' : '').'" style="margin-top:0px;">'.$preguntas_dependientes[$p]['pregunta'].'</h4>';
-                                                                    echo '</div>';
-                                                                    echo '<div class="col-xs-12">';
+                                                                    echo '<div class="col-xs-12 form-group inset-form-group">';
+                                                                        echo '<label class="'.(!$conderes && $pendiente ? 'pendiente' : '').'" style="margin-top:0px;">'.$preguntas_dependientes[$p]['pregunta'].'</label>';
                                                                         switch($tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo']) {
                                                                             case 'textarea':
-                                                                                echo '<textarea data-role="respuesta" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'">'.($conderes ? $respuesta_dependiente[0]['respuesta'] : '').'</textarea>';
+                                                                                echo '<textarea class="form-control" data-role="respuesta" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'">'.($conderes ? $respuesta_dependiente[0]['respuesta'] : '').'</textarea>';
                                                                             break;
                                                                         }
                                                                     echo '</div>';
@@ -157,22 +155,60 @@
                                         }
                                     }
                                 }
-                                echo '<div class="col-xs-12 botones" style="border-top-color:'.$sub_grupos[0]['color'].'">';
-                                    if(!$finalizado){
-                                        echo '<div class="col-xs-6 centrar">';
-                                            echo '<input type="button" id="guardar">';
-                                        echo '</div>';
-                                        echo '<div class="col-xs-6 centrar">';
-                                            echo '<input type="button" id="enviar">';
-                                        echo '</div>';
+                                echo ' <div class="col-sm-12 BotonesForm">';
+                                    if(!$finalizado)
+                                    {
+                                        echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
+                                        echo '<button class="btn btn-default enviar disabled" id="enviar">Enviar</button>';
+                                        echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
                                     }
                                 echo '</div>';
-                            }
                         ?>
+                            <div class="col-sm-12 pagSeccion">
+                                <?php
+                                    switch ($grupo['id_grupo']) {
+                                        case '1':
+                                        case '12':
+                                            $pag = 1;
+                                            $prev = "";                                            
+                                            $next = "DescripcionExperiencia";
+                                        break;
+                                        case '2':
+                                        case '13':
+                                            $pag = 2;
+                                            $prev = "DatosGeneralesExperiencia";                                            
+                                            $next = "InnovacionSostenibilidadAprendizaje";
+                                        break;
+                                        case '3':
+                                        case '14':
+                                            $pag = 3;
+                                            $prev = "DescripcionExperiencia";                                            
+                                            $next = "CaracterizacionDeLaExperiencia";
+                                        break;
+                                        case '4':
+                                        case '15':
+                                            $pag = 4;
+                                            $prev = "InnovacionSostenibilidadAprendizaje";                                            
+                                            $next = "InformacionAdicional";
+                                        break;
+                                        case '5':
+                                        case '16':
+                                            $pag = 5;
+                                            $prev = "CaracterizacionDeLaExperiencia";                                            
+                                            $next = "";
+                                        break;
+                                    }
+                                ?>
+                                <a href="<?php echo $prev; ?>" class="btn btn-default <?php echo $prev == "" ? 'disabled' : '' ?>"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                                <span class="paginacion"><?php echo $pag ?> / 5</span>
+                                <a href="<?php echo $next; ?>" class="btn btn-default <?php echo $next == "" ? 'disabled' : '' ?>"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <?php include 'sections/fake_foot.php' ?>
 </body>
 </html>

@@ -42,7 +42,7 @@
                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                      Cambiar clave
                   </a>
-                  <a href="#" class="salir">
+                  <a href="#" class="saida">
                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                      Salir
                   </a>
