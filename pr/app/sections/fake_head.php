@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Transformadores :: Dados Gerais da Experiência</title>
-    <script src="public/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="public/js/bootstrap.min.js"></script>
     <script src="public/js/simple-modal.js"></script>
@@ -12,15 +12,15 @@
     <script src="public/js/usuarios.js"></script>
    <!-- <link rel="stylesheet" href="public/css/normalize.css">
     <link rel="stylesheet" href="public/css/bootstrap.css">-->
+
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/bootstrap-select.css"><!-- 1 -->
     <link rel="stylesheet" href="public/css/bootstrap-datetimepicker.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/estilosTr.css"><!-- 3 -->
    <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">-->
-
-
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+     
     
     
 </head>
@@ -28,19 +28,6 @@
 
    <div class="fluidTop">
       <div class="container">
-         <div class="row">
-            <div class="col-xs-12">
-               <ul class="fr">
-                  <?php 
-                     if ( isset($_SESSION['usuario']) ){
-                     echo '<li><a href="CambiarDatosUsuario">Cambiar contraseña</a>';
-                     echo '</li><li><a href="#" class="salir">Salir</a>';
-                     echo '</li>';
-                     }
-                     ?>
-               </ul>
-            </div>
-         </div>
          <div class="row">
             <div class="hidden-sm hidden-xs col-md-3 col-lg-2 fecha">
                miércoles, 24 de agosto de 2016
@@ -50,7 +37,8 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 intranet" id="ingresarTransformadores">
                <div class="text-center">
-                  <a data-toggle="modal" href="#defaultModal2" class="senha">
+                  <?php if ( isset($_SESSION['usuario']) ){?>
+                  <a data-toggle="modal" href="#defaultModal2" href="CambiarDatosUsuario" class="senha">
                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                      Cambiar clave
                   </a>
@@ -58,6 +46,7 @@
                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                      Salir
                   </a>
+                  <?php }  ?>
                </div>
             </div>
             <div class="col-xs-2 idioma" id="idioma">
@@ -72,7 +61,31 @@
          </div>
       </div>
    </div>
-
+   <div id="defaultModal2" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                   <h4>Cambiar clave</h4>
+               </div>
+               <div class="modal-body">
+                 <form>
+                   <div class="form-group">
+                     <label for="exampleInputPassword1">Clave anterior</label>
+                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                   </div>
+                   <div class="form-group">
+                     <label for="exampleInputPassword2">Clave nueva</label>
+                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                   </div>
+                   <div class="form-group text-center">
+                       <button type="submit" class="btn btn-ingresar">CAMBIAR</button>
+                   </div>
+                 </form>
+               </div>
+           </div> <!--modal-content-->
+       </div> <!--modal-dialog-->
+   </div> 
    <div class="fluidHeader">
       <div class="container">
          <div class="row">

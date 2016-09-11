@@ -107,6 +107,7 @@ $(function(){
 		}
 
 		if (accion == 'ingresar'){
+			alert("dfadfas "+accion+"  "+pass);
 			if(correo != "" && pass != ""){
 				$.ajax({
 					type: 'post',
@@ -118,6 +119,7 @@ $(function(){
 						_accion: 'ingresar'
 					},
 					success: function (data){
+					
 						if (data.estado == 0){
 							$.fn.SimpleModal({
 								btn_ok:   'Aceptar',
@@ -137,6 +139,7 @@ $(function(){
 								contents: 'Su usuario aún no ha sido habilitado para diligenciar el formulario.'
 							}).showModal();
 						}else if(data.estado == 1){
+
 							window.location.reload();
 						}
 					}

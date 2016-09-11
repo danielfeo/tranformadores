@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Transformadores</title>
-    <script src="public/js/jquery.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/simple-modal.js"></script>
-    <script src="public/js/app.js"></script>
-    <script src="public/js/fileupload.js"></script>
-    <link rel="stylesheet" href="public/css/normalize.css">
-    <link rel="stylesheet" href="public/css/bootstrap.css">
-    <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="public/css/app.css">
-    <link rel="stylesheet" href="public/css/estilosTr.css">
-</head>
-<body>
-    <nav>
+
         <?php include 'sections/fake_head.php' ?>
     </nav>
     <div class="fluidBlanco">
