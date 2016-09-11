@@ -1,4 +1,5 @@
 $(function(){
+    var url = "tranformadores";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
@@ -14,7 +15,7 @@ $(function(){
         switch(accion){
             case 'ingresar':
                 $('input[name="accion"]').val('registro');
-                $('label[for="organizacion"]').fadeIn();
+                $('.form-group.organizacion').fadeIn();
                 $('input[name="guardar"]').val("Cadastre-se");
                 $('#registro').text("Entrar");
                 $('input[name="usuario"]').css('border-color','#ccc');
@@ -22,7 +23,7 @@ $(function(){
             break;
             case 'registro':
                 $('input[name="accion"]').val('ingresar');
-                $('label[for="organizacion"]').fadeOut();
+                $('.form-group.organizacion').fadeOut();
                 $('input[name="guardar"]').val("Entrar");
                 $('#registro').text("Cadastre-se");
                 $('input[name="organizacion"]').css('border-color','#ccc');
@@ -205,7 +206,7 @@ $(function(){
                 _accion : 'cerrar_sesion'
             },
             complete: function(){
-                window.location.href= '/transformadores/pr';
+                window.location.href= url+'/pr';
             }
         });
         e.preventdefault(); 

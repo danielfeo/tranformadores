@@ -1,4 +1,6 @@
-$(function(){	  
+$(function(){
+
+	var url = 'tranformadores';
 	var items_paginas = 10;
 
 	function paginador(pagina, items){
@@ -107,7 +109,6 @@ $(function(){
 		}
 
 		if (accion == 'ingresar'){
-			alert("dfadfas "+accion+"  "+pass);
 			if(correo != "" && pass != ""){
 				$.ajax({
 					type: 'post',
@@ -338,7 +339,7 @@ $(function(){
 							contents: 'Contraseña modificada satisfactoriamente'
 						}).addButton("Aceptar", "btn primary", function(){
 							this.hide();
-							window.location.href= '/transformadores';
+							window.location.href= url;
 						}).showModal();
 					}else{
 						$.fn.SimpleModal({

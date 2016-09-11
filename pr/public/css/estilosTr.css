@@ -2325,16 +2325,6 @@ ul.archivos li a:nth-child(2):hover {
     vertical-align: bottom;
 }
 
-.login label,
-.login input[type="text"],
-.login input[type="password"]{
-    margin-bottom: 5px;
-    display: block;
-    font-size: 1.2em;
-    font-family: 'Exo', sans-serif;
-    font-weight: 500;
-}
-
 .login label.oculto{
     display: none;
 }
