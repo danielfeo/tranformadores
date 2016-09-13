@@ -10,6 +10,7 @@
     <script src="public/js/simple-modal.js"></script>
     <script src="public/js/app.js"></script>
     <script src="public/js/usuarios.js"></script>
+    <script src="public/js/fileupload.js"></script>
    <!-- <link rel="stylesheet" href="public/css/normalize.css">
     <link rel="stylesheet" href="public/css/bootstrap.css">-->
 
