@@ -97,11 +97,32 @@
                                                                     echo '<input type="text" class="form-control" data-type="date" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
                                                                 case 'file':
-                                                                    echo '<div class="file_uploader">';
+                                                                                                                                       
+                                                                    //echo '<div class="file_uploader">';
                                                                         echo '<div class="col-xs-6" style="padding-left:0px;">';
                                                                             if(!$finalizado){
-                                                                                echo '<input type="file" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'"><br><br>';
-                                                                                echo '<button class="jbtn green" style="min-width:30px !important;"><i class="fa fa-upload"></i></button>';
+
+                                                                                 echo '<div class="input-group botonFile">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Buscar... <input style="display: none;" multiple="" type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
+                                </span>
+                            </label>
+                            <input class="form-control" readonly="" type="text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+                                </button>
+                            </span>
+
+                        </div>
+                        <button class="btn btn-default addFile" type="button">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                        <p class="help-block">Agregue hasta 5 archivos cada uno con un máximo de 5 Mb.</' ;
+
+                                                                                //echo '<input type="file" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'"><br><br>';
+                                                                               // echo '<button class="jbtn green" style="min-width:30px !important;"><i class="fa fa-upload"></i></button>';
                                                                             }else{
                                                                                 echo '<ul class="archivos" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                     for($a = 0; $a < count($archivos); $a++){
@@ -110,7 +131,7 @@
                                                                                     }
                                                                                 echo '</ul>';
                                                                             }
-                                                                        echo '</div>';
+                                                                       // echo '</div>';
                                                                         echo '<div class="col-xs-6">';
                                                                             echo '<ul class="archivos" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                             if(!$finalizado){
