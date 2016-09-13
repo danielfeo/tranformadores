@@ -15,15 +15,15 @@
         <div>
             <div class="container">
                 <div class="row login">
-                    <div class="col-xs-12">
-                        <div class="col-xs-4"></div>
-                        <div class="col-xs-4">
-                            <label for="usuario">E-mail<input type="text" placeholder="E-mail" name="usuario"></label>
-                            <input class="jbtn green" type="button" value="Enviar" name="enviar">
-                            <a id="olvido" class="pull-right" style="padding-top:15px;" href="login">Entrar</a>
-                        </div>
-                        <div class="col-xs-4"></div>
+                    <div class="col-md-4 col-md-offset-4 form-group">
+                        <label for="usuario">E-mail</label>
+                        <input type="text" placeholder="E-mail" class="form-control" name="usuario">
                     </div>
+                    <div class="col-md-4 col-md-offset-4 form-group">
+                        <input class="jbtn green" type="button" value="Enviar" name="enviar">
+                        <a id="olvido" class="pull-right" style="padding-top:15px;" href="login">Entrar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

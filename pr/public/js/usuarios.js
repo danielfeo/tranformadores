@@ -1,4 +1,6 @@
-$(function(){	  
+$(function(){
+	
+	var url = '/tranformadores';
 	var items_paginas = 10;
 
 	function paginador(pagina, items){
@@ -118,6 +120,7 @@ $(function(){
 						_accion: 'ingresar'
 					},
 					success: function (data){
+					
 						if (data.estado == 0){
 							$.fn.SimpleModal({
 								btn_ok:   'Aceptar',
@@ -137,6 +140,7 @@ $(function(){
 								contents: 'Su usuario aún no ha sido habilitado para diligenciar el formulario.'
 							}).showModal();
 						}else if(data.estado == 1){
+
 							window.location.reload();
 						}
 					}
@@ -335,7 +339,7 @@ $(function(){
 							contents: 'Contraseña modificada satisfactoriamente'
 						}).addButton("Aceptar", "btn primary", function(){
 							this.hide();
-							window.location.href= '/transformadores';
+							window.location.href= url;
 						}).showModal();
 					}else{
 						$.fn.SimpleModal({

@@ -36,9 +36,6 @@
                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> (57 1) 310 0379
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 intranet" id="ingresarTransformadores">
-                
-
-
                <div class="text-center">
                   <?php if ( isset($_SESSION['usuario']) ){?>
                   <a data-toggle="modal" href="#defaultModal2" href="CambiarDatosUsuario" class="senha">
@@ -64,7 +61,31 @@
          </div>
       </div>
    </div>
-
+   <div id="defaultModal2" class="modal fade">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                   <h4>Cambiar clave</h4>
+               </div>
+               <div class="modal-body">
+                 <form>
+                   <div class="form-group">
+                     <label for="exampleInputPassword1">Clave anterior</label>
+                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                   </div>
+                   <div class="form-group">
+                     <label for="exampleInputPassword2">Clave nueva</label>
+                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                   </div>
+                   <div class="form-group text-center">
+                       <button type="submit" class="btn btn-ingresar">CAMBIAR</button>
+                   </div>
+                 </form>
+               </div>
+           </div> <!--modal-content-->
+       </div> <!--modal-dialog-->
+   </div> 
    <div class="fluidHeader">
       <div class="container">
          <div class="row">

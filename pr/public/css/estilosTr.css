@@ -636,6 +636,10 @@ ul#dnn_ctr_EditUser_adminTabNav li:last-child {
 	padding: 20px;
 	background-color: #fff;
 }
+.fluidBlanco h4 {
+	font-size: 21px;
+    margin-top: 40px;
+}
 .linkPDF {
 	color: #e2392e !important;
 }
@@ -1682,7 +1686,7 @@ section.z-section.z-active h3.z-link {
 	background-color: #fff;
 	color: #3DAB15;
 }
-form.formularioTransf label {
+.formularioTransf label {
 	font-weight: 400;
 	margin-bottom: 10px;
 }
@@ -2181,160 +2185,15 @@ form#form {
 	}
 }
 
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+	margin-left: -16px;
+}
+
+.inset-form-group {
+	margin-top: -20px;
+}
 
 /*estilos viejos*/
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-ul.secciones li {
-    float: left;
-    position: relative;
-    width: 100%;
-    border-bottom: 2px solid #fff;
-    -webkit-border-radius: 0 10px 0 0;
-       -moz-border-radius: 0 10px 0 0;
-            border-radius: 0 10px 0 0;
-}
-
-ul.secciones li.active,
-ul.secciones li:hover {
-    cursor: pointer;
-    width: 105%;
-}
-
-ul.secciones li:hover,
-ul.secciones li:hover a {
-    -webkit-transition: all .4s ease-in-out;
-       -moz-transition: all .4s ease-in-out;
-         -o-transition: all .4s ease-in-out;
-            transition: all .4s ease-in-out;
-}
-
-ul.secciones li:hover a {
-    width: 100%;
-    padding-left: 20px;
-}
-
-ul.secciones li a {
-    display: block;
-    padding: 10px 10px;
-    width: 100%;
-    line-height: 110%;
-    text-decoration: none;
-    font-family:'Exo', sans-serif;
-    font-size: 1.41em;
-    color: #fff;
-}
-
-ul.archivos li a:hover {
-    text-decoration: none;
-    color: #f00;
-}
-
-ul.archivos li a:nth-child(2):hover {
-    color: #000;
-}
-
-
-.formulario h1,
-.formulario h3 {
-    margin: 0px;
-    padding-bottom: 10px;
-    text-align: center;
-    font-family:'Exo', sans-serif;
-    font-size: 2.16em;
-    font-weight: 400;
-    border: none;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-}
-
-.formulario h3 {
-    margin: 15px 0 0;
-    padding-bottom: 0;
-    text-align: left;
-    font-size: 1.5em;
-    font-weight: 500;
-    border-bottom: none;
-}
-
-.formulario .col-xs-12:nth-child(3) h3{
-    margin-top: 20px;
-}
-
-.formulario p.descripcion {
-    margin: 0;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 1.2em;
-    color: #999;
-}
-
-.formulario h4 {
-    margin: 5px 0 0;
-    padding: 15px 0 12px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 1.25em;
-    font-weight: normal;
-    color: #4d4d4d;
-}
-
-.formulario h4.pendiente {
-    color: #f00;
-}
-.formulario h4.pendiente:before {
-    content: '*';
-}
-
-.formulario h4 span {
-    font-size: .8em;
-    font-weight: 300;
-    color: #999;
-}
-
-.formulario textarea,
-.formulario input[type="text"],
-.formulario input[type="password"],
-.formulario select{
-    width: 100%;
-    padding: 5px 10px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    border: 1px solid #b3b3b3;
-    color: #333;
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-}
-
-.formulario textarea{
-    resize: vertical;
-    height: 4.3em;
-}
-
-.formulario label.radio {
-    margin: 0px 10px 0px 4px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 1.16em;
-    color: #808080;
-    display: inline-block;
-    vertical-align: bottom;
-}
-
-.login label,
-.login input[type="text"],
-.login input[type="password"]{
-    margin-bottom: 5px;
-    display: block;
-    font-size: 1.2em;
-    font-family: 'Exo', sans-serif;
-    font-weight: 500;
-}
-
 .login label.oculto{
     display: none;
 }
@@ -2421,21 +2280,6 @@ textarea{
 .datos_administrador tr td{
     padding: 10px 10px;
 }
-
-#guardar,
-#enviar {
-    margin: 0 auto;
-    width: 140px;
-    height: 50px;
-    border: none;
-    background: url('../img/botones.png') no-repeat 0 0 transparent;
-}
-
-#enviar {background-position: 0px -50px;}
-
-#guardar:hover {background-position: -140px 0px;}
-
-#enviar:hover {background-position: -140px -50px;}
 
 a.jbtn,
 input[type="button"].jbtn,
