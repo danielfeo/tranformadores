@@ -472,3 +472,7 @@ nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; tex
 
 .fr {float: right;}
 .fl {float: left;}
+
+.nav>li>a {
+    padding: 0 15px;
+}

@@ -10,7 +10,7 @@ if($_SERVER['SERVER_NAME'] == '127.0.0.1' || $_SERVER['SERVER_NAME'] == '192.168
 else
     $mysql = new MySQL($conection['server']);
 
-// $mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
+$mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
 
 $accion = $_POST['_accion'];
 switch ($accion) {

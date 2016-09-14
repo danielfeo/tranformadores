@@ -1,4 +1,5 @@
 $(function(){
+
 	var items_paginas = 10;
 
 	$( "#fecha_inicio" ).datepicker({
