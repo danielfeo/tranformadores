@@ -518,7 +518,7 @@ ul#dnn_ctr_EditUser_adminTabNav li:last-child {
 	border-right: 1px solid #E2392E;
 	border-radius: 0;
 	font-size: 19px;
-	padding: 0 17px;
+	padding: 0 15px;
 }
 .nav>li:last-child a{
 	border-right: none;
@@ -1865,8 +1865,8 @@ form#form {
 	    width: 105px;
 	}
 	.nav>li>a {
-		padding: 0 12px;
-		font-size: 17px;
+		padding: 0 11px;
+		font-size: 16px;
 	}
 	.LoginLink {
 		font-size: 10px;
@@ -1935,8 +1935,8 @@ form#form {
 		line-height: 3;
 	}
 	.nav>li>a {
-	    padding: 0 7px;
-	    font-size: 14px;
+	    padding: 0 6px;
+	    font-size: 13px;
 	}
 	.logo img {
 		width: 79%;

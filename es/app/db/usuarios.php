@@ -1,5 +1,5 @@
 <?php session_start();
-error_reporting(0);
+error_reporting(1);
 include ('../../database.php');
 include ('../../mailserver.php');
 include ('../../clases/mysql.php');
@@ -10,9 +10,9 @@ if($_SERVER['SERVER_NAME'] == '127.0.0.1' || $_SERVER['SERVER_NAME'] == '192.168
 else
     $mysql = new MySQL($conection['server']);
 
-//$mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
-$accion = $_POST['_accion'];
+$mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
 
+$accion = $_POST['_accion'];
 switch ($accion) {
 	case 'registro':
 		$validacion_correo = $mysql->runQuery('SELECT COUNT(*) AS email FROM usuarios WHERE email = "'.$_POST['_correo'].'" ')->getRows();
@@ -23,12 +23,13 @@ switch ($accion) {
 			$variables_sesion = $mysql->runQuery('SELECT id_usuario, id_rol FROM usuarios WHERE email ="'.$_POST['_correo'].'" AND pass ="'.$_POST['_pass'].'" ')->getRows();
 			$estado = $resultado;
 			if($estado)
-			{}
-				// $mail->send($mailserver['user'], $mailserver['admin'], 'Registro nuevo usuario Redeamerica.org', 'Se ha registrado un nuevo usuario. Organización: '.$_POST['_organizacion'].' Correo: '.$_POST['_correo']);
+			{
+				$mail->send($mailserver['user'], $mailserver['admin'], 'Registro nuevo usuario Redeamerica.org', 'Se ha registrado un nuevo usuario. Organización: '.$_POST['_organizacion'].' Correo: '.$_POST['_correo']);
+			}
 			if($_POST['_habilitado'] == 1)
-			{}
-
-				// $mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/es/');
+			{
+				$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');
+			}
 		}
 		echo json_encode(array('estado' => $estado));
 	break;
@@ -41,10 +42,10 @@ switch ($accion) {
 				$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 				$_SESSION['usuario']['rol'] =  $login[0]['id_rol'];
 			}
-			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1'){
-				if(is_array($experiencia)){
+			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1') {
+				if(is_array($experiencia)) {
 					$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
-					$_SESSION['usuario']['rol'] =  $login[0]['id_rol'];
+					$_SESSION['usuario']['rol'] = $login[0]['id_rol'];
 					$_SESSION['experiencia'] = $experiencia[0]['id_experiencia'];
 					$_SESSION['experiencia_fecha'] = $experiencia[0]['fecha_inicio'];
 				}else{
@@ -57,6 +58,7 @@ switch ($accion) {
 		}else{
 			$estado = 0;
 		}
+		
 		echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
 	break;
 	case 'obtener_usuarios':
@@ -66,7 +68,9 @@ switch ($accion) {
 	case 'modificar':
 		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'"  WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
 		if($_POST['_habilitado'] == 1)
-			//$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/es/');
+		{
+			$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');
+		}
 		$estado = $consulta;
 		echo json_encode(array('estado' => $estado));
 	break;

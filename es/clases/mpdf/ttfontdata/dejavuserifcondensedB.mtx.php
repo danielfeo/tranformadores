@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='E:/inetpub/vhosts/redeamerica.org/httpdocs/Transformadores/clases/mpdf/ttfonts/DejaVuSerifCondensed-Bold.ttf';
+$ttffile='C:/wamp/www/transformadores/clases/mpdf/ttfonts/DejaVuSerifCondensed-Bold.ttf';
 $TTCfontID='0';
 $originalsize=283140;
 $sip=false;

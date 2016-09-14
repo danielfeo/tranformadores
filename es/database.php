@@ -8,7 +8,7 @@ $conection = array(
 		'database' => 'transformadores'
 	),
 	'server' => array(
-		'server' => 'mysql.hostinger.ph',
+		'server' => '31.220.104.130',
 		'user' => 'u686165894_root',
 		'password' => 'HGToBBUtv0',
 		'database' => 'u686165894_trans'

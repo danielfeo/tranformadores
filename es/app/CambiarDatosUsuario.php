@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Transformadores</title>
-    <script src="public/js/jquery.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/simple-modal.js"></script>
-    <script src="public/js/app.js"></script>
-    <script src="public/js/usuarios.js"></script>
-    <link rel="stylesheet" href="public/css/normalize.css">
-    <link rel="stylesheet" href="public/css/bootstrap.css">
-    <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
-    <link rel="stylesheet" href="public/css/app.css">
-</head>
-<body>
-    <nav>
+
         <?php include 'sections/fake_head.php' ?>
     </nav>
     <section>
@@ -35,10 +18,10 @@
                     <div class="col-xs-12">
                         <div class="col-xs-4"></div>
                         <div class="col-xs-4">
-                            <label for="clave">Contraseña anterior<input type="password" placeholder="Contraseña" name="clave_anterior"></label>
-                            <label for="clave">Contraseña nueva<input type="password" placeholder="Contraseña" name="clave_nueva"></label>
+                            <label for="clave">Alterar a senha<input type="password" placeholder="Senha" name="clave_anterior"></label>
+                            <label for="clave">Nova Senha<input type="password" placeholder="Nova senha" name="clave_nueva"></label>
                             <input class="jbtn green" type="button" value="Enviar" name="enviar_cont">
-                            <a id="olvido" class="pull-right" style="padding-top:15px;" href="/transformadores/es">Volver</a>
+                            <a id="olvido" class="pull-right" style="padding-top:15px;" href="/transformadores/pr">cancelar</a>
                         </div>
                         <div class="col-xs-4"></div>
                     </div>
