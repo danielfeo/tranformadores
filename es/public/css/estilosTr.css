@@ -1819,8 +1819,10 @@ section.z-section.z-active h3.z-link {
 	background-color: #fff;
 }
 .addFile {
-	display: block;
-	color: #3DAB15;
+	/*display: block;
+	color: #3DAB15;*/
+	/*dan*/
+	display: none;
 }
 .botonFile{
 	width: 90%;
