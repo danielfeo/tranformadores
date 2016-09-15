@@ -22,7 +22,7 @@ $(function(){
             },
             success: function(data){
                 if(data.estado == '1'){
-                    contenedor.find('ul.archivos').append('<li><a href="'+data.url+'" target="_blank"><i class="fa fa-file-o"></i> '+data.file+'</a></li>');
+                    contenedor.find('div.archivos').append('<p><a href="'+data.url+'" target="_blank"><i class="fa fa-file-o"></i> '+data.file+'</a></p>');
                 }
             },
             data: formData,

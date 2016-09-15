@@ -119,7 +119,7 @@ ul.secciones li a {
     font-size: 1.41em;
     color: #fff;
 }
-
+/*
 ul.archivos li a:hover {
     text-decoration: none;
     color: #f00;
@@ -128,7 +128,7 @@ ul.archivos li a:hover {
 ul.archivos li a:nth-child(2):hover {
     color: #000;
 }
-
+*/
 .formulario h1,
 .formulario h3 {
     margin: 0px;
