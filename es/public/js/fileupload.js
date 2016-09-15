@@ -36,7 +36,7 @@ $(function(){
         });
     });
 
-    $('ul.archivos').delegate('a[data-role="delete"]', 'click', function(e){
+    $('div.archivos').delegate('a[data-role="delete"]', 'click', function(e){
         var contenedor = $(this).closest('li');
         var archivo = contenedor.find('a[data-role="file"]');
         var modal = $.fn.SimpleModal({
