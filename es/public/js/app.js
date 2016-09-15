@@ -1,4 +1,6 @@
 $(function(){
+    var lang = "es";
+    var url = "/tranformadores";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
@@ -14,17 +16,17 @@ $(function(){
         switch(accion){
             case 'ingresar':
                 $('input[name="accion"]').val('registro');
-                $('label[for="organizacion"]').fadeIn();
-                $('input[name="guardar"]').val("Registrarse");
-                $('#registro').text("Ingresar");
+                $('.form-group.organizacion').fadeIn();
+                $('input[name="guardar"]').val("Cadastre-se");
+                $('#registro').text("Entrar");
                 $('input[name="usuario"]').css('border-color','#ccc');
                 $('input[name="clave"]').css('border-color','#ccc');
             break;
             case 'registro':
                 $('input[name="accion"]').val('ingresar');
-                $('label[for="organizacion"]').fadeOut();
-                $('input[name="guardar"]').val("Ingresar");
-                $('#registro').text("Registrarse");
+                $('.form-group.organizacion').fadeOut();
+                $('input[name="guardar"]').val("Entrar");
+                $('#registro').text("Cadastre-se");
                 $('input[name="organizacion"]').css('border-color','#ccc');
                 $('input[name="usuario"]').css('border-color','#ccc');
                 $('input[name="clave"]').css('border-color','#ccc');
@@ -166,7 +168,7 @@ $(function(){
                         model: 'modal',
                         btn_ok : 'Aceptar',
                         title:    'Alerta',
-                        contents: 'Gracias por postular su experiencia. Los resultados serán divulgados en febrero de 2015'
+                        contents: 'Obrigada por candidatizar a sua experiência. Os resultados serão divulgados em fevereiro de 2015.'
                     }).addButton("Aceptar", "btn primary", function(){
                         this.hide();
                         window.location.reload();
@@ -196,7 +198,7 @@ $(function(){
         dateFormat: 'yy-mm-dd'
     });
 
-    $('.salir').on('click' , function(e){
+    $('.saida').on('click' , function(e){
         $.ajax({
             type: 'post',
             url:  'app/db/usuarios.php',
@@ -205,7 +207,7 @@ $(function(){
                 _accion : 'cerrar_sesion'
             },
             complete: function(){
-                 window.location.href= '/transformadores/es';
+                window.location.href= url+'/'+lang;
             }
         });
         e.preventdefault(); 

@@ -11,14 +11,14 @@ if($_SERVER['SERVER_NAME'] == '127.0.0.1' || $_SERVER['SERVER_NAME'] == '192.168
 else
     $mysql = new MySQL($conection['server']);
 
-//$mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
+$mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'], $mailserver['port'], true);
 
 $accion = $_POST['_accion'];
 $usuario = $_SESSION['usuario']['id'];
 $experiencia = $_SESSION['experiencia'];
 
 switch ($accion) {
-	case 'guardarPreguntas':
+    case 'guardarPreguntas':
         $estado = true;
         foreach($_POST['_respuestas'] as &$respuesta){
             $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.$respuesta['id_pregunta'].' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
@@ -41,23 +41,23 @@ switch ($accion) {
         }
         echo json_encode(array('estado' => $estado));
     break;
-	case 'enviarPreguntas':
-        $total_preguntas = $mysql->runQuery('SELECT COUNT(*) AS total_preguntas FROM preguntas WHERE id_lenguaje = 1 AND id_grupo != 5')->getRows();
-        $total_respuestas = $mysql->runQuery('SELECT COUNT(*) AS total_respuestas FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.' AND id_pregunta != 71 AND id_pregunta != 72')->getRows();
+    case 'enviarPreguntas':
+        $total_preguntas = $mysql->runQuery('SELECT COUNT(*) AS total_preguntas FROM preguntas WHERE id_lenguaje = 2 AND id_grupo != 16')->getRows();
+        $total_respuestas = $mysql->runQuery('SELECT COUNT(*) AS total_respuestas FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.' AND id_pregunta != 143 AND id_pregunta != 144')->getRows();
 
         if($total_preguntas[0]['total_preguntas'] != $total_respuestas[0]['total_respuestas']){
-            $preguntas_pendientes = $mysql->runQuery('SELECT g1.* FROM grupos g1 WHERE g1.`id_lenguaje` = 1 AND g1.`id_grupo` IN (SELECT g.`id_grupo_padre` FROM preguntas p, grupos g WHERE p.`id_lenguaje` = 1 AND p.`id_pregunta` NOT IN (SELECT id_pregunta FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.') AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` != 16)')->getRows();
+            $preguntas_pendientes = $mysql->runQuery('SELECT g1.* FROM grupos g1 WHERE g1.`id_lenguaje` = 2 AND g1.`id_grupo` IN (SELECT g.`id_grupo_padre` FROM preguntas p, grupos g WHERE p.`id_lenguaje` = 2 AND p.`id_pregunta` NOT IN (SELECT id_pregunta FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.') AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` != 16)')->getRows();
             $_SESSION['experiencia_actual']['pendientes'] = true;
             echo json_encode(array('estado' => false, 'preguntas' => $preguntas_pendientes));
         }else{
             $usuario_correo = $mysql->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$usuario)->getRows();
             $experiencia_finalizada = $mysql->runQuery('INSERT INTO experiencias_usuarios (id_experiencia, id_usuario, fecha, finalizado) VALUES ('.$experiencia.', '.$usuario.', CURDATE(), 1)')->getRows();
-            //$mail->send($mailserver['user'], $mailserver['admin'], 'Nuevo formulario', 'Se ha se ha recibido un nuevo formulario del usuario: '.$usuario_correo[0]['email']);
-            //$mail->send($mailserver['user'], $usuario_correo[0]['email'], 'Agradecimientos', 'Gracias por postular su experiencia en el Premio Transformadores');
+            $mail->send($mailserver['user'], $mailserver['admin'], 'Nuevo formulario', 'Se ha se ha recibido un nuevo formulario del usuario: '.$usuario_correo[0]['email']);
+            $mail->send($mailserver['user'], $usuario_correo[0]['email'], 'Obrigado', 'Obrigado por candidatizar a sua experiência ao Prêmio Transformadores');
             $_SESSION['experiencia_actual']['pendientes'] = false;
             echo json_encode(array('estado' => true, 'preguntas' => array()));
         }
-	break;
+    break;
     case 'cargarArchivo':
         $directorio = '../../public/archivos/'.$usuario.'/';
         $nombre = '';
@@ -112,6 +112,6 @@ switch ($accion) {
         $estado = unlink($archivo);
         echo json_encode(array('estado' => $estado));
     break;
-	default:
-	break;
+    default:
+    break;
 }
