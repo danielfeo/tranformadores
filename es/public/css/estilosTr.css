@@ -19,7 +19,7 @@ a:hover {
 }
 a:focus {
 	text-decoration: none;
-	color: #fff;
+	color: #333;
 }
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'Oswald', sans-serif;
@@ -1731,6 +1731,18 @@ section.z-section.z-active h3.z-link {
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
 	width: 100%;
 }
+.btn-default.danger {
+	color: #fff;
+	background-color: #d9534f;
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 700;
+	padding: 4px 30px;
+}
+.btn-default.danger:hover {
+	color: #d9534f;
+	background-color: #fff;
+}
 .btn-default.guardar {
 	color: #fff;
 	background-color: #3D70A3;
@@ -2237,7 +2249,7 @@ textarea{
     width: 100%;
     height: 100%;
     display: block;
-    font-size: 1.3em;
+    font-size: 14px;
     font-weight: 300;
     text-transform: uppercase;
     font-family:'Exo', sans-serif;
@@ -2264,13 +2276,13 @@ textarea{
 .datos_administrador tr td{
     height: 100%;
     font-weight: 400;
-    font-size: 1em;
+    font-size: 12px;
     font-family: 'Open Sans', sans-serif;
     border: 1px solid #ccc;
 }
 
 .datos_administrador tr td i{
-    font-size: 1.3em;
+    font-size: 14px;
 }
 
 .datos_administrador tr th{

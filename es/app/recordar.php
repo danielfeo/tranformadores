@@ -20,12 +20,15 @@
                         <input type="text" placeholder="E-mail" class="form-control" name="usuario">
                     </div>
                     <div class="col-md-4 col-md-offset-4 form-group">
-                        <input class="jbtn green" type="button" value="Enviar" name="enviar">
+                        <input class="btn btn-default enviar" type="button" value="Enviar" name="enviar">
                         <a id="olvido" class="pull-right" style="padding-top:15px;" href="login">Entrar</a>
+                    </div>
+                    <div class="col-md-12" style="height:400px">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <?php include 'sections/fake_foot.php' ?>
 </body>
 </html>
