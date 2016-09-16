@@ -1,8 +1,10 @@
 <?php
 $items_paginas = 10;
 $total = $app['mysql']->runQuery('SELECT COUNT(*) as total FROM usuarios')->getRows();
+$categorias = $app['mysql']->runQuery('SELECT * FROM categoria')->getRows();
 $paginas = ceil($total[0]['total'] / 10);
-echo '<h3>Crear/Editar Usuarios</h3><br>';
+
+echo '<br><h4>Crear/Editar Usuarios</h4><br>';
 echo '<div class="row formulario">';
 		echo '<div class="col-xs-3 form-group">';
 				echo '<label>Organización</label>';
@@ -17,20 +19,32 @@ echo '<div class="row formulario">';
 				echo '<input type="password" name="contraseña" class="form-control" placeholder="Clave">';
 		echo '</div>';
 		echo '<div class="col-xs-3 form-group">';
-				echo '<h4><input type="checkbox" name="habilitado"> Habilitado</h4>';
-				echo '<h4 style="padding-top: 0px;"><input type="checkbox" name="administrador"> Administrador</h4>';
+				echo '<label>Categoria</label>';
+				echo '<select name="categoria" class="form-control">';
+					foreach ($categorias as $categoria) {
+						echo '<option value="'.$categoria['id_categoria'].'">'.$categoria['descripcion'].'</option>';
+					}
+				echo '</select>';
+		echo '</div>';
+		echo '<div class="col-xs-12 form-group">';
+			echo '<label class="checkbox-inline">';
+		    	echo '<input type="checkbox" name="administrador"> Administrador';
+		  	echo '</label>';
+			echo '<label class="checkbox-inline">';
+		    	echo '<input type="checkbox" name="habilitado"> Habilitado';
+		  	echo '</label>';
 		echo '</div>';
 		echo '<div class="col-xs-4 form-group">';
 				echo '<input type="hidden" name="id" value="">';
 				echo '<input type="hidden" name="accion" value="registro">';
-				echo '<h4><input type="button" name="crear_nuevo" class="btn btn-default enviar" value="Guardar">&nbsp<input name="cancelar" class="oculto jbtn red" type="button" value="Cancelar"></h4>';
+				echo '<input type="button" name="crear_nuevo" class="btn btn-default enviar" value="Guardar">&nbsp<input name="cancelar" class="oculto btn btn-default danger" type="button" value="Cancelar">';
 		echo '</div>';
 echo '</div>';
 
-echo '<h2 class="titulo_tabla" >Usuarios</h2>';
-echo '<table id="tabla_usuarios" width="100%" class="datos_administrador">';
+echo '<br><h4>Usuarios</h4><br>';
+echo '<table id="tabla_usuarios" width="100%" class="table table-striped">';
 	echo '<thead>';
-		echo '<tr><th>Organización</th><th>Usuario</th><th>Habilitado</th><th>Administrador</th></th><th></th></th><th></th></tr>';
+		echo '<tr><th>Organización</th><th>Usuario</th><th>Categoria</th><th>Habilitado</th><th>Administrador</th></th><th></th></th><th></th></tr>';
 	echo '</thead>';
 	echo '<tbody>';
 	echo '</tbody>';
