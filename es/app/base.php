@@ -128,7 +128,7 @@
                                                                                 echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                     for($a = 0; $a < count($archivos); $a++){
                                                                                         $filename = explode('/', $archivos[$a]);
-                                                                                        echo '<a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>';
+                                                                                        echo '<p><a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a><p>';
                                                                                     }
                                                                                 echo '<div>';
                                                                             }

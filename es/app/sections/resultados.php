@@ -14,11 +14,11 @@ echo '<table id="tabla_experiencias_usuarios" width="100%" class="table table-st
 	echo '<tbody>';
 	echo '</tbody>';
 echo '</table>';
-
+/*
 echo '<div class="col-xs-12">';
 	echo '<div id="pag" class="paginador">';
 	echo '</div>';
 echo '</div>';
-
+*/
 ?>
 <script src="public/js/resultados.js"></script>
