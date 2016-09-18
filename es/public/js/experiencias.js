@@ -5,7 +5,6 @@ $(function(){
 	$( "#fecha_inicio" ).datepicker({
       defaultDate: "+1w",
       changeMonth: true,
-      numberOfMonths: 2,
       dateFormat: 'yy-mm-dd',
       onClose: function( selectedDate ) {
         $( "#fecha_fin" ).datepicker( "option", "minDate", selectedDate );
@@ -15,7 +14,6 @@ $(function(){
     $( "#fecha_fin" ).datepicker({
       defaultDate: "+1w",
       changeMonth: true,
-      numberOfMonths: 2,
       dateFormat: 'yy-mm-dd',
       onClose: function( selectedDate ) {
         $( "#fecha_inicio").datepicker( "option", "maxDate", selectedDate );

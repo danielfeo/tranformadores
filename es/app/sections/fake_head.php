@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/bootstrap-select.css"><!-- 1 -->
     <link rel="stylesheet" href="public/css/bootstrap-datetimepicker.css"><!-- 2 -->
+    <link rel="stylesheet" href="public/css/jquery-ui.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/estilosTr.css"><!-- 3 -->
    <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">-->
