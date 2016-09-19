@@ -17,11 +17,17 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/bootstrap-select.css"><!-- 1 -->
     <link rel="stylesheet" href="public/css/bootstrap-datetimepicker.css"><!-- 2 -->
+    <link rel="stylesheet" href="public/css/jquery-ui.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/estilosTr.css"><!-- 3 -->
    <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
     <link rel="stylesheet" href="public/css/app.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-     
+    <!--Datatables-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+
     
     
 </head>

@@ -98,51 +98,51 @@
                                                                 break;
                                                                 case 'file':
                                                                                                                                        
-                                                                    //echo '<div class="file_uploader">';
-                                                                        echo '<div class="col-xs-6" style="padding-left:0px;">';
+                                                                      echo '<div class="file_uploader col-xs-6" style="padding-left:0px;">';
                                                                             if(!$finalizado){
 
-                                                                                 echo '<div class="input-group botonFile">
-                            <label class="input-group-btn">
-                                <span class="btn btn-primary">
-                                    Buscar... <input style="display: none;" multiple="" type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
-                                </span>
-                            </label>
-                            <input class="form-control" readonly="" type="text">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-                                </button>
-                            </span>
+                                                                               echo '<div class="input-group botonFile">
+                                                                                            <label class="input-group-btn">
+                                                                                                <span class="btn btn-primary">
+                                                                                                    Buscar... <input style="display: none;" data-role="respuesta"  type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
+                                                                                                </span>
+                                                                                            </label>
+                                                                                            <input class="form-control" readonly="" type="text">
+                                                                                            <span class="input-group-btn">
+                                                                                                <button class="btn btn-default" id="jbtngreen" type="button">
+                                                                                                    <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+                                                                                                </button>
+                                                                                            </span>
 
-                        </div>
-                        <button class="btn btn-default addFile" type="button">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                        <p class="help-block">Agregue hasta 5 archivos cada uno con un máximo de 5 Mb.</' ;
+                                                                                    </div>
+                                                                                    <button class="btn btn-default addFile" type="button">
+                                                                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                                                            <i class="fa fa-upload"></i>
+                                                                                    </button>
+                                                                                    <br><br>
+                                                                                    <p class="help-block">Agregue hasta 5 archivos cada uno con un máximo de 5 Mb.</p>' ;
 
                                                                                 //echo '<input type="file" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'"><br><br>';
                                                                                // echo '<button class="jbtn green" style="min-width:30px !important;"><i class="fa fa-upload"></i></button>';
                                                                             }else{
-                                                                                echo '<ul class="archivos" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                                echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                     for($a = 0; $a < count($archivos); $a++){
                                                                                         $filename = explode('/', $archivos[$a]);
-                                                                                        echo '<li><a href="#" data-role="delete" title="borrar"><i class="fa fa-trash-o"></i></a> | <a href="'.$archivos[$a].'" data-role="file" target="_blank"><i class="fa fa-file-o"></i> '.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
+                                                                                        echo '<p><a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a><p>';
                                                                                     }
-                                                                                echo '</ul>';
+                                                                                echo '<div>';
                                                                             }
-                                                                       // echo '</div>';
-                                                                        echo '<div class="col-xs-6">';
-                                                                            echo '<ul class="archivos" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                      //echo '</div>';
+                                                                        echo '<div class="col-xs-12 col-sm-6">';
+                                                                            echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                             if(!$finalizado){
                                                                                 for($a = 0; $a < count($archivos); $a++){
                                                                                     $filename = explode('/', $archivos[$a]);
-                                                                                    echo '<li><a href="#" data-role="delete" title="borrar"><i class="fa fa-trash-o"></i></a> | <a href="'.$archivos[$a].'" data-role="file" target="_blank"><i class="fa fa-file-o"></i> '.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
+                                                                                     echo '<p><a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
                                                                                 }
                                                                             }else{
-
                                                                             }
-                                                                            echo '</ul>';
+                                                                            echo '</div>';
                                                                         echo '</div>';
                                                                     echo '</div>';
                                                                 break;
