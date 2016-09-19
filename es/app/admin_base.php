@@ -44,5 +44,6 @@
             </div>
         </div>
     </section>
+    <?php include 'sections/fake_foot.php' ?>
 </body>
 </html>

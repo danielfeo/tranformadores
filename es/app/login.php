@@ -31,12 +31,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <input class="jbtn green" type="button" value="Ingresar" name="guardar">
+                                <input class="btn btn-default enviar" type="button" value="Ingresar" name="guardar">
                                 <a id="olvido" class="pull-right" style="padding-top:15px;"href="Recordar">Olvido su contraseña</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
                                 <hr><button class="jbtn orange" id="registro">Registrese</button>
@@ -46,11 +46,14 @@
                                 </p>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="col-md-12" style="height:300px">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <?php include 'sections/fake_foot.php' ?>
     <script src="public/js/moment.min.js"></script>
     <script src="public/js/pt-br.js"></script>
     <script src="public/js/bootstrap-datetimepicker.min.js"></script>
@@ -61,7 +64,7 @@
     <script src="public/js/menuTop.js"></script>
     <script src="public/js/analytics.js"></script>
     <script>
-    $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker();
     </script>
     <script type="text/javascript">
         (function($){

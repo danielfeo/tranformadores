@@ -13,7 +13,8 @@ $(function(){
 
     $('#registro').on('click', function(){
         var accion = $('input[name="accion"]').val();
-        switch(accion){
+        switch(accion)
+        {
             case 'ingresar':
                 $('input[name="accion"]').val('registro');
                 $('.form-group.organizacion').fadeIn();

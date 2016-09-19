@@ -1,4 +1,4 @@
-$(function(){
+$(function(){/*
     var mostrarProceso = function(e){
     
     }
@@ -30,5 +30,5 @@ $(function(){
             contentType: false,
             processData: false
         });
-    });
+    });*/
 });

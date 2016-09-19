@@ -26,7 +26,7 @@ $(function(){
             success: function(data){
                 if(data.estado == '1'){
                     contenedor.find('input[type="file"]').val('');
-                    contenedor.find('ul.archivos').append('<li><a href="#" data-role="delete" title="borrar"><i class="fa fa-trash-o"></i></a> | <a href="'+data.url+'" data-role="file" target="_blank"><i class="fa fa-file-o"></i> '+data.file+'</a></li>');
+                    contenedor.find('div.archivos').append('<p><a href="'+data.url+'" data-role="file" target="_blank">'+data.file+'</a></a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p><br>');
                 }
             },
             data: formData,
@@ -36,8 +36,8 @@ $(function(){
         });
     });
 
-    $('div.archivos').delegate('a[data-role="delete"]', 'click', function(e){
-        var contenedor = $(this).closest('li');
+    $('.archivos').delegate('a[data-role="delete"]', 'click', function(e){
+        var contenedor = $(this).closest('p');
         var archivo = contenedor.find('a[data-role="file"]');
         var modal = $.fn.SimpleModal({
             model: 'modal',
