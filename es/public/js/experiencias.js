@@ -1,5 +1,15 @@
 $(function(){
 
+	
+	    $('#tabla_experiencias').DataTable({
+
+        "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
+                }
+
+    });
+
+
 	var items_paginas = 10;
 
 	$( "#fecha_inicio" ).datepicker({

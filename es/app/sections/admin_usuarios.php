@@ -49,7 +49,7 @@ echo '<table id="tabla_usuarios" width="100%" class="table table-striped">';
 	echo '<tbody>';
 	echo '</tbody>';
 echo '</table>';
-
+/*
 echo '<div class="col-xs-12">';
 	echo '<div class="paginador">';
 	for($i=0; $i<$paginas; $i++ ){
@@ -57,6 +57,6 @@ echo '<div class="col-xs-12">';
 	}
 	echo '</div>';
 echo '</div>';
-
+*/
 ?>
 <script src="public/js/usuarios.js"></script>
