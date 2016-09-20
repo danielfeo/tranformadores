@@ -62,7 +62,7 @@ switch ($accion) {
 		echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
 	break;
 	case 'obtener_usuarios':
-		$usuarios = $mysql->runQuery('SELECT u.*, c.descripcion FROM usuarios u, categoria c WHERE u.id_categoria = c.id_categoria LIMIT '.$_POST['_pagina'].' , '.$_POST['_items'].' ')->getRows();
+		$usuarios = $mysql->runQuery('SELECT u.*, c.descripcion FROM usuarios u, categoria c WHERE u.id_categoria = c.id_categoria')->getRows();
 		echo json_encode($usuarios);
 	break;
 	case 'modificar':

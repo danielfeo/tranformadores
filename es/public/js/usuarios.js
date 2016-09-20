@@ -3,11 +3,6 @@ $(function(){
 
 	//datatable usuarios//
 
-   
-
-
-	
-
 	//js input file
 	// We can attach the `fileselect` event to all file inputs on the page
 	$(document).on('change', ':file', function() {
@@ -59,7 +54,8 @@ $(function(){
 					}
 					$('#tabla_usuarios tbody').html(texto);
 
-					 $('#tabla_usuarios').dataTable();
+					var table = $('#tabla_usuarios').DataTable();
+					table.draw('page');
 				}else{
 
 				}

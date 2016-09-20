@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="public/css/bootstrap-datetimepicker.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/jquery-ui.css"><!-- 2 -->
     <link rel="stylesheet" href="public/css/estilosTr.css"><!-- 3 -->
-   <!-- <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
-    <link rel="stylesheet" href="public/css/app.css">-->
+    <link rel="stylesheet" href="public/js/assets/css/simplemodal.css">
+    <!--<link rel="stylesheet" href="public/css/app.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <!--Datatables-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
