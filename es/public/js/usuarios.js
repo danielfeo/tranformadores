@@ -3,13 +3,7 @@ $(function(){
 
 	//datatable usuarios//
 
-    $('#tabla_usuarios').DataTable({
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    });
+   
 
 
 	
@@ -61,6 +55,8 @@ $(function(){
 						texto += '</tr>';
 					}
 					$('#tabla_usuarios tbody').html(texto);
+
+					 $('#tabla_usuarios').dataTable();
 				}else{
 
 				}
