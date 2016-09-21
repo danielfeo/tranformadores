@@ -25,12 +25,12 @@ switch ($accion) {
             $sql = '';
             if(is_array($pregunta_anterior)){
                 if($respuesta['respuesta'] == '')
-                    $sql = 'DELETE FROM `transformadores`.`respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
+                    $sql = 'DELETE FROM `respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
                 else
-                    $sql = 'UPDATE `transformadores`.`respuestas` SET `respuesta` = "'.$respuesta['respuesta'].'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
+                    $sql = 'UPDATE `respuestas` SET `respuesta` = "'.$respuesta['respuesta'].'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
             }else{
                 if($respuesta['respuesta'] != '')
-                    $sql = 'INSERT INTO `transformadores`.`respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.$respuesta['respuesta'].'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';
+                   $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.$respuesta['respuesta'].'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';echo $sql; 
             }
             
             if($sql != '')
