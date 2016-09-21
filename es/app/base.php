@@ -6,10 +6,12 @@
                 <div class="col-sm-12">
                     <?php 
                         $usuario = $_SESSION['usuario']['id'];
+                        $categoria = $_SESSION['usuario']['id_categoria'];
                         $archivos = glob('public/archivos/'.$usuario.'/*');
                         $experiencia = $_SESSION['experiencia'];
                         $experiencia_fecha = $_SESSION['experiencia_fecha'];
                         $experiencia_ejecutada = $app['mysql']->runQuery('SELECT * FROM experiencias_usuarios WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
+
                         if(isset($_SESSION['experiencia_actual']['pendientes']))
                             $pendiente = $_SESSION['experiencia_actual']['pendientes'];
                         else
@@ -50,7 +52,7 @@
                                         if(is_array($preguntas)){
                                             for($i=0; $i<count($preguntas); $i++) {
                                                 $size = 12 / $preguntas[$i]['columnas'];
-                                                $preguntas_dependientes = $app['mysql']->runQuery('SELECT * FROM preguntas WHERE id_pregunta != id_pregunta_dependiente AND id_pregunta_dependiente = '.$preguntas[$i]['id_pregunta'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
+                                                $preguntas_dependientes = $app['mysql']->runQuery('SELECT * FROM preguntas WHERE (id_categoria = "0" OR id_categoria = "'.$categoria.'") AND id_pregunta != id_pregunta_dependiente AND id_pregunta_dependiente = '.$preguntas[$i]['id_pregunta'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
                                                 $respuesta = $app['mysql']->runQuery('SELECT * FROM respuestas WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_pregunta = '.$preguntas[$i]['id_pregunta'])->getRows();
                                                 
                                                 /* ¿tiene respuestas? */
