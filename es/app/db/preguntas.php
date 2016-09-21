@@ -30,7 +30,7 @@ switch ($accion) {
                     $sql = 'UPDATE `respuestas` SET `respuesta` = "'.$respuesta['respuesta'].'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
             }else{
                 if($respuesta['respuesta'] != '')
-                   $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.$respuesta['respuesta'].'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';echo $sql; 
+                   $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.$respuesta['respuesta'].'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';
             }
             
             if($sql != '')
