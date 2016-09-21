@@ -45,10 +45,10 @@ $(function(){
 				if(data.length > 0){
 					var texto ="";
 					for(var i=0; i<data.length; i++){
-						
-						if(data[i].id_rol == 1){check="checked";}else{check="";}
+						console.log(data);
+						//if(data[i].id_rol == 1){check="checked";}else{check="";}
 						texto += '<tr data-id="'+data[i].id_usuario+'" >';
-						texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td><td data-campo="categoria" data-cat="'+data[i].id_categoria+'">'+data[i].descripcion+'</td><td data-campo-hab="'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td><td data-campo-rol="'+data[i].id_rol+'"" align="center"><input data-rel="" data-funcion="administrador" type="checkbox" '+check+'></td>        <td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
+						texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td>               <td data-campo="categoria" data-cat="'+data[i].id_categoria+'">'+data[i].descripcion+'</td>            <td data-campo-hab=""'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td>            <td align="center">'+(data[i].id_rol == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +'</td>        <td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
 						
 						texto += '</tr>';
 					}
@@ -400,8 +400,9 @@ $(function(){
 		}
 	});
 
-	$('#tabla_usuarios').delegate('input[data-funcion="administrador"]','click',function (e) { 
-		alert("cambio");
-	});
+	/*$('#tabla_usuarios').delegate('input[data-funcion="administrador"]','click',function (e) { 
+		var id = $(this).data('rel'); 
+		alert(id);
+	});*/
 
 });
