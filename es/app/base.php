@@ -181,6 +181,8 @@
                                 echo ' <div class="col-sm-12 BotonesForm">';
                                     if(!$finalizado)
                                     {
+                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones">
+                          <input id="" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
                                         echo '<button class="btn btn-default enviar disabled" id="enviar">Enviar</button>';
                                         echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
