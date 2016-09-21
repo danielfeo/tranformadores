@@ -1,14 +1,8 @@
 $(function(){
 
-	$('#tabla_experiencias_usuarios').DataTable({
+	
 
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    });
-
-
+	$('#tabla_experiencias_usuarios').DataTable();
 	var items_paginas = 10;
 	var select = $('select[name="select_exp"]');
 
@@ -55,9 +49,14 @@ $(function(){
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias_usuarios tbody').html(texto);
+
+
+
 				}else{
 
 				}
+				var table3 = $('#tabla_experiencias_usuarios').DataTable();
+				table3.draw('page');
 			}
 		});
 	}
