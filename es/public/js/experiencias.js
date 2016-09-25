@@ -1,21 +1,13 @@
-$(function(){
-
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    });	
-
-	    
-
-	    $('body').delegate('#acepto','click',function(){
-			var nodes = document.querySelectorAll(".formularioTransf input[type=text]");
-			for (var i=0; i<nodes.length; i++)
-			    if (node.value == "" || !/[0-9.]+/.test(node.value))
-			        /*return "invalid.";*/$('#enviar').attr('disabled');
-			$('#enviar').attr('enabled');
-		}
+$(function()
+{
+    $('body').delegate('#acepto', 'click', function()
+    {
+		var nodes = document.querySelectorAll(".formularioTransf input[type=text]");
+		for (var i=0; i<nodes.length; i++)
+		    if (node.value == "" || !/[0-9.]+/.test(node.value))
+		        /*return "invalid.";*/$('#enviar').attr('disabled');
+		$('#enviar').attr('enabled');
+	}
 
 	var items_paginas = 10;
 
