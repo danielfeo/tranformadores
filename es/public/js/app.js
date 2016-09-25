@@ -7,8 +7,22 @@ $(function(){
      * @param  {[type]} id [id_pregunta a mostrar]
      * @return {[void]}
      */
-    var showDependiente = function(e, id){
+    var showDependiente = function(e, id)
+    {
         $('div[data-rel="'+id+'"]').fadeIn();
+    }
+
+    var renderMultitext = function (respuestas, rel)
+    {
+        var $lista = $('div[data-role="lista-multitext"][data-rel="'+rel+'"]');
+        var data = respuestas.split(',');
+
+        $lista.html('');
+        $.each(data, function(i, e)
+        {
+            if(e)
+            $lista.append('<p><a data-role="file" href="'+e+'">'+e+'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>')
+        });
     }
 
     $('#registro').on('click', function(){
@@ -72,6 +86,7 @@ $(function(){
                 case 'text':
                 case 'select':
                 case 'date':
+                case 'multitext':
                     respuesta = $(this).find('[data-role="respuesta"]').val();
                 break;
                 case 'radio':
@@ -114,6 +129,39 @@ $(function(){
                 }
             }
         });
+    });
+
+    $('button[data-role="add-multitext"]').on('click', function(e)
+    {
+        var rel = $(this).data('rel');
+        var url = $('input[data-role="multitext"][data-rel="'+rel+'"]').val();
+
+        if (url != '') 
+        {
+            url += ',';
+            var $respuesta = $('input[data-role="respuesta"][data-rel="'+rel+'"]');
+            $respuesta.val($respuesta.val()+url);
+            renderMultitext($respuesta.val(), rel);
+        }
+
+        $('input[data-role="multitext"][data-rel="'+rel+'"]').val('');
+    });
+
+    $('div[data-role="lista-multitext"]').delegate('a[data-role="delete"]', 'click', function(e)
+    {
+        var data = "";
+        var rel = $(this).closest('div[data-role="lista-multitext"]').data('rel');
+        $(this).closest('p').remove();
+
+        $('div[data-role="lista-multitext"][data-rel="'+rel+'"]').find('p').each(function(i, e){
+            data += $(this).find('>a').prop('href')+',';
+        });
+
+        var $respuesta = $('input[data-role="respuesta"][data-rel="'+rel+'"]');
+        $respuesta.val(data);
+        renderMultitext($respuesta.val(), rel);
+
+        e.preventDefault();
     });
 
     $('.secciones li a').on('click', function(e){

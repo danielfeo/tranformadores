@@ -28,8 +28,8 @@
                             if($pagina != 'inicio')
                             {
                                 $app['pagina'] = $app['pagina'] == 'login' ? 'DatosGeneralesExperiencia' : $app['pagina'];
-                                $grupo = $app['mysql']->runQuery('SELECT id_grupo FROM grupos WHERE url = "'.$app['pagina'].'" AND id_lenguaje = '.$app['lenguaje'])->getRows();
-                                $sub_grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo_padre = '.$grupo[0]['id_grupo'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
+                                $grupo_principal = $app['mysql']->runQuery('SELECT id_grupo FROM grupos WHERE url = "'.$app['pagina'].'" AND id_lenguaje = '.$app['lenguaje'])->getRows();
+                                $sub_grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo_padre = '.$grupo_principal[0]['id_grupo'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
 
                                 if($finalizado){
                                     echo '<div class="col-xs-12" style="text-align:center">';
@@ -61,10 +61,10 @@
                                                 echo '<div class="col-xs-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                     echo '<div class="row">';
                                                         echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].'">';
-                                                            echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label><p><small>'.$preguntas[$i]['comentarios'].'</small></p>';
+                                                            echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
                                                             switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                 case 'textarea':
-                                                                    echo '<textarea class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
+                                                                    echo '<textarea class="form-control" data-role="respuesta" style="'.$preguntas[$i]['inline'].'" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
                                                                 break;
                                                                 case 'text':
                                                                     echo '<input type="text" class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
@@ -76,11 +76,11 @@
                                                                         $opcion_seleccionada = $conres ? $respuesta[0]['respuesta'] : '';
                                                                         if(is_array($opciones_respuesta) > 0){
                                                                             for($j=0; $j<count($opciones); $j++){
-                                                                                echo '<label class="radio-inline"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'>'.$opciones[$j].'</label>';
+                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'>'.$opciones[$j].'</label>';
                                                                             }
                                                                         }else{
                                                                             for($k=1; $k<=5; $k++){
-                                                                                echo '<label class="radio-inline"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'>'.$k.'&nbsp;</label>';
+                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'>'.$k.'&nbsp;</label>';
                                                                             }
                                                                         }
                                                                     echo '</div>';
@@ -98,55 +98,82 @@
                                                                 case 'date':
                                                                     echo '<input type="text" class="form-control" data-type="date" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
-                                                                case 'file':
-                                                                                                                                       
-                                                                      echo '<div class="file_uploader col-xs-6" style="padding-left:0px;">';
-                                                                            if(!$finalizado){
-
+                                                                case 'file':                                                         
+                                                                      echo '<div class="file_uploader col-xs-12" style="padding-left:0px;">';
+                                                                            if (!$finalizado)
+                                                                            {
                                                                                echo '<div class="input-group botonFile">
-                                                                                            <label class="input-group-btn">
-                                                                                                <span class="btn btn-primary">
-                                                                                                    Buscar... <input style="display: none;" data-role="respuesta"  type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
-                                                                                                </span>
-                                                                                            </label>
-                                                                                            <input class="form-control" readonly="" type="text">
-                                                                                            <span class="input-group-btn">
-                                                                                                <button class="btn btn-default" id="jbtngreen" type="button">
-                                                                                                    <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-                                                                                                </button>
+                                                                                        <label class="input-group-btn">
+                                                                                            <span class="btn btn-primary">
+                                                                                                Buscar... <input style="display: none;" data-role="respuesta"  type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
                                                                                             </span>
-
+                                                                                        </label>
+                                                                                        <input class="form-control" readonly="" type="text">
+                                                                                        <span class="input-group-btn">
+                                                                                            <button class="btn btn-default" id="jbtngreen" type="button">
+                                                                                                <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+                                                                                            </button>
+                                                                                        </span>
                                                                                     </div>
-                                                                                    <button class="btn btn-default addFile" type="button">
-                                                                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                                                            <i class="fa fa-upload"></i>
-                                                                                    </button>
                                                                                     <br><br>
                                                                                     <p class="help-block">Agregue hasta 5 archivos cada uno con un máximo de 5 Mb.</p>' ;
-
-                                                                                //echo '<input type="file" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'"><br><br>';
-                                                                               // echo '<button class="jbtn green" style="min-width:30px !important;"><i class="fa fa-upload"></i></button>';
-                                                                            }else{
-                                                                                echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
-                                                                                    for($a = 0; $a < count($archivos); $a++){
-                                                                                        $filename = explode('/', $archivos[$a]);
-                                                                                        echo '<p><a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a><p>';
-                                                                                    }
-                                                                                echo '<div>';
+                                                                                    echo '<div class="row"><div class="col-xs-12">';
+                                                                                        echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                                            for($a = 0; $a < count($archivos); $a++){
+                                                                                                $filename = explode('/', $archivos[$a]);
+                                                                                                 echo '<p><a data-role="file" href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
+                                                                                            }
+                                                                                        echo '</div></div>';
+                                                                                echo '</div>';
+                                                                            } else {
+                                                                                 echo '<div class="row"><div class="col-xs-12">';
+                                                                                        echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                                            for($a = 0; $a < count($archivos); $a++){
+                                                                                                $filename = explode('/', $archivos[$a]);
+                                                                                                 echo '<p><a data-role="file" href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a>&nbsp;</p>';
+                                                                                            }
+                                                                                        echo '</div>
+                                                                                    </div>';
                                                                             }
-                                                                      //echo '</div>';
-                                                                        echo '<div class="col-xs-12 col-sm-6">';
-                                                                            echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
-                                                                            if(!$finalizado){
-                                                                                for($a = 0; $a < count($archivos); $a++){
-                                                                                    $filename = explode('/', $archivos[$a]);
-                                                                                     echo '<p><a href="'.$archivos[$a].'">'.mb_strtolower(end($filename), 'UTF-8').'</a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
-                                                                                }
-                                                                            }else{
-                                                                            }
-                                                                            echo '</div>';
-                                                                        echo '</div>';
                                                                     echo '</div>';
+                                                                break;
+                                                                case 'multitext':
+                                                                        if (!$finalizado)
+                                                                        {
+                                                                           echo '<div class="input-group botonFile">
+                                                                                    <input type="text" data-role="multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'" class="form-control" placeholder="">
+                                                                                    <input type="hidden" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">
+                                                                                </div>
+                                                                                <button class="btn btn-default addFile" data-role="add-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'" type="button">
+                                                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                                                </button>
+                                                                                <p class="help-block">Agregue hasta 5 links diferentes</p>';
+                                                                                $links = split(',', ($conres ? $respuesta[0]['respuesta'] : ''));
+
+                                                                                echo '<div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <div class="links linksAtach" data-role="lista-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                                            for($a = 0; $a < count($links); $a++)
+                                                                                            {
+                                                                                                if($links[$a] != '') echo '<p><a data-role="file" href="'.$links[$a].'">'.$links[$a].'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
+                                                                                            }
+                                                                                    echo '</div>
+                                                                                    </div>
+                                                                                </div>';
+                                                                        } else {
+                                                                            $links = split(',', ($conres ? $respuesta[0]['respuesta'] : ''));
+
+                                                                            echo '<div class="row">
+                                                                                    <div class="col-xs-12">
+                                                                                        <div class="links linksAtach" data-role="lista-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
+                                                                                            for($a = 0; $a < count($links); $a++)
+                                                                                            {
+                                                                                                if($links[$a] != '') echo '<p><a data-role="file" href="'.$links[$a].'">'.$links[$a].'</a>&nbsp;</p>';
+                                                                                            }
+                                                                                    echo '</div>
+                                                                                    </div>
+                                                                                </div>';
+                                                                        }
                                                                 break;
                                                                 case 'check':
                                                                     echo 'check';
@@ -179,10 +206,12 @@
                                     }
                                 }
                                 echo ' <div class="col-sm-12 BotonesForm">';
-                                    if(!$finalizado)
+                                    if( !$finalizado)
                                     {
-                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones">
-                          <input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
+                                        if ($grupo_principal[0]['id_grupo'] == '5' || $grupo_principal[0]['id_grupo'] == '16')
+                                        {
+                                            echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
+                                        }
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
                                         echo '<button class="btn btn-default enviar" disabled id="enviar">Enviar</button>';
                                         echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
@@ -191,7 +220,7 @@
                         ?>
                             <div class="col-sm-12 pagSeccion">
                                 <?php
-                                    switch ($grupo['id_grupo']) {
+                                    switch ($grupo_principal[0]['id_grupo']) {
                                         case '1':
                                         case '12':
                                             $pag = 1;

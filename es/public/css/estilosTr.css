@@ -3,7 +3,7 @@
 body {
 	background-color: #fff;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 300;
 	color: #4d4d4d;
 	line-height: 1.3;
@@ -1831,10 +1831,8 @@ section.z-section.z-active h3.z-link {
 	background-color: #fff;
 }
 .addFile {
-	/*display: block;
-	color: #3DAB15;*/
-	/*dan*/
-	display: none;
+	display: block;
+	color: #3DAB15;
 }
 .botonFile{
 	width: 90%;
@@ -2187,6 +2185,7 @@ form#form {
 		margin-bottom: 0;
 	}
 }
+
 @media (min-width: 768px){
     .nav-pills{
         margin: 0 auto;

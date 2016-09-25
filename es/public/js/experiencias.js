@@ -1,23 +1,13 @@
-$(function(){
-
-	
-	    $('#tabla_experiencias').DataTable({
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    });	
-
-	    
-
-	    $('body').delegate('#acepto','click',function(){
-			var nodes = document.querySelectorAll(".formularioTransf input[type=text]");
-			for (var i=0; i<nodes.length; i++)
-			    if (node.value == "" || !/[0-9.]+/.test(node.value))
-			        /*return "invalid.";*/$('#enviar').attr('disabled');
-			$('#enviar').attr('enabled');
-		}
+$(function()
+{
+    $('body').delegate('#acepto', 'click', function()
+    {
+		var nodes = document.querySelectorAll(".formularioTransf input[type=text]");
+		for (var i=0; i<nodes.length; i++)
+		    if (node.value == "" || !/[0-9.]+/.test(node.value))
+		        /*return "invalid.";*/$('#enviar').attr('disabled');
+		$('#enviar').attr('enabled');
+	}
 
 	var items_paginas = 10;
 
@@ -55,10 +45,12 @@ $(function(){
 					var texto ="";
 					for(var i=0; i<data.length; i++){
 						texto += '<tr data-id="'+data[i].id_experiencia+'" >';
-						texto += '<td data-campo="id_experiencia">'+data[i].id_experiencia+'</td><td data-campo="fecha_i">'+data[i].inicio+'</td><td data-campo="fecha_f" >'+data[i].fin+'</td><td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
+						texto += '<td data-campo="id_experiencia">'+data[i].id_experiencia+' </td><td data-campo="fecha_i">'+data[i].inicio+'</td><td data-campo="fecha_f" >'+data[i].fin+'</td><td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias tbody').html(texto);
+					var table2 = $('#tabla_experiencias').DataTable();
+					table2.draw('page');
 				}else{
 
 				}
