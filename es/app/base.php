@@ -28,8 +28,8 @@
                             if($pagina != 'inicio')
                             {
                                 $app['pagina'] = $app['pagina'] == 'login' ? 'DatosGeneralesExperiencia' : $app['pagina'];
-                                $grupo = $app['mysql']->runQuery('SELECT id_grupo FROM grupos WHERE url = "'.$app['pagina'].'" AND id_lenguaje = '.$app['lenguaje'])->getRows();
-                                $sub_grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo_padre = '.$grupo[0]['id_grupo'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
+                                $grupo_principal = $app['mysql']->runQuery('SELECT id_grupo FROM grupos WHERE url = "'.$app['pagina'].'" AND id_lenguaje = '.$app['lenguaje'])->getRows();
+                                $sub_grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo_padre = '.$grupo_principal[0]['id_grupo'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
 
                                 if($finalizado){
                                     echo '<div class="col-xs-12" style="text-align:center">';
@@ -61,7 +61,7 @@
                                                 echo '<div class="col-xs-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                     echo '<div class="row">';
                                                         echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].'">';
-                                                            echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label><p><small>'.$preguntas[$i]['comentarios'].'</small></p>';
+                                                            echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
                                                             switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                 case 'textarea':
                                                                     echo '<textarea class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
@@ -191,7 +191,7 @@
                         ?>
                             <div class="col-sm-12 pagSeccion">
                                 <?php
-                                    switch ($grupo['id_grupo']) {
+                                    switch ($grupo_principal[0]['id_grupo']) {
                                         case '1':
                                         case '12':
                                             $pag = 1;
