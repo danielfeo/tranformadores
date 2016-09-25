@@ -20,7 +20,8 @@ $experiencia = $_SESSION['experiencia'];
 switch ($accion) {
     case 'guardarPreguntas':
         $estado = true;
-        foreach($_POST['_respuestas'] as &$respuesta){
+        foreach($_POST['_respuestas'] as &$respuesta) {
+            $resultado = true;
             $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.$respuesta['id_pregunta'].' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
             $sql = '';
             if(is_array($pregunta_anterior)){
