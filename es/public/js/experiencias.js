@@ -1,13 +1,5 @@
 $(function()
 {
-    $('body').delegate('#acepto', 'click', function()
-    {
-		var nodes = document.querySelectorAll(".formularioTransf input[type=text]");
-		for (var i=0; i<nodes.length; i++)
-		    if (node.value == "" || !/[0-9.]+/.test(node.value))
-		        /*return "invalid.";*/$('#enviar').attr('disabled');
-		$('#enviar').attr('enabled');
-	}
 
 	var items_paginas = 10;
 

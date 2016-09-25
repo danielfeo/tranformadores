@@ -64,10 +64,10 @@
                                                             echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
                                                             switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                 case 'textarea':
-                                                                    echo '<textarea class="form-control" data-role="respuesta" style="'.$preguntas[$i]['inline'].'" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
+                                                                    echo '<textarea class="form-control" class="question" data-role="respuesta" style="'.$preguntas[$i]['inline'].'" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
                                                                 break;
                                                                 case 'text':
-                                                                    echo '<input type="text" class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<input type="text" class="form-control" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
                                                                 case 'radio':
                                                                     echo '<div class="radio">';
@@ -76,11 +76,11 @@
                                                                         $opcion_seleccionada = $conres ? $respuesta[0]['respuesta'] : '';
                                                                         if(is_array($opciones_respuesta) > 0){
                                                                             for($j=0; $j<count($opciones); $j++){
-                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'>'.$opciones[$j].'</label>';
+                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$opciones[$j].'" '.($opciones[$j] == $opcion_seleccionada ? 'checked' : '').'>'.$opciones[$j].'</label>';
                                                                             }
                                                                         }else{
                                                                             for($k=1; $k<=5; $k++){
-                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'>'.$k.'&nbsp;</label>';
+                                                                                echo '<label class="radio-inline" style="'.$preguntas[$i]['inline'].'"><input type="radio" name="pregunta_'.$preguntas[$i]['id_pregunta'].'" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.$k.'" '.($k == $opcion_seleccionada ? 'checked' : '').'>'.$k.'&nbsp;</label>';
                                                                             }
                                                                         }
                                                                     echo '</div>';
@@ -88,7 +88,7 @@
                                                                 case 'select':
                                                                     $opciones_respuesta = $app['mysql']->runQuery('SELECT opciones FROM opciones WHERE id_pregunta = "'.$preguntas[$i]['id_pregunta'].'" ')->getRows();
                                                                     $opciones = explode(",", $opciones_respuesta[0]['opciones']);
-                                                                    echo '<select class="form-control" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<select class="form-control" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                         echo '<option value="">Seleccionar</option>';
                                                                         for($j=0; $j<count($opciones); $j++){
                                                                             echo'<option value="'.$opciones[$j].'">'.$opciones[$j].'</option>';
@@ -96,7 +96,7 @@
                                                                     echo '</select>';
                                                                 break;
                                                                 case 'date':
-                                                                    echo '<input type="text" class="form-control" data-type="date" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
+                                                                    echo '<input type="text" class="form-control" data-type="date" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
                                                                 case 'file':                                                         
                                                                       echo '<div class="file_uploader col-xs-12" style="padding-left:0px;">';
@@ -105,7 +105,7 @@
                                                                                echo '<div class="input-group botonFile">
                                                                                         <label class="input-group-btn">
                                                                                             <span class="btn btn-primary">
-                                                                                                Buscar... <input style="display: none;" data-role="respuesta"  type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
+                                                                                                Buscar... <input style="display: none;" class="question" data-role="respuesta"  type="file" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">
                                                                                             </span>
                                                                                         </label>
                                                                                         <input class="form-control" readonly="" type="text">
@@ -142,7 +142,7 @@
                                                                         {
                                                                            echo '<div class="input-group botonFile">
                                                                                     <input type="text" data-role="multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'" class="form-control" placeholder="">
-                                                                                    <input type="hidden" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">
+                                                                                    <input type="hidden" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">
                                                                                 </div>
                                                                                 <button class="btn btn-default addFile" data-role="add-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'" type="button">
                                                                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -192,7 +192,7 @@
                                                                         echo '<label class="'.(!$conderes && $pendiente ? 'pendiente' : '').'" style="margin-top:0px;">'.$preguntas_dependientes[$p]['pregunta'].'</label>';
                                                                         switch($tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo']) {
                                                                             case 'textarea':
-                                                                                echo '<textarea class="form-control" data-role="respuesta" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'">'.($conderes ? $respuesta_dependiente[0]['respuesta'] : '').'</textarea>';
+                                                                                echo '<textarea class="form-control" class="question" data-role="respuesta" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'">'.($conderes ? $respuesta_dependiente[0]['respuesta'] : '').'</textarea>';
                                                                             break;
                                                                         }
                                                                     echo '</div>';
@@ -213,7 +213,7 @@
                                             echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
                                         }
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
-                                        echo '<button class="btn btn-default enviar" disabled id="enviar">Enviar</button>';
+                                        echo '<button class="btn btn-default enviar"  id="enviar">Enviar</button>';
                                         echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
                                     }
                                 echo '</div>';

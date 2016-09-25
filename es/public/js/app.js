@@ -7,6 +7,7 @@ $(function(){
      * @param  {[type]} id [id_pregunta a mostrar]
      * @return {[void]}
      */
+
     var showDependiente = function(e, id)
     {
         $('div[data-rel="'+id+'"]').fadeIn();
