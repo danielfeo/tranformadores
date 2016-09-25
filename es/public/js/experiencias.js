@@ -1,14 +1,5 @@
 $(function(){
 
-	
-	    $('#tabla_experiencias').DataTable({
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    });
-
 
 	var items_paginas = 10;
 
@@ -46,10 +37,12 @@ $(function(){
 					var texto ="";
 					for(var i=0; i<data.length; i++){
 						texto += '<tr data-id="'+data[i].id_experiencia+'" >';
-						texto += '<td data-campo="id_experiencia">'+data[i].id_experiencia+'</td><td data-campo="fecha_i">'+data[i].inicio+'</td><td data-campo="fecha_f" >'+data[i].fin+'</td><td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
+						texto += '<td data-campo="id_experiencia">'+data[i].id_experiencia+' </td><td data-campo="fecha_i">'+data[i].inicio+'</td><td data-campo="fecha_f" >'+data[i].fin+'</td><td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias tbody').html(texto);
+					var table2 = $('#tabla_experiencias').DataTable();
+					table2.draw('page');
 				}else{
 
 				}
