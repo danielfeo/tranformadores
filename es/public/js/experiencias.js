@@ -41,10 +41,16 @@ $(function()
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias tbody').html(texto);
-					var table2 = $('#tabla_experiencias').DataTable("language": {
+					var table2 = $('#tabla_experiencias').DataTable({
+						"language": {
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
-			            "bDestroy": true);
+			            "aoColumnDefs": [
+				        	{'bSortable': false, 'aTargets': [3, 4]}
+				       	],
+			            "bDestroy": true
+			        });
+
 					table2.draw('page');
 				}else{
 

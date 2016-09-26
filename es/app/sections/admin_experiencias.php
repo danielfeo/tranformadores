@@ -21,7 +21,7 @@ echo '</div>';
 echo '<br><h4>Experiencias</h4><br>';
 echo '<table id="tabla_experiencias" width="100%" class="table table-striped">';
 	echo '<thead>';
-		echo '<tr><th>Id</th><th>Fecha Inicio</th><th>Fecha Finalización</th><th></th></th><th></tr>';
+		echo '<tr><th>Id</th><th>Fecha Inicio</th><th>Fecha Finalización</th><th style="width:1px"></th></th><th style="width:1px"></tr>';
 	echo '</thead>';
 	echo '<tbody>';
 	echo '</tbody>';

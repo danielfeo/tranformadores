@@ -28,17 +28,14 @@ $(function(){
 		});
 	}
 
-	function paginador(pagina, items){
-		var pagina_actual = (pagina - 1) * items;
+	function paginador(){
 		$.ajax({
 			type: 'post',
 			url:  'app/db/resultados.php',
 			dataType: 'json',
 			data:{
 				_accion : 'obtener_usuario_exp',
-				_exp : select.val(),
-				_pagina : pagina_actual,
-				_items: items
+				_exp : select.val()
 			},
 			success: function(data){
 				if(data.length > 0){
@@ -49,13 +46,17 @@ $(function(){
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias_usuarios tbody').html(texto);
-					var table = $('#tabla_experiencias_usuarios').DataTable("language": {
+					var table = $('#tabla_experiencias_usuarios').DataTable({
+						"language": {
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
-			            "bDestroy": true);
+			            "aoColumnDefs": [
+				        	{'bSortable': false, 'aTargets': [3, 4]}
+				       	],
+			            "bDestroy": true
+			        });
+
 					table.draw('page');
-
-
 				}else{
 
 				}
@@ -65,29 +66,8 @@ $(function(){
 		});
 	}
 
-	function totalPaginas(){
-		$.ajax({
-			type: 'post',
-			url:  'app/db/resultados.php',
-			dataType: 'json',
-			data:{
-				_accion : 'obtener_total_pag',
-				_exp : select.val()
-			},
-			success: function(data){
-				console.log(data);
-				var texto = "";
-				for(var i=0; i<data['paginas']; i++ ){
-					texto += '<a href="#">'+(i+1)+'</a>';
-				}
-				$('#pag').html(texto);
-			}
-		});
-	}
-
 	select.on('change', function(e){
-		totalPaginas();
-		paginador(1, items_paginas);
+		paginador();
 	});
 
 	$('.paginador').delegate('a', 'click', function(e){
