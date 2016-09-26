@@ -1,6 +1,7 @@
 $(function(){
     var lang = "es";
-    var url = "/tranformadores";
+    var id_lang = $('.fluidBlanco').data('lenguaje');
+    var url = "/transformadores2016";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
@@ -11,11 +12,7 @@ $(function(){
     
     $('body').delegate('#acepto','click',function(){
         document.getElementById("enviar").disabled = false;
-   });
-
-
-
-
+    });
 
     var showDependiente = function(e, id)
     {
@@ -227,7 +224,7 @@ $(function(){
                         model: 'modal',
                         btn_ok : 'Aceptar',
                         title:    'Alerta',
-                        contents: 'Obrigada por candidatizar a sua experiência. Os resultados serão divulgados em fevereiro de 2015.'
+                        contents: id_lang == '1' ? 'Gracias por postular su experiencia' : 'Obrigada por candidatizar a sua experiência.'
                     }).addButton("Aceptar", "btn primary", function(){
                         this.hide();
                         window.location.reload();

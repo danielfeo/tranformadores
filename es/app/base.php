@@ -1,6 +1,6 @@
 
     <?php include 'sections/fake_head.php' ?>
-    <div class="fluidBlanco">
+    <div class="fluidBlanco" data-lenguaje="<?= $_SESSION['lenguaje'] ?>">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
