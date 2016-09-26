@@ -58,6 +58,9 @@ $(function(){
 			            "language": {
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
+			            "aoColumnDefs": [
+				        	{'bSortable': false, 'aTargets': [3, 4, 5, 6]}
+				       	],
 			            "bDestroy": true
 			        });
 					table.draw('page');
