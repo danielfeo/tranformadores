@@ -52,33 +52,9 @@ $(function(){
 						
 						texto += '</tr>';
 					}
-
 					$('#tabla_usuarios tbody').html(texto);
 
-					if ( $.fn.dataTable.isDataTable( '#tabla_usuarios' ) ) {
-                        table = $('#tabla_usuarios').DataTable(
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    );
-                    }
-                    else {
-                        table = $('#tabla_usuarios').DataTable( {
-                            paging: false,
-
-        "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
-                }
-
-    
-                        } );
-                    }
-
-
-					
-
+					var table = $('#tabla_usuarios').DataTable();
 					table.draw('page');
 				}else{
 
