@@ -54,7 +54,14 @@ $(function(){
 					}
 					$('#tabla_usuarios tbody').html(texto);
 
-					var table = $('#tabla_usuarios').DataTable();
+					var table = $('#tabla_usuarios').DataTable({
+
+        "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"
+                }
+
+    }
+);
 					table.draw('page');
 				}else{
 
