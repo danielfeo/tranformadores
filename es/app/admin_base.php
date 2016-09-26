@@ -1,5 +1,4 @@
-        <?php include 'sections/fake_head.php' ?>
-    </nav>
+<?php include 'sections/fake_head.php' ?>
     <section>
         <div id="breadcrump">
             <div class="container">
