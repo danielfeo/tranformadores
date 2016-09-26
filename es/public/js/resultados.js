@@ -51,7 +51,7 @@ $(function(){
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
 			            "aoColumnDefs": [
-				        	{'bSortable': false, 'aTargets': [3, 4]}
+				        	{'bSortable': false, 'aTargets': [3]}
 				       	],
 			            "bDestroy": true
 			        });
