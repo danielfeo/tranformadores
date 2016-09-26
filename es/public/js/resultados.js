@@ -2,7 +2,7 @@ $(function(){
 
 	
 
-	$('#tabla_experiencias_usuarios').DataTable();
+	
 	var items_paginas = 10;
 	var select = $('select[name="select_exp"]');
 
