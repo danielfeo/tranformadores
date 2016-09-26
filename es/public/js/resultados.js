@@ -49,14 +49,15 @@ $(function(){
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias_usuarios tbody').html(texto);
-
+					var table = $('#tabla_experiencias_usuarios').DataTable();
+					table.draw('page');
 
 
 				}else{
 
 				}
-				var table3 = $('#tabla_experiencias_usuarios').DataTable();
-				table3.draw('page');
+					
+				
 			}
 		});
 	}

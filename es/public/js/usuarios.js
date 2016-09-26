@@ -56,6 +56,7 @@ $(function(){
 
 					var table = $('#tabla_usuarios').DataTable();
 					table.draw('page');
+					
 				}else{
 
 				}
