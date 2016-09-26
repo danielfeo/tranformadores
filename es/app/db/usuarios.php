@@ -38,14 +38,19 @@ switch ($accion) {
 		$experiencia = $mysql->runQuery('SELECT *, YEAR(inicio) as fecha_inicio FROM experiencias WHERE CURDATE() BETWEEN inicio AND fin')->getRows();
 		if (is_array($login)){
 			$estado = 1;
-			if($login[0]['id_rol'] == 1 && $login[0]['habilitado'] == '1'){
+			if($login[0]['id_rol'] == 1 && $login[0]['habilitado'] == '1')
+			{
 				$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 				$_SESSION['usuario']['rol'] =  $login[0]['id_rol'];
+				$_SESSION['usuario']['id_categoria'] =  $login[0]['id_categoria'];
 			}
-			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1') {
+
+			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1') 
+			{
 				if(is_array($experiencia)) {
 					$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 					$_SESSION['usuario']['rol'] = $login[0]['id_rol'];
+					$_SESSION['usuario']['id_categoria'] = $login[0]['id_categoria'];
 					$_SESSION['experiencia'] = $experiencia[0]['id_experiencia'];
 					$_SESSION['experiencia_fecha'] = $experiencia[0]['fecha_inicio'];
 				}else{
