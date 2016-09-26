@@ -7,6 +7,15 @@ $(function(){
      * @param  {[type]} id [id_pregunta a mostrar]
      * @return {[void]}
      */
+  
+    
+    $('body').delegate('#acepto','click',function(){
+        document.getElementById("enviar").disabled = false;
+   });
+
+
+
+
 
     var showDependiente = function(e, id)
     {
