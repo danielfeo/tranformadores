@@ -19,7 +19,7 @@ switch ($accion) {
 		if ($validacion_correo[0]['email'] == 1){
 			$estado = 2;
 		}else{
-			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol, id_categoria) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'", "'.$_POST['_categoria'].'")')->getRows();
+			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'"')->getRows();
 			$variables_sesion = $mysql->runQuery('SELECT id_usuario, id_rol FROM usuarios WHERE email ="'.$_POST['_correo'].'" AND pass ="'.$_POST['_pass'].'" ')->getRows();
 			$estado = $resultado;
 			if($estado)
@@ -42,7 +42,7 @@ switch ($accion) {
 			{
 				$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 				$_SESSION['usuario']['rol'] =  $login[0]['id_rol'];
-				$_SESSION['usuario']['id_categoria'] =  $login[0]['id_categoria'];
+				$_SESSION['categoria'] = $_POST['_categoria'];
 			}
 
 			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1') 
@@ -50,7 +50,7 @@ switch ($accion) {
 				if(is_array($experiencia)) {
 					$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 					$_SESSION['usuario']['rol'] = $login[0]['id_rol'];
-					$_SESSION['usuario']['id_categoria'] = $login[0]['id_categoria'];
+					$_SESSION['categoria'] = $_POST['_categoria'];
 					$_SESSION['experiencia'] = $experiencia[0]['id_experiencia'];
 					$_SESSION['experiencia_fecha'] = $experiencia[0]['fecha_inicio'];
 				}else{
@@ -67,11 +67,11 @@ switch ($accion) {
 		echo json_encode(array('estado' => $estado , 'rol' => $_SESSION['rol']));
 	break;
 	case 'obtener_usuarios':
-		$usuarios = $mysql->runQuery('SELECT u.*, c.descripcion FROM usuarios u, categoria c WHERE u.id_categoria = c.id_categoria')->getRows();
+		$usuarios = $mysql->runQuery('SELECT u.* FROM usuarios u')->getRows();
 		echo json_encode($usuarios);
 	break;
 	case 'modificar':
-		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'", id_categoria ="'.$_POST['_categoria'].'" WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
+		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'" WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
 		if($_POST['_habilitado'] == 1)
 		{
 			$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');

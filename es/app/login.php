@@ -31,22 +31,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 form-group">
+                                <input type="hidden" name="categoria" value="2">
                                 <input class="btn btn-default enviar" type="button" value="Ingresar" name="guardar">
-                                <a id="olvido" class="pull-right" style="padding-top:15px;"href="Recordar">Olvido su contraseña</a>
+                                <a id="olvido" class="pull-right" style="padding-top:15px;" href="Recordar">Olvido su contraseña</a>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
-                                <hr><button class="jbtn orange" id="registro">Registrese</button>
-                                <p>
-                                    <br>
-                                    Solo para miembros de la Red
-                                </p>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-md-12" style="height:300px">
                     </div>
                 </div>

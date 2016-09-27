@@ -26,14 +26,5 @@ echo '<table id="tabla_experiencias" width="100%" class="table table-striped">';
 	echo '<tbody>';
 	echo '</tbody>';
 echo '</table>';
-/*
-echo '<div class="col-xs-12">';
-	echo '<div class="paginador">';
-	for($i=0; $i<$paginas; $i++ ){
-		echo '<a href="#">'.($i+1).'</a>';
-	}
-	echo '</div>';
-echo '</div>';
-*/
 ?>
 <script src="public/js/experiencias.js"></script>

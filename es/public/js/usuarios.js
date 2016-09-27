@@ -48,8 +48,7 @@ $(function(){
 					{
 						//if(data[i].id_rol == 1){check="checked";}else{check="";}
 						texto += '<tr data-id="'+data[i].id_usuario+'" >';
-						texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td><td data-campo="categoria" data-cat="'+data[i].id_categoria+'">'+data[i].descripcion+'</td>            <td data-campo-hab=""'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td>            <td align="center">'+(data[i].id_rol == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +'</td>        <td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
-						
+							texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td><td data-campo-hab="'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td><td align="center" data-campo-rol="'+data[i].id_rol+'">'+(data[i].id_rol == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +'</td>        <td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
 						texto += '</tr>';
 					}
 					$('#tabla_usuarios tbody').html(texto);
@@ -59,7 +58,7 @@ $(function(){
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
 			            "aoColumnDefs": [
-				        	{'bSortable': false, 'aTargets': [3, 4, 5, 6]}
+				        	{'bSortable': false, 'aTargets': [2, 3, 4, 5]}
 				       	],
 			            "bDestroy": true
 			        });
@@ -86,6 +85,7 @@ $(function(){
 		var correo = $('input[name="usuario"]').val();
 		var pass = $('input[name="clave"]').val();
 		var accion =  $('input[name="accion"]').val();
+		var categoria =  $('input[name="categoria"]').val();
 
 		if (accion == 'registro'){
 			if( organizacion != "" && correo != "" && pass != ""){
@@ -158,6 +158,7 @@ $(function(){
 					data:{
 						_correo: correo,
 						_pass: pass,
+						_categoria: categoria,
 						_accion: 'ingresar'
 					},
 					success: function (data){
@@ -200,12 +201,12 @@ $(function(){
 		} 
 	});
 	
-	$('input[name="crear_nuevo"]').on('click', function(e){
+	$('input[name="crear_nuevo"]').on('click', function(e)
+	{
 		var accion = $('input[name="accion"]').val();
 		var id = $('input[name="id"]').val();
 		var organizacion = $('input[name="organizacion"]').val();
 		var correo = $('input[name="usuario"]').val();
-		var categoria = $('select[name="categoria"]').val();
 		var pass = $('input[name="contraseña"]').val();
 		var habilitado = $('input[name="habilitado"]').is(':checked') ? 1 : 0;
 		var rol = $('input[name="administrador"]').is(':checked') ? 1 : 2;
@@ -220,7 +221,6 @@ $(function(){
 					_id : id,
 					_organizacion : organizacion,
 					_correo : correo,
-					_categoria : categoria,
 					_pass : pass,
 					_habilitado : habilitado,
 					_rol : rol
@@ -266,7 +266,6 @@ $(function(){
 		var id = tr.data('id');
 		var orga = tr.find('td[data-campo="organizacion"]').text();
 		var usua = tr.find('td[data-campo="email"]').text();
-		var categoria = tr.find('td[data-campo="categoria"]').data('cat');
 		var pass = tr.find('td[data-pass]').data('pass');
 		var hab = tr.find('td[data-campo-hab]').data('campo-hab') == 1 ? true : false;
 		var rol = tr.find('td[data-campo-rol]').data('campo-rol') == 1 ? true : false;
@@ -274,7 +273,7 @@ $(function(){
 		$('input[name="organizacion"]').val(orga);
 		$('input[name="usuario"]').val(usua);
 		$('input[name="contraseña"]').val(pass);
-		$('select[name="categoria"]').val(categoria);
+		console.log(hab);
 		$('input[name="habilitado"]').prop('checked', hab);
 		$('input[name="administrador"]').prop('checked', rol);
 		$('input[name="crear_nuevo"]').val("Modificar");
@@ -407,10 +406,4 @@ $(function(){
 
 		}
 	});
-
-	/*$('#tabla_usuarios').delegate('input[data-funcion="administrador"]','click',function (e) { 
-		var id = $(this).data('rel'); 
-		alert(id);
-	});*/
-
 });

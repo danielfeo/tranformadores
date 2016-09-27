@@ -1,7 +1,7 @@
 $(function(){
     var lang = "es";
     var id_lang = $('.fluidBlanco').data('lenguaje');
-    var url = "/transformadores2016";
+    var url = "/tranformadores";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
@@ -266,7 +266,7 @@ $(function(){
                 window.location.href= url+'/'+lang;
             }
         });
-        e.preventdefault(); 
+        e.preventDefault(); 
     });
 
 });
