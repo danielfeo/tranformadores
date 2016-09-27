@@ -7,7 +7,6 @@
                     <?php 
                         $usuario = $_SESSION['usuario']['id'];
                         $categoria = $_SESSION['categoria'];
-                        echo 'categoria'.$categoria;
                         $archivos = glob('public/archivos/'.$usuario.'/*');
                         $experiencia = $_SESSION['experiencia'];
                         $experiencia_fecha = $_SESSION['experiencia_fecha'];
@@ -209,7 +208,7 @@
                                 echo ' <div class="col-sm-12 BotonesForm">';
                                     if( !$finalizado)
                                     {
-                                        if ($grupo_principal[0]['id_grupo'] == '5' || $grupo_principal[0]['id_grupo'] == '16')
+                                        if ($app['pagina'] == 'InformacionAdicional')
                                         {
                                             echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
                                         }
@@ -221,41 +220,64 @@
                         ?>
                             <div class="col-sm-12 pagSeccion">
                                 <?php
-                                    switch ($grupo_principal[0]['id_grupo']) {
-                                        case '1':
-                                        case '12':
+                                    $pag = 0;
+                                    $paginas = [
+                                        'DatosGeneralesExperiencia',
+                                        'DescripcionExperiencia',
+                                        'CaracterizacionDeLaExperiencia',
+                                        'DesarrolloSostenible',
+                                        'InformacionAdicional'
+                                    ];
+
+                                    switch($app['pagina'])
+                                    {
+                                        case 'DatosGeneralesExperiencia':
+                                            $pag = 0;
+                                        break;
+                                        case 'DescripcionExperiencia':
                                             $pag = 1;
+                                        break;
+                                        case 'CaracterizacionDeLaExperiencia':
+                                            $pag = 2;
+                                        break;
+                                        case 'DesarrolloSostenible':
+                                            $pag = 3;
+                                        break;
+                                        case 'InformacionAdicional':
+                                            $pag = 4;
+                                        break;
+                                    }
+
+                                    switch ($pag) {
+                                        case '0':
+                                            $label = 1;
                                             $prev = "";                                            
-                                            $next = "DescripcionExperiencia";
+                                            $next = $paginas[1];
+                                        break;
+                                        case '1':
+                                            $label = 2;
+                                            $prev = $paginas[0];
+                                            $next = $paginas[2];
                                         break;
                                         case '2':
-                                        case '13':
-                                            $pag = 2;
-                                            $prev = "DatosGeneralesExperiencia";                                            
-                                            $next = "InnovacionSostenibilidadAprendizaje";
+                                            $label = 3;
+                                            $prev = $paginas[1];
+                                            $next = $paginas[3];
                                         break;
                                         case '3':
-                                        case '14':
-                                            $pag = 3;
-                                            $prev = "DescripcionExperiencia";                                            
-                                            $next = "CaracterizacionDeLaExperiencia";
+                                            $label = 4;
+                                            $prev = $paginas[2];
+                                            $next = $paginas[4];
                                         break;
                                         case '4':
-                                        case '15':
-                                            $pag = 4;
-                                            $prev = "InnovacionSostenibilidadAprendizaje";                                            
-                                            $next = "InformacionAdicional";
-                                        break;
-                                        case '5':
-                                        case '16':
-                                            $pag = 5;
-                                            $prev = "CaracterizacionDeLaExperiencia";                                            
+                                            $label = 5;
+                                            $prev = $paginas[3];
                                             $next = "";
                                         break;
                                     }
                                 ?>
                                 <a href="<?php echo $prev; ?>" class="btn btn-default <?php echo $prev == "" ? 'disabled' : '' ?>"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-                                <span class="paginacion"><?php echo $pag ?> / 5</span>
+                                <span class="paginacion"><?php echo $label ?> / 5</span>
                                 <a href="<?php echo $next; ?>" class="btn btn-default <?php echo $next == "" ? 'disabled' : '' ?>"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                             </div>
                         <?php } ?>
