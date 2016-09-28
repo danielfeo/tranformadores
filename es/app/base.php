@@ -9,8 +9,9 @@
                         $categoria = $_SESSION['categoria'];
                         $archivos = glob('public/archivos/'.$usuario.'/*');
                         $experiencia = $_SESSION['experiencia'];
+                        $categoria = $_SESSION['categoria'];
                         $experiencia_fecha = $_SESSION['experiencia_fecha'];
-                        $experiencia_ejecutada = $app['mysql']->runQuery('SELECT * FROM experiencias_usuarios WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
+                        $experiencia_ejecutada = $app['mysql']->runQuery('SELECT * FROM experiencias_usuarios WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_categoria = '.$categoria)->getRows();
 
                         if(isset($_SESSION['experiencia_actual']['pendientes']))
                             $pendiente = $_SESSION['experiencia_actual']['pendientes'];

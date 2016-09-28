@@ -15,7 +15,7 @@ echo '<div class="row formulario">';
 		echo '<div class="col-xs-12 form-group">';
 				echo '<input type="hidden" name="id" value="">';
                 echo '<input type="hidden" name="accion" value="guardar_experiencia">';
-                echo '<input type="button" name="crear_experiencia" class="btn btn-default enviar" value="Cargar">&nbsp<input name="cancelar" class="oculto btn btn-default danger" type="button" value="Cancelar">';
+                echo '<input type="button" name="crear_experiencia" class="btn btn-default enviar" value="Crear">&nbsp<input name="cancelar" class="oculto btn btn-default danger" type="button" value="Cancelar">';
 		echo '</div>';
 echo '</div>';
 echo '<br><h4>Experiencias</h4><br>';

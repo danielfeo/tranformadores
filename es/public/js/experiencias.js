@@ -140,7 +140,7 @@ $(function()
 		$('#fecha_inicio').val("");
 		$('#fecha_fin').val("");
 		$('input[name="accion"]').val("crear_nuevo");
-		$('input[name="crear_experiencia"]').val("Guardar");
+		$('input[name="crear_experiencia"]').val("Crear");
 		$('input[name="cancelar"]').fadeOut();
 	});
 

@@ -53,7 +53,7 @@ switch ($accion) {
             echo json_encode(array('estado' => false, 'preguntas' => $preguntas_pendientes));
         } else {
             $usuario_correo = $mysql->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$usuario)->getRows();
-            $experiencia_finalizada = $mysql->runQuery('INSERT INTO experiencias_usuarios (id_experiencia, id_usuario, fecha, finalizado) VALUES ('.$experiencia.', '.$usuario.', CURDATE(), 1)')->getRows();
+            $experiencia_finalizada = $mysql->runQuery('INSERT INTO experiencias_usuarios (id_experiencia, id_usuario, fecha, finalizado, id_categoria) VALUES ('.$experiencia.', '.$usuario.', CURDATE(), 1, '.$_SESSION['categoria'].')')->getRows();
             $mail->send($mailserver['user'], $mailserver['admin'], 'Nuevo formulario', 'Se ha se ha recibido un nuevo formulario del usuario: '.$usuario_correo[0]['email']);
             if($_SESSION['lenguaje'] == 1)
                 $mail->send($mailserver['user'], $usuario_correo[0]['email'], 'Gracias', 'Gracias por postular su experiencia al Premio Transformadores');
