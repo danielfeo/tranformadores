@@ -28,7 +28,7 @@ echo '<div class="row formulario">';
 		echo '<div class="col-xs-4 form-group">';
 				echo '<input type="hidden" name="id" value="">';
 				echo '<input type="hidden" name="accion" value="registro">';
-				echo '<input type="button" name="crear_nuevo" class="btn btn-default enviar" value="Guardar">&nbsp<input name="cancelar" class="oculto btn btn-default danger" type="button" value="Cancelar">';
+				echo '<input type="button" name="crear_nuevo" class="btn btn-default enviar" value="Crear">&nbsp<input name="cancelar" class="oculto btn btn-default danger" type="button" value="Cancelar">';
 		echo '</div>';
 echo '</div>';
 
