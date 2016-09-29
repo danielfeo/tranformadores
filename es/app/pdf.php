@@ -18,10 +18,10 @@ $header = '<div class="container">
         </div>
         <div class="fecha">
             Agosto 26 de 2016
-        </div><div class="main">';
+        </div></div>';
 $stylesheet = file_get_contents('public/css/pdf.css');
 $mpdf->SetHTMLHeader($header);
-//$html .= '<div class="main"><section><h2 class="ColNaranja">Datos generales de la Experiencia</h2>';
+$html .= '<div class="container"><div class="main">';
     foreach($grupos as &$grupo){
         $html .= '<section>';
         if($grupo['url'] != 'InformacionAdicional'){
