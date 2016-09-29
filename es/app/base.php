@@ -7,7 +7,7 @@
                     <?php 
                         $usuario = $_SESSION['usuario']['id'];
                         $categoria = $_SESSION['categoria'];
-                        $archivos = glob('public/archivos/'.$usuario.'/*');
+                        $archivos = glob('public/archivos/'.$usuario.'/'.$_SESSION['categoria'].'/*');
                         $experiencia = $_SESSION['experiencia'];
                         $categoria = $_SESSION['categoria'];
                         $experiencia_fecha = $_SESSION['experiencia_fecha'];

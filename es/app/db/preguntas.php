@@ -64,7 +64,7 @@ switch ($accion) {
         }
     break;
     case 'cargarArchivo':
-        $directorio = '../../public/archivos/'.$usuario.'/';
+        $directorio = '../../public/archivos/'.$usuario.'/'.$_SESSION['categoria'].'/';
         $nombre = '';
         $url = '';
         $estado = '1';
@@ -110,7 +110,7 @@ switch ($accion) {
         }else{
             $estado = '4';
         }
-         echo json_encode(array('estado' => $estado, 'url' => 'public/archivos/'.$usuario.'/'.$nombre, 'file' => mb_strtolower($nombre, 'UTF-8')));
+         echo json_encode(array('estado' => $estado, 'url' => 'public/archivos/'.$usuario.'/'.$_SESSION['categoria'].'/'.$nombre, 'file' => mb_strtolower($nombre, 'UTF-8')));
     break;
     case 'borrarArchivo':
         $archivo = '../../'.$_POST['_archivo'];
