@@ -1,6 +1,16 @@
 <?php
 include("clases/mpdf/mpdf.php");
 
+$ano = date('Y');
+   $mes = date('n');
+   $dia = date('d');
+   $diasemana = date('w');
+   $diassemanaN= array("Domingo","Lunes","Martes","Miércoles",
+                  "Jueves","Viernes","Sábado");
+   $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
+             "Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+   $fecha= $mesesN[$mes]." $dia de $ano";
+
 $lenguaje = $app['mysql']->runQuery('SELECT p.`id_lenguaje` as id_lenguaje FROM preguntas p, respuestas r, experiencias e WHERE YEAR(e.`inicio`) = "'.$app['pdf_fecha'].'" AND r.`id_experiencia` = e.`id_experiencia` AND r.`id_pregunta` = p.`id_pregunta` AND r.`id_usuario` = '.$app['pdf_user'].' LIMIT 1, 1')->getRows();
 $grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_lenguaje = '.$lenguaje[0]['id_lenguaje'])->getRows();
 $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$app['pdf_user'])->getRows();
@@ -17,7 +27,7 @@ $header = '<div class="container">
             </div>
         </div>
         <div class="fecha">
-            Agosto 26 de 2016
+             '.$fecha.'
         </div></div>';
 $stylesheet = file_get_contents('public/css/pdf.css');
 $mpdf->SetHTMLHeader($header);
