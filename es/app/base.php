@@ -38,19 +38,23 @@
                                     echo '</div>';
                                 } else {
                                     foreach($sub_grupos as &$grupo){
-                                        echo '<div class="col-xs-12">';
-                                            if($grupo['id_grupo'] == $grupo['id_grupo_padre'])
-                                                echo '<h1 class="tituloForm" style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h1>';
-                                            else
-                                                echo '<h4 style="color:'.$grupo['color'].';">'.$grupo['titulo'].'</h4>';
-                                        echo '</div>';
-                                        echo '<div class="col-xs-12">';
-                                            if($grupo['descripcion'] != '')
-                                                echo '<p class="descripcion">'.$grupo['descripcion'].'</p>';
-                                        echo '</div>';
                                         $preguntas = $app['mysql']->runQuery('SELECT * FROM preguntas WHERE id_categoria = "'.$categoria.'" AND id_grupo = '.$grupo['id_grupo'].' AND id_pregunta = id_pregunta_dependiente AND id_lenguaje = '.$app['lenguaje'])->getRows();
-                                        $tipos = $app['mysql']->runQuery('SELECT * FROM tipos')->getRows();
-                                        if(is_array($preguntas)){
+
+                                        if(is_array($preguntas))
+                                        {
+                                            echo '<div class="col-xs-12">';
+                                                if($grupo['id_grupo'] == $grupo['id_grupo_padre'])
+                                                    echo '<h1 class="tituloForm" style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h1>';
+                                                else
+                                                    echo '<h4 style="color:'.$grupo['color'].';">'.$grupo['titulo'].'</h4>';
+                                            echo '</div>';
+                                            echo '<div class="col-xs-12">';
+                                                if($grupo['descripcion'] != '')
+                                                    echo '<p class="descripcion">'.$grupo['descripcion'].'</p>';
+                                            echo '</div>';
+                                            
+                                            $tipos = $app['mysql']->runQuery('SELECT * FROM tipos')->getRows();
+
                                             for($i=0; $i<count($preguntas); $i++) {
                                                 $size = 12 / $preguntas[$i]['columnas'];
                                                 $preguntas_dependientes = $app['mysql']->runQuery('SELECT * FROM preguntas WHERE id_categoria = "'.$categoria.'" AND id_pregunta != id_pregunta_dependiente AND id_pregunta_dependiente = '.$preguntas[$i]['id_pregunta'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
