@@ -19,7 +19,7 @@ switch ($accion) {
 		echo json_encode($experiencias);
 	break;
 	case 'obtener_usuario_exp':
-		$usuarios = $mysql->runQuery('SELECT eu.id_experiencia , u.id_usuario, u.organizacion , u.email , eu.fecha FROM experiencias_usuarios eu, usuarios u WHERE eu.id_usuario = u.id_usuario AND id_experiencia = "'.$_POST['_exp'].'"')->getRows();
+		$usuarios = $mysql->runQuery('SELECT eu.id_experiencia , u.id_usuario, u.organizacion, u.email, c.descripcion, eu.fecha FROM experiencias_usuarios eu, usuarios u, categoria c WHERE eu.id_usuario = u.id_usuario AND eu.id_categoria = c.id_categoria AND id_experiencia = "'.$_POST['_exp'].'"')->getRows();
 		echo json_encode($usuarios);
 	break;
 	case 'obtener_total_pag':
