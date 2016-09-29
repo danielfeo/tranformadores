@@ -85,7 +85,7 @@ $(function(){
 		var correo = $('input[name="usuario"]').val();
 		var pass = $('input[name="clave"]').val();
 		var accion =  $('input[name="accion"]').val();
-		var categoria =  $('input[name="categoria"]').val();
+		var categoria =  $('select[name="categoria"]').val();
 
 		if (accion == 'registro'){
 			if( organizacion != "" && correo != "" && pass != ""){
