@@ -26,7 +26,7 @@ $(function(){
             success: function(data){
                 if(data.estado == '1'){
                     contenedor.find('input[type="file"]').val('');
-                    contenedor.find('div.archivos').append('<p><a href="'+data.url+'" data-role="file" target="_blank">'+data.file+'</a></a><a data-role="delete" title="borrar"><span  class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p><br>');
+                    contenedor.find('div.archivos').append('<p><a href="'+data.url+'" data-role="file" target="_blank">'+data.file+'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>');
                 }
             },
             data: formData,
