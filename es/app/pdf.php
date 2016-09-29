@@ -7,7 +7,18 @@ $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_user'].'/*');
 
 $mpdf=new mPDF('utf-8', 'A4', 0, '', 15, 15, 30, 16, 9, 9, '');
-$header = '<table><tr><td><img src="public/img/logo_premio.png" height="50px"></td></tr></table>';
+$header = '<div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="public/img/logo-transformadores.png" alt="">
+            </div>
+            <div class="tituloForm ColRojo">
+                <h1>Comunidades Sostenibles</h1>
+            </div>
+        </div>
+        <div class="fecha">
+            Agosto 26 de 2016
+        </div>';
 $stylesheet = file_get_contents('public/css/pdf.css');
 $mpdf->SetHTMLHeader($header);
 $html .= '<table width="100%" style="overflow: wrap">';
