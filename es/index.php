@@ -26,11 +26,13 @@ $app['lenguaje'] = $lenguajes['es'];
 if (0 === strpos($pagina, 'pdf')) {
    $datos = explode('pdf', $pagina);
    $info = explode('-', $datos[1]);
-   $user = $info[0];
-   $fecha = $info[1];
+   $experiencia = $info[0];
+   $categoria = $info[1];
+   $usuario = $info[2];
    $app['pagina'] = 'pdf';
-   $app['pdf_user'] = $user;
-   $app['pdf_fecha'] = $fecha;
+   $app['pdf_experiencia'] = $experiencia;
+   $app['pdf_categoria'] = $categoria;
+   $app['pdf_usuario'] = $usuario;
 }
 
 

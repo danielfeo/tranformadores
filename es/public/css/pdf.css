@@ -39,6 +39,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.main
+{
+    background-color: #fff;
+}
 
 a {
     color: #0071A6;
@@ -46,11 +50,11 @@ a {
 }
 h1 {
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 15px;
 }
 h2 {
-    font-family: 'Oswald', sans-serif;
+    font-family: "dejavusans", sans-serif;
     font-weight: 400;
     font-size: 14px;
     border-bottom: 1px solid;
@@ -60,9 +64,9 @@ h2 {
 h3 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 400;
-    font-size: 11px;
-    color: #333333;
-    margin: 2px 0;
+    font-size: 12px;
+    color: #333333; 
+    margin-top: 15px;
 }
 h4 {
     font-family: 'Oswald', sans-serif;
@@ -72,24 +76,24 @@ h4 {
     margin-bottom: 0;
 }
 .container {
-    width: 612px;
+    width: 100%;
     margin: auto;
     background-color: #fff;
-    padding: 42px 42px 42px 56px;
 }
 .header {
-    border-bottom: 2px solid #FB1C1A;
+    border-bottom: 1px solid #FB1C1A;
+    width: 1000px;
 }
 .logo {
     display: inline;
+    margin-right: 100px;
 }
 .logo img {
     width: 142px;
 }
 .tituloForm {
     display: inline;
-    text-align: right;
-    float: right;
+    font-size: 15px;
 }
 .fecha {
     font-family: 'Source Sans Pro', sans-serif;
