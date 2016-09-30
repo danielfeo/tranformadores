@@ -15,7 +15,7 @@ $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '
 
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
 
-$mpdf=new mPDF('utf-8', 'A4', 11, '', 15, 15, 35, 15, 12, 0, 'P');
+$mpdf=new mPDF('utf-8', 'A4', 11, '', 15, 15, 35, 25, 12, 12, 'P');
 $header = '<div class="container">
                 <div class="header">
                     <table width="100%">
@@ -33,43 +33,62 @@ $header = '<div class="container">
                      '.$fecha.'
                 </div>
             </div>';
+$footer = '<div class="container" style="text-align:center; color:#0071A6; font-size:10px;"> - {PAGENO} / {nb} - </div>';
 $stylesheet = file_get_contents('public/css/pdf.css');
+
 $mpdf->SetHTMLHeader($header);
+$mpdf->SetHTMLFooter($footer);
 $html = '<div class="container">
             <div class="main">';
                 foreach($grupos as &$grupo)
                 {
-                    if ($grupo['url'] != 'InformacionAdicional')
-                    {
-                        if ($grupo['id_grupo'] == $grupo['id_grupo_padre'])
-                            $html .= '<h2 style="color:'.$grupo['color'].'; border-bottom-color:'.$grupo['color'].'">'.str_replace('<br>', '', $grupo['titulo']).'</h2>';
-                        else 
-                            $html .= '<h3 style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h3>';
-                        
-                        $preguntas = $app['mysql']->runQuery('SELECT p.pregunta, r.* FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` = '.$grupo['id_grupo'].' AND r.`id_usuario` = '.$app['pdf_usuario'].' ORDER BY r.id_pregunta')->getRows();
+                    if ($grupo['id_grupo'] == $grupo['id_grupo_padre'])
+                        $html .= '<h2 style="color:'.$grupo['color'].'; border-bottom-color:'.$grupo['color'].'">'.str_replace('<br>', '', $grupo['titulo']).'</h2>';
+                    else 
+                        $html .= '<h3 style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h3>';
+                    
+                    $preguntas = $app['mysql']->runQuery('SELECT p.*, r.* FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` = '.$grupo['id_grupo'].' AND r.`id_usuario` = '.$app['pdf_usuario'].' ORDER BY r.id_pregunta')->getRows();
 
-                        if (is_array($preguntas))
+                    if (is_array($preguntas))
+                    {
+                        for ($i=0; $i<count($preguntas); $i++)
                         {
-                            for ($i=0; $i<count($preguntas); $i++)
+                            if($preguntas[$i]['id_tipo'] != 8) 
                             {
-                                $html .= '<div class="item conCalificacion">'.$preguntas[$i]['pregunta'].'<p style="color:#4D4D4D;">'.$preguntas[$i]['respuesta'].'</p></div>';
+                                $html .= '<div class="item conCalificacion">'.$preguntas[$i]['pregunta'].'<p style="color:#585858;">'.$preguntas[$i]['respuesta'].'</p></div>';
+                            } else {
+                                $links = explode(',', $preguntas[$i]['respuesta']);
+                                $html .= '<div class="item Listalinks">
+                                        <br>
+                                        <img src="public/img/link.png" alt="">
+                                        <ul>';
+                                for ($a = 0; $a < count($links); $a++)
+                                {
+                                    if($links[$a] != '')
+                                        $html .= '<li><a href="'.$links[$a].'" target="_blank">'.$links[$a].'</a></li>';
+                                }
+                                $html .= '</ul>
+                                </div>';
                             }
                         }
                     }
+                    
+                    if ($grupo['url'] == 'InformacionAdicional')
+                    {
+                         $html .= '<div class="item Listalinks">
+                                        <br>
+                                        <img src="public/img/link.png" alt="">
+                                        <ul>';
+                                for ($a = 0; $a < count($archivos); $a++)
+                                {
+                                    $filename = explode('/', $archivos[$a]);
+                                    $html .= '<li><a href="'.$archivos[$a].'" target="_blank">'.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
+                                }
+                                $html .= '</ul>
+                                </div>';
+                    }
                 }
-    /*
-    $html .= '<section><h2 class="ColCafe">información adicional</h2>';
-    $html .= '<h3>Si desea anexar información, hágalo aquí</h3>';
-        $html .= '<div class="item Listalinks">
-                    <img src="public/img/link.png" alt="">
-                    <ul>';
-        for($a = 0; $a < count($archivos); $a++){
-            $filename = explode('/', $archivos[$a]);
-            $html .= '<li><a href="'.$archivos[$a].'" target="_blank">'.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
-        }
-
-       $html .= '</ul></div></section>';*/
-    $html .= '</div>
+    $html .= '</div>;
         </div>';
 
 $mpdf->WriteHTML($stylesheet,1);

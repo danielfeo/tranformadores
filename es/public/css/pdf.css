@@ -118,8 +118,8 @@ h4 {
     margin: 2px 0;
 }
 .Listalinks ul {
-    margin-top: 0;
-    padding-left: 14px;
+    margin-top: 10px;
+    margin-left: 30px;
 }
 .Listalinks ul li {
     list-style-type: none;
