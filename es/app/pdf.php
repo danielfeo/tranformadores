@@ -10,7 +10,7 @@ $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agost
 $fecha= $mesesN[$mes]." $dia de $ano";
 
 $grupos_preguntas = $app['mysql']->runQuery('SELECT GROUP_CONCAT(DISTINCT p.id_grupo) as grupos FROM preguntas p, respuestas r, experiencias e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND p.id_categoria = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND r.`id_pregunta` = p.`id_pregunta` AND r.`id_usuario` = '.$app['pdf_usuario'])->getRows();
-$grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_grupo = id_grupo_padre OR id_grupo IN ('.$grupos_preguntas[0]['grupos'].') ORDER BY id_grupo_padre, id_grupo')->getRows();
+$grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_lenguaje= '.$_SESSION['lenguaje'].' and id_grupo = id_grupo_padre OR id_grupo IN ('.$grupos_preguntas[0]['grupos'].') ORDER BY id_grupo_padre, id_grupo')->getRows();
 $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$app['pdf_usuario'])->getRows();
 
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
@@ -42,6 +42,7 @@ $html = '<div class="container">
             <div class="main">';
                 foreach($grupos as &$grupo)
                 {
+
                     if ($grupo['id_grupo'] == $grupo['id_grupo_padre'])
                         $html .= '<h2 style="color:'.$grupo['color'].'; border-bottom-color:'.$grupo['color'].'">'.str_replace('<br>', '', $grupo['titulo']).'</h2>';
                     else 
@@ -88,7 +89,7 @@ $html = '<div class="container">
                                 </div>';
                     }
                 }
-    $html .= '</div>;
+    $html .= '</div>
         </div>';
 
 $mpdf->WriteHTML($stylesheet,1);
