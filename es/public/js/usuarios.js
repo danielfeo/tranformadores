@@ -1,6 +1,6 @@
 $(function()
 {
-	var url = '/transformadores';
+	var url = '/tranformadores';
 	var items_paginas = 10;
 
 	// We can attach the `fileselect` event to all file inputs on the page
