@@ -21,7 +21,7 @@ $app = array();
 $app['mysql'] = $mysql;
 $app['mail'] = $mail;
 $app['pagina'] = $pagina;
-$app['lenguaje'] = $lenguajes['es'];
+$app['lenguaje'] = $lenguajes['pr'];
 
 if (0 === strpos($pagina, 'pdf')) {
    $datos = explode('pdf', $pagina);
@@ -36,5 +36,5 @@ if (0 === strpos($pagina, 'pdf')) {
 }
 
 
-$_SESSION['lenguaje'] = $lenguajes['es'];
+$_SESSION['lenguaje'] = $lenguajes['pr'];
 include 'enrutador.php';

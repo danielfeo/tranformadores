@@ -19,7 +19,7 @@ switch ($accion) {
 		if ($validacion_correo[0]['email'] == 1){
 			$estado = 2;
 		}else{
-			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'"')->getRows();
+			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'")')->getRows();
 			$variables_sesion = $mysql->runQuery('SELECT id_usuario, id_rol FROM usuarios WHERE email ="'.$_POST['_correo'].'" AND pass ="'.$_POST['_pass'].'" ')->getRows();
 			$estado = $resultado;
 			if($estado)

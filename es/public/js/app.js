@@ -1,6 +1,6 @@
 $(function(){
     var url = "/transformadores";
-    var lang = "es";
+    var lang = "pr";
     var id_lang = $('.fluidBlanco').data('lenguaje');
     /**
      * [showDependiente muestra la pregunta dependiente]
