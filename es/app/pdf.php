@@ -101,5 +101,5 @@ $html = '<div class="container">
 $mpdf->WriteHTML($stylesheet,1);
 
 $mpdf->WriteHTML($html, 2);
-$mpdf->Output($usuarios[0]['organizacion'].'_'.$app['pdf_fecha'].'.pdf', 'D');
+$mpdf->Output($usuarios[0]['organizacion'].'_'.date('Ymd').'.pdf', 'D');
 exit;
