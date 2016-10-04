@@ -1,5 +1,6 @@
-$(function(){
-    var url = "/tranformadores";
+$(function()
+{
+    var url = "/transformadores";
     var lang = "es";
     var id_lang = $('.fluidBlanco').data('lenguaje');
     /**
