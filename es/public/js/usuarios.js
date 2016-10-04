@@ -1,9 +1,8 @@
-$(function(){
+$(function()
+{
+	var url = '/transformadores';
+	var items_paginas = 10;
 
-
-	//datatable usuarios//
-
-	//js input file
 	// We can attach the `fileselect` event to all file inputs on the page
 	$(document).on('change', ':file', function() {
 		var input = $(this),
@@ -25,10 +24,6 @@ $(function(){
 			if( log ) alert(log);
 		}
 	});
-
-	//js input file
-	var url = '/tranformadores';
-	var items_paginas = 10;
 
 	function paginador(pagina, items){
 		var pagina_actual = (pagina - 1) * items;
@@ -383,7 +378,7 @@ $(function(){
 							contents: 'Contraseña modificada satisfactoriamente'
 						}).addButton("Aceptar", "btn primary", function(){
 							this.hide();
-							window.location.href= url;
+							window.location.href=url;
 						}).showModal();
 					}else{
 						$.fn.SimpleModal({

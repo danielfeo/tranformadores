@@ -1,7 +1,7 @@
 $(function(){
+    var url = "/transformadores";
     var lang = "es";
     var id_lang = $('.fluidBlanco').data('lenguaje');
-    var url = "/tranformadores";
     /**
      * [showDependiente muestra la pregunta dependiente]
      * @param  {[type]} e  [event]
