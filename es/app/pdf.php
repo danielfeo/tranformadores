@@ -59,34 +59,40 @@ $html = '<div class="container">
                                 $html .= '<div class="item conCalificacion">'.$preguntas[$i]['pregunta'].'<p style="color:#585858;">'.$preguntas[$i]['respuesta'].'</p></div>';
                             } else {
                                 $links = explode(',', $preguntas[$i]['respuesta']);
-                                $html .= '<div class="item Listalinks">
-                                        <br>
-                                        <img src="public/img/link.png" alt="">
-                                        <ul>';
-                                for ($a = 0; $a < count($links); $a++)
+                                if (count($links) > 0)
                                 {
-                                    if($links[$a] != '')
-                                        $html .= '<li><a href="'.$links[$a].'" target="_blank">'.$links[$a].'</a></li>';
+                                    $html .= '<div class="item Listalinks">
+                                            <br>
+                                            <img src="public/img/link.png" alt="">
+                                            <ul>';
+                                    for ($a = 0; $a < count($links); $a++)
+                                    {
+                                        if($links[$a] != '')
+                                            $html .= '<li><a href="'.$links[$a].'" target="_blank">'.$links[$a].'</a></li>';
+                                    }
+                                    $html .= '</ul>
+                                    </div>';
                                 }
-                                $html .= '</ul>
-                                </div>';
                             }
                         }
                     }
                     
                     if ($grupo['url'] == 'InformacionAdicional')
                     {
-                         $html .= '<div class="item Listalinks">
-                                        <br>
-                                        <img src="public/img/link.png" alt="">
-                                        <ul>';
-                                for ($a = 0; $a < count($archivos); $a++)
-                                {
-                                    $filename = explode('/', $archivos[$a]);
-                                    $html .= '<li><a href="'.$archivos[$a].'" target="_blank">'.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
-                                }
-                                $html .= '</ul>
-                                </div>';
+                        if (count($archivos) > 0)
+                        {
+                            $html .= '<div class="item Listalinks">
+                                            <br>
+                                            <img src="public/img/link.png" alt="">
+                                            <ul>';
+                                    for ($a = 0; $a < count($archivos); $a++)
+                                    {
+                                        $filename = explode('/', $archivos[$a]);
+                                        $html .= '<li><a href="'.$archivos[$a].'" target="_blank">'.mb_strtolower(end($filename), 'UTF-8').'</a></li>';
+                                    }
+                                    $html .= '</ul>
+                                    </div>';
+                        }
                     }
                 }
     $html .= '</div>
