@@ -125,7 +125,7 @@ $(function(){
             },
             success: function(data){
                 if(data.estado){
-                  if($(this).prop('href') == '')
+                  if(url == '')
                   {
                     $.fn.SimpleModal({
                         model: 'modal',
