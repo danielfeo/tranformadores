@@ -1,4 +1,3 @@
-
     <?php include 'sections/fake_head.php' ?>
     <div class="fluidBlanco" data-lenguaje="<?= $_SESSION['lenguaje'] ?>">
         <div class="container">
