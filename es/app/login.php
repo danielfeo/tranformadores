@@ -31,8 +31,8 @@
                             <div class="col-md-4 col-md-offset-4 form-group">
                                 <label for="">Categoria</label>
                                 <select name="categoria" id="" class="form-control">
-                                    <option value="1">Categoria 1</option>
-                                    <option value="2">Categoria 2</option>
+                                    <option value="1">Inversión Social Privada</option>
+                                    <option value="2">Negocios</option>
                                 </select>
                             </div>
                         </div>
