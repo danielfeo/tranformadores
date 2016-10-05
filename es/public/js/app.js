@@ -84,9 +84,10 @@ $(function(){
 
     $('#guardar, .pagSeccion a, .pasosInscripcion a').on('click', function(e){
         var respuestas = new Array();
+        var url = "";
           if($(this).prop('href') !== '')
           {
-              var url= $(this).prop('href');
+              url= $(this).prop('href');
               console.log(url);
           }
 
