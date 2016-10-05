@@ -70,7 +70,7 @@ $html = '<div class="container">
                                     for ($a = 0; $a < count($links); $a++)
                                     {
                                         if($links[$a] != '')
-                                            $html .= '<li><a href="'.$links[$a].'" target="_blank">'.$links[$a].'</a></li>';
+                                            $html .= '<li><a href="'.(strpos($string2, 'http') == 0 ? $links[$a] : 'http://'.$links[$a]).'" target="_blank">'.$links[$a].'</a></li>';
                                     }
                                     $html .= '</ul>
                                     </div>';
