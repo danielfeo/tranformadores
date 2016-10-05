@@ -42,7 +42,7 @@ $(function(){
 					var texto = "";
 					for(var i=0; i<data.length; i++){
 						texto += '<tr data-id="'+data[i].id_usuario+'" >';
-						texto += '<td>'+data[i].organizacion+'</td><td>'+data[i].email+'</td><td>'+data[i].descripcion+'</td><td>'+data[i].fecha+'</td><td width="3%"><a target="_blank" href="pdf-'+data[i].id_experiencia+'-'+data[i].id_categoria+'-'+data[i].id_usuario+'"><i title="Descargar" class="fa fa-download"></i></a></td>';
+						texto += '<td>'+data[i].organizacion+'</td><td>'+data[i].email+'</td><td>'+data[i].descripcion+'</td><td>'+data[i].fecha+'</td><td width="3%"><a target="_blank" href="pdf'+data[i].id_experiencia+'-'+data[i].id_categoria+'-'+data[i].id_usuario+'"><i title="Descargar" class="fa fa-download"></i></a></td>';
 						texto += '</tr>';
 					}
 					$('#tabla_experiencias_usuarios tbody').html(texto);
