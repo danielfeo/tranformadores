@@ -5,5 +5,5 @@ $mailserver = array(
     'user' => 'web@redeamerica.org',
     'pass' => '*JKe7J3q',
     'port' => '587',
-    'admin' => 'jonatancastro1@gmail.com'
+    'admin' => 'web@redeamerica.org'
 ); 
