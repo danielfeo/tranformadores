@@ -86,11 +86,8 @@ $(function()
     $('#guardar, .pagSeccion a, .pasosInscripcion a').on('click', function(e){
         var respuestas = new Array();
         var url = "";
-          if($(this).prop('href') !== '')
-          {
-              url= $(this).prop('href');
-              console.log(url);
-          }
+        if ($(this).prop('href') !== '')
+            url= $(this).prop('href');
 
         $('div[data-role="pregunta"]').each(function(i, e){
             var id = $(this).data('rel');
@@ -126,20 +123,20 @@ $(function()
             },
             success: function(data){
                 if(data.estado){
-                  if(url == '')
-                  {
-                    $.fn.SimpleModal({
-                        model: 'modal',
-                        btn_ok : 'Aceptar',
-                        title:    'Mensaje',
-                        contents: 'Preguntas guardadas satisfactoriamente'
-                    }).addButton("Aceptar", "btn primary", function(){
-                        this.hide();
-                        window.location.reload();
-                    }).showModal();
-                  }else{
-                    window.location.href = url;
-                  }
+                    if(url == "" || typeof url == 'undefined')
+                    {
+                        $.fn.SimpleModal({
+                            model: 'modal',
+                            btn_ok : 'Aceptar',
+                            title:    'Mensaje',
+                            contents: 'Preguntas guardadas satisfactoriamente'
+                        }).addButton("Aceptar", "btn primary", function(){
+                            this.hide();
+                            window.location.reload();
+                        }).showModal();
+                    } else {
+                        window.location.href = url;
+                    }
                 }else{
                     $.fn.SimpleModal({
                         btn_ok:   'Aceptar',
