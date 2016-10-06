@@ -28,7 +28,7 @@ switch ($accion) {
 			}
 			if($_POST['_habilitado'] == 1)
 			{
-				$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');
+				$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/Transformadores/');
 			}
 		}
 		echo json_encode(array('estado' => $estado));
