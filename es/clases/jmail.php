@@ -48,7 +48,7 @@ class JMail implements emailProvider{
         //Password to use for SMTP authentication
         $mail->Password =  $this->pass;
         //Set who the message is to be sent from
-        $mail->setFrom($from, $from);
+        $mail->setFrom('web@redeamerica.org', 'Redeamerica');
         //Set an alternative reply-to address
         //$mail->addReplyTo('replyto@example.com', 'First Last');
         //Set who the message is to be sent to
@@ -63,7 +63,7 @@ class JMail implements emailProvider{
         if (!$mail->send()) {
             echo 'error '. $mail->ErrorInfo;
         } else {
-            echo true;
+            return true;
         }
     }
 }
