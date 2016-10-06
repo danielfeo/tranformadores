@@ -32,7 +32,6 @@ $(function(){
                     $('#form_cambio_clave')[0].reset();
                 }else{
                 $('#error').text('');
-                console.log(data.estado);
                 $('#defaultModal2').modal('toggle');}
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -46,8 +45,20 @@ $(function(){
         document.getElementById("enviar").disabled = false;
     });
 
-    var showDependiente = function(e, id) {
+    var showDependiente = function(e, id) 
+    {
         $('div[data-rel="' + id + '"]').fadeIn();
+    }
+
+    var validar_multitext = function()
+    {
+        var total = $('.links').find('p').length;
+        console.log(total);
+
+        if(total >= 5)
+            $('.addFile').prop('disabled', true);
+        else
+            $('.addFile').prop('disabled', false);
     }
 
     var renderMultitext = function(respuestas, rel) {
@@ -59,6 +70,8 @@ $(function(){
             if (e)
                 $lista.append('<p><a data-role="file" href="' + e + '">' + e + '</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>')
         });
+
+        validar_multitext();
     }
 
     $('#registro').on('click', function() {
@@ -306,4 +319,5 @@ $(function(){
         e.preventDefault();
     });
 
+    validar_multitext();
 });
