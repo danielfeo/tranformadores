@@ -9,8 +9,8 @@ $(function()
      * @param  {[type]} id [id_pregunta a mostrar]
      * @return {[void]}
      */
-  
-    
+
+
     $('body').delegate('#acepto','click',function(){
         document.getElementById("enviar").disabled = false;
     });
@@ -60,7 +60,7 @@ $(function()
     $('div[data-dependiente]').each(function(i, e){
         //obtiene pregunta padre
         var rel = $(this).data('dependiente');
-        
+
         //obtiene id_pregunta actual
         var id = $(this).data('rel');
 
@@ -83,8 +83,15 @@ $(function()
         }
     });
 
-    $('#guardar').on('click', function(e){
+    $('#guardar, .pagSeccion a, .pasosInscripcion a').on('click', function(e){
         var respuestas = new Array();
+        var url = "";
+          if($(this).prop('href') !== '')
+          {
+              url= $(this).prop('href');
+              console.log(url);
+          }
+
         $('div[data-role="pregunta"]').each(function(i, e){
             var id = $(this).data('rel');
             var tipo = $(this).data('type');
@@ -119,6 +126,8 @@ $(function()
             },
             success: function(data){
                 if(data.estado){
+                  if(url == '')
+                  {
                     $.fn.SimpleModal({
                         model: 'modal',
                         btn_ok : 'Aceptar',
@@ -128,6 +137,9 @@ $(function()
                         this.hide();
                         window.location.reload();
                     }).showModal();
+                  }else{
+                    window.location.href = url;
+                  }
                 }else{
                     $.fn.SimpleModal({
                         btn_ok:   'Aceptar',
@@ -136,7 +148,11 @@ $(function()
                     }).showModal();
                 }
             }
+
+
         });
+
+        e.preventDefault();
     });
 
     $('button[data-role="add-multitext"]').on('click', function(e)
@@ -144,7 +160,7 @@ $(function()
         var rel = $(this).data('rel');
         var url = $('input[data-role="multitext"][data-rel="'+rel+'"]').val();
 
-        if (url != '') 
+        if (url != '')
         {
             url += ',';
             var $respuesta = $('input[data-role="respuesta"][data-rel="'+rel+'"]');
@@ -267,7 +283,7 @@ $(function()
                 window.location.href= url+'/'+lang;
             }
         });
-        e.preventDefault(); 
+        e.preventDefault();
     });
 
 });
