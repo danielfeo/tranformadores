@@ -24,7 +24,8 @@ switch ($accion) {
             $resultado = true;
             $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.$respuesta['id_pregunta'].' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
             $sql = '';
-            if(is_array($pregunta_anterior)){
+            if(is_array($pregunta_anterior))
+            {
                 if($respuesta['respuesta'] == '')
                     $sql = 'DELETE FROM `respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
                 else

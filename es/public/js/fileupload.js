@@ -1,4 +1,13 @@
-$(function(){
+$(function()
+{
+    var validar_archivos = function(e){
+        var total = $('.archivos').find('p').length;
+        if(total == 5)
+             $('.file_uploader button').prop('disabled', true);
+        else
+            $('.file_uploader button').prop('disabled', false);
+    }
+
     var mostrarProceso = function(e){
         if (e.loaded == e.total){
             $('.file_uploader button i').removeClass('fa-circle-o-notch fa-spin').addClass('fa-upload');
@@ -27,7 +36,17 @@ $(function(){
                 if(data.estado == '1'){
                     contenedor.find('input[type="file"]').val('');
                     contenedor.find('div.archivos').append('<p><a href="'+data.url+'" data-role="file" target="_blank">'+data.file+'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>');
+                } else {
+                    $.fn.SimpleModal({
+                        model: 'modal',
+                        btn_ok : 'Aceptar',
+                        title:    'Error',
+                        contents: 'No se pudo enviar el archivo, recuerde que los formatos admitidos son (PDF, DOCX, DOC, XLSX, XLS) y el tamaño maxímo es 5mb'
+                    }).addButton("Aceptar", "btn primary", function(){
+                        this.hide();
+                    }).showModal();
                 }
+                validar_archivos();
             },
             data: formData,
             cache: false,
@@ -63,4 +82,6 @@ $(function(){
         }).addButton("Cancelar", "btn").showModal();
         e.preventDefault();
     });
+
+    validar_archivos();
 });
