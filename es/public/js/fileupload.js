@@ -2,7 +2,7 @@ $(function()
 {
     var validar_archivos = function(e){
         var total = $('.archivos').find('p').length;
-        if(total == 5)
+        if(total >= 5)
              $('.file_uploader button').prop('disabled', true);
         else
             $('.file_uploader button').prop('disabled', false);
