@@ -1,9 +1,9 @@
-<?php include 'sections/fake_head.php' ?>
+    <?php include 'sections/fake_head.php' ?>
     <div class="fluidBlanco" data-lenguaje="<?= $_SESSION['lenguaje'] ?>">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <?php 
+                    <?php
                         $usuario = $_SESSION['usuario']['id'];
                         $categoria = $_SESSION['categoria'];
                         $archivos = glob('public/archivos/'.$usuario.'/'.$_SESSION['categoria'].'/*');
@@ -15,10 +15,10 @@
                             $pendiente = $_SESSION['experiencia_actual']['pendientes'];
                         else
                             $pendiente = false;
-                        
+
                         $finalizado = is_array($experiencia_ejecutada);
 
-                        include 'sections/menu.php'; 
+                        include 'sections/menu.php';
                     ?>
                 </div>
                 <div class="col-sm-12">
@@ -50,16 +50,16 @@
                                                 if($grupo['descripcion'] != '')
                                                     echo '<p class="descripcion">'.$grupo['descripcion'].'</p>';
                                             echo '</div>';
-                                            
+
                                             $tipos = $app['mysql']->runQuery('SELECT * FROM tipos')->getRows();
 
                                             for($i=0; $i<count($preguntas); $i++) {
                                                 $size = 12 / $preguntas[$i]['columnas'];
                                                 $preguntas_dependientes = $app['mysql']->runQuery('SELECT * FROM preguntas WHERE id_categoria = "'.$categoria.'" AND id_pregunta != id_pregunta_dependiente AND id_pregunta_dependiente = '.$preguntas[$i]['id_pregunta'].' AND id_lenguaje = '.$app['lenguaje'])->getRows();
                                                 $respuesta = $app['mysql']->runQuery('SELECT * FROM respuestas WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_pregunta = '.$preguntas[$i]['id_pregunta'])->getRows();
-                                                
+
                                                 /* ¿tiene respuestas? */
-                                                $conres = is_array($respuesta); 
+                                                $conres = is_array($respuesta);
 
                                                 echo '<div class="col-xs-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                     echo '<div class="row">';
@@ -101,7 +101,7 @@
                                                                 case 'date':
                                                                     echo '<input type="text" class="form-control" data-type="date" class="question" data-role="respuesta" data-rel="'.$preguntas[$i]['id_pregunta'].'" value="'.($conres ? $respuesta[0]['respuesta'] : '').'">';
                                                                 break;
-                                                                case 'file':                                                         
+                                                                case 'file':
                                                                       echo '<div class="file_uploader col-xs-12" style="padding-left:0px;">';
                                                                             if (!$finalizado)
                                                                             {
@@ -186,9 +186,9 @@
                                                         if(is_array($preguntas_dependientes)){
                                                             for ($p=0; $p < count($preguntas_dependientes); $p++) {
                                                                 $respuesta_dependiente = $app['mysql']->runQuery('SELECT * FROM respuestas WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_pregunta = '.$preguntas_dependientes[$p]['id_pregunta'])->getRows();
-                                                                
+
                                                                 /* ¿tiene respuestas dependientes? */
-                                                                $conderes = is_array($respuesta_dependiente); 
+                                                                $conderes = is_array($respuesta_dependiente);
 
                                                                 echo '<div class="'.($conderes || $conres ? '' : 'oculto').'" data-role="pregunta" data-dependiente="'.$preguntas_dependientes[$p]['id_pregunta_dependiente'].'" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'" data-type="'.$tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo'].'">';
                                                                     echo '<div class="col-xs-12 form-group inset-form-group">';
@@ -211,10 +211,8 @@
                                 echo ' <div class="col-sm-12 BotonesForm">';
                                     if( !$finalizado)
                                     {
-                                        if ($app['pagina'] == 'InformacionAdicional')
-                                        {
-                                            echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
-                                        }
+
+                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los terminos y condiciones</label></div>';
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
                                         echo '<button class="btn btn-default enviar" disabled  id="enviar">Enviar</button>';
                                         echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
@@ -254,7 +252,7 @@
                                     switch ($pag) {
                                         case '0':
                                             $label = 1;
-                                            $prev = "";                                            
+                                            $prev = "";
                                             $next = $paginas[1];
                                         break;
                                         case '1':
