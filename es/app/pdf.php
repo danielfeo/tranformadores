@@ -16,7 +16,7 @@ $lenguaje = $app['mysql']->runQuery('SELECT p.id_lenguaje FROM respuestas r, pre
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
 $categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
 
-$mpdf=new mPDF('utf-8', 'A4', 11, '', 15, 15, 35, 25, 12, 12, 'P');
+$mpdf=new mPDF('utf-8', 'A4', 11, 'Helvetica', 15, 15, 35, 25, 12, 12, 'P');
 $header = '<div class="container">
                 <div class="header">
                     <table width="100%">
