@@ -74,7 +74,7 @@ switch ($accion) {
 		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'" WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
 		if($_POST['_habilitado'] == 1)
 		{
-			$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');
+			$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/Transformadores/');
 		}
 		$estado = $consulta;
 		echo json_encode(array('estado' => $estado));
