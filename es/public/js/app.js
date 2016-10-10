@@ -146,13 +146,26 @@ $(function()
                     respuesta = $(this).find('input[name="pregunta_' + id + '"]:checked').val();
                     break;
             }
-            respuestas.push({
+                respuestas.push({
                 id_pregunta: id,
                 tipo: tipo,
                 respuesta: respuesta
             });
         });
 
+        var checked = $("input[id='acepto']:checked").length;
+        if(checked){
+            $.ajax({
+            type: 'post',
+            url: 'app/db/preguntas.php',
+            dataType: 'json',
+            async: false,
+            data: {
+                _accion: 'guardarAcepto',
+                _acepto: true
+            } ,success: function(data){console.log(data);}});
+        }
+       
         $.ajax({
             type: 'post',
             url: 'app/db/preguntas.php',
