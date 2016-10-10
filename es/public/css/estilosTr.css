@@ -640,6 +640,9 @@ ul#dnn_ctr_EditUser_adminTabNav li:last-child {
 	font-size: 21px;
     margin-top: 40px;
 }
+.fluidBlanco h4:first-child {
+	margin-top: 0px;
+}
 .linkPDF {
 	color: #e2392e !important;
 }
