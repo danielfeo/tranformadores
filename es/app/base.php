@@ -7,6 +7,8 @@
         $experiencia = $_SESSION['experiencia'];
         $categoria = $_SESSION['categoria'];
         $experiencia_fecha = $_SESSION['experiencia_fecha'];
+        $terminos = $app['mysql']->runQuery('SELECT * FROM terminos WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
+        if ($terminos[0]["estado"]!=''){$estado_terminos=true;}
         $experiencia_ejecutada = $app['mysql']->runQuery('SELECT * FROM experiencias_usuarios WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_categoria = '.$categoria)->getRows();
         $categoria_detalle = $app['mysql']->runQuery('SELECT descripcion FROM categoria WHERE id_categoria = '.$categoria)->getRows();
         if(isset($_SESSION['experiencia_actual']['pendientes']))
@@ -224,10 +226,15 @@
                                 echo ' <div class="col-sm-12 BotonesForm">';
                                     if( !$finalizado)
                                     {
-
-                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" value="option1" type="checkbox"> Acepto los <a class="btn-link" href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">terminos y condiciones</a></label></div>';
+                                        if (!$estado_terminos) {
+                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" name="acepto" value="option1" type="checkbox"> Acepto los <a class="btn-link" href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">terminos y condiciones</a></label></div>';
+                                        }
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
+                                        if (!$estado_terminos) {
                                         echo '<button class="btn btn-default enviar" disabled  id="enviar">Enviar</button>';
+                                        }else{
+                                        echo '<button class="btn btn-default enviar"   id="enviar">Enviar</button>';
+                                        }
                                         echo '<p class="infoAdv">Complete todos los campos requeridos para poder enviar</p>';
                                     }
                                 echo '</div>';

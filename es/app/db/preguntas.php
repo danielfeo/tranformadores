@@ -16,8 +16,22 @@ $mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'],
 $accion = $_POST['_accion'];
 $usuario = $_SESSION['usuario']['id'];
 $experiencia = $_SESSION['experiencia'];
+$categoria = $_SESSION['categoria'];
 
 switch ($accion) {
+    case 'guardarAcepto':
+        $acepto = true;
+        
+               
+                   $sql = 'INSERT INTO `terminos`(`id_experiencia`, `id_usuario`, `estado`) VALUES ('.$experiencia.','.$usuario.',1)';
+                        
+            if($sql != '')
+                $resultado = $mysql->runQuery($sql)->getRows();
+
+            if(!$resultado)
+                $estado = false;
+        echo json_encode(array('estado' => $estado,'sql'=>$sql));
+    break;
     case 'guardarPreguntas':
         $estado = true;
         foreach($_POST['_respuestas'] as &$respuesta) {
