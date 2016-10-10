@@ -1,9 +1,9 @@
 <?php
 
 $mailserver = array(
-    'host' => 'mx1.hostinger.ph',
-    'user' => 'masivo@feezgo.com',
-    'pass' => ')/daniel',
-    'port' => '2525',
-    'admin' => 'comunicaciones@redeamerica.org'
+    'host' => 'smtp.gmail.com',
+    'user' => 'web@redeamerica.org',
+    'pass' => '*JKe7J3q',
+    'port' => '587',
+    'admin' => 'jonatancastro1@gmail.com'
 ); 

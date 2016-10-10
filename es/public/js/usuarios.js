@@ -65,7 +65,8 @@ $(function()
 		});	
 	} 
 
-	paginador(1, items_paginas);
+	if ($('#tabla_usuarios').length)
+		paginador(1, items_paginas);
 
 	$('.paginador a').on('click', function(e){
 		$('.paginador a').removeClass('active');

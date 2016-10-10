@@ -76,18 +76,19 @@
                    <h4>Cambiar clave</h4>
                </div>
                <div class="modal-body">
-                 <form>
+                 <form id='form_cambio_clave'>
                    <div class="form-group">
                      <label for="exampleInputPassword1">Clave anterior</label>
-                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                       <input type="password" class="form-control" id="exampleInputPassword1" name="_contra_ant" placeholder="Clave"/>
                    </div>
                    <div class="form-group">
                      <label for="exampleInputPassword2">Clave nueva</label>
-                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Clave"/>
+                       <input type="password" class="form-control" id="exampleInputPassword1" name="_contra_nueva" placeholder="Clave"/>
                    </div>
                    <div class="form-group text-center">
                        <button type="submit" class="btn btn-ingresar">CAMBIAR</button>
                    </div>
+                   <span id="error"></span>
                  </form>
                </div>
            </div> <!--modal-content-->

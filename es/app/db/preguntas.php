@@ -16,15 +16,30 @@ $mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'],
 $accion = $_POST['_accion'];
 $usuario = $_SESSION['usuario']['id'];
 $experiencia = $_SESSION['experiencia'];
+$categoria = $_SESSION['categoria'];
 
 switch ($accion) {
+    case 'guardarAcepto':
+        $acepto = true;
+        
+               
+                   $sql = 'INSERT INTO `terminos`(`id_experiencia`, `id_usuario`, `estado`) VALUES ('.$experiencia.','.$usuario.',1)';
+                        
+            if($sql != '')
+                $resultado = $mysql->runQuery($sql)->getRows();
+
+            if(!$resultado)
+                $estado = false;
+        echo json_encode(array('estado' => $estado,'sql'=>$sql));
+    break;
     case 'guardarPreguntas':
         $estado = true;
         foreach($_POST['_respuestas'] as &$respuesta) {
             $resultado = true;
             $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.$respuesta['id_pregunta'].' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
             $sql = '';
-            if(is_array($pregunta_anterior)){
+            if(is_array($pregunta_anterior))
+            {
                 if($respuesta['respuesta'] == '')
                     $sql = 'DELETE FROM `respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
                 else
@@ -55,10 +70,12 @@ switch ($accion) {
             $usuario_correo = $mysql->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$usuario)->getRows();
             $experiencia_finalizada = $mysql->runQuery('INSERT INTO experiencias_usuarios (id_experiencia, id_usuario, fecha, finalizado, id_categoria) VALUES ('.$experiencia.', '.$usuario.', CURDATE(), 1, '.$_SESSION['categoria'].')')->getRows();
             $mail->send($mailserver['user'], $mailserver['admin'], 'Nuevo formulario', 'Se ha se ha recibido un nuevo formulario del usuario: '.$usuario_correo[0]['email']);
+            /*
             if($_SESSION['lenguaje'] == 1)
                 $mail->send($mailserver['user'], $usuario_correo[0]['email'], 'Gracias', 'Gracias por postular su experiencia al Premio Transformadores');
             else 
                 $mail->send($mailserver['user'], $usuario_correo[0]['email'], 'Obrigado', 'Obrigado por candidatizar a sua experiência ao Prêmio Transformadores');
+            */
             $_SESSION['experiencia_actual']['pendientes'] = false;
             echo json_encode(array('estado' => true, 'preguntas' => array()));
         }

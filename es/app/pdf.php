@@ -16,8 +16,9 @@ $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '
 $categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
 $lenguaje = $app['mysql']->runQuery('SELECT p.id_lenguaje FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND r.`id_usuario` = '.$app['pdf_usuario'].' ORDER BY r.id_pregunta')->getRows();
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
+$categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
 
-$mpdf=new mPDF('utf-8', 'A4', 11, '', 15, 15, 35, 25, 12, 12, 'P');
+$mpdf=new mPDF('utf-8', 'A4', 11, 'Helvetica', 15, 15, 35, 25, 12, 12, 'P');
 $header = '<div class="container">
                 <div class="header">
                     <table width="100%">
@@ -70,7 +71,7 @@ $html = '<div class="container">
                                     for ($a = 0; $a < count($links); $a++)
                                     {
                                         if($links[$a] != '')
-                                            $html .= '<li><a href="'.(strpos($string2, 'http') == 0 ? $links[$a] : 'http://'.$links[$a]).'" target="_blank">'.$links[$a].'</a></li>';
+                                            $html .= '<li><a href="'.(substr($links[$a], 0, 4) === 'http' ? $links[$a] : 'http://'.$links[$a]).'" target="_blank">'.$links[$a].'</a></li>';
                                     }
                                     $html .= '</ul>
                                     </div>';
