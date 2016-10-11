@@ -113,31 +113,36 @@
                       </div>
                       <div class="collapse navbar-collapse" id="menuTransformadores">
                         <ul class="nav nav-pills NavTransformadores">
-                            <li>
-                            <a class="" href="/Transformadores">El Premio</a>
-                            </li>
-                            <li>
-                            <a href="/Transformadores/ComunidadesSostenibles">Comunidades Sostenibles</a>
-                            </li>
-                            <li>
-                            <a href="/Transformadores/EmpresaComunidad">Empresa y Comunidad</a>
-                            </li>
-                            <li class="dropdown ">
-                            <a href="#">Experiencias<strong class="hidden-desktop pull-right icon-chevron-down icon-white"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                <a href="/Transformadores/Experiencias/2015">2015</a>
-                                </li>
-                                <li>
-                                <a href="/Transformadores/Experiencias/2013">2013</a>
-                                </li>
-                            </ul>
-                            </li>
-                            <li>
-                            <a href="/Transformadores/Jurados">Jurados</a>
-                            </li>
-                        </ul>
-                      </div>
+                          <li>
+                          <a href="/Transformadores">El Premio</a>
+                          </li>
+                          <li class="dropdown ">
+                          <a href="#">Categorías<strong class="hidden-desktop pull-right icon-chevron-down icon-white"></strong></a>
+                          <ul class="dropdown-menu">
+                              <li>
+                              <a href="/Transformadores/InversionSocialPrivada">Inversión Social Privada</a>
+                              </li>
+                              <li>
+                              <a href="/Transformadores/Negocios">Negocios</a>
+                              </li>
+                          </ul>
+                          </li>
+                          <li class="dropdown ">
+                          <a href="#">Experiencias<strong class="hidden-desktop pull-right icon-chevron-down icon-white"></strong></a>
+                          <ul class="dropdown-menu">
+                              <li>
+                              <a href="/Transformadores/Experiencias/2015">2015</a>
+                              </li>
+                              <li>
+                              <a href="/Transformadores/Experiencias/2013">2013</a>
+                              </li>
+                          </ul>
+                          </li>
+                          <li>
+                          <a href="/Transformadores/Jurados">Jurados</a>
+                          </li>
+                      </ul>
+                    </div>
                   </div>
                   <!-- <a href="/Tutorial/index.html" target="_blank"><div class="tutorial"></div></a> -->
                </div>
