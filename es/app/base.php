@@ -75,7 +75,7 @@
                                                     /* ¿tiene respuestas? */
                                                     $conres = is_array($respuesta);
 
-                                                    echo '<div class="col-xs-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
+                                                    echo '<div class="col-xs-12 col-sm-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                         echo '<div class="row">';
                                                             echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].'">';
                                                                 echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
