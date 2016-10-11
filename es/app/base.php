@@ -29,6 +29,30 @@
                     </h1>
                 </div>
                 <div class="col-sm-12">
+                    <div class="row filaInstrucciones">
+                        <div class="col-sm-8">
+                            <div class="boxInstrucciones">
+                                <p></p>
+                                <ul>
+                                    <li>Usted podrá diligenciar el formulario gradualmente e ir guardando las respuestas desde el 18 de octubre hasta el 30 de noviembre de 2016.</li>
+                                    <li>Antes de dar click en “Enviar" usted deberá Aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a>para poder participar.</li>
+                                    <li>Podrá postular su iniciativa en una o en las dos categrías del premio.</li>
+                                    <li>Al enviar su postulación usted ya no podrá modificar ninguna respuesta, al ingresar al formulario podrá descarga un PDF con los datos que suministró.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="boxDescargas">
+                                <h4>Recursos</h4>
+                                <ul>
+                                    <li><a href="#" target="_blank">Descargar las preguntas de este formulario</a></li>
+                                    <li><a href="#" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
                     <?php
                         include 'sections/menu.php';
                     ?>

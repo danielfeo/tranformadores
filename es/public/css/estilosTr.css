@@ -2445,4 +2445,40 @@ nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; tex
 .fr {float: right;}
 .fl {float: left;}
 
-/*fin estilos viejos*/
+.filaInstrucciones {
+	margin-bottom: 25px;
+}
+.boxInstrucciones {
+	background-color: #f7f7f7;
+	font-size: 14px;
+	padding: 3px 5px;
+	border-radius: 4px;
+}
+.boxInstrucciones ul {
+	padding-left: 30px;
+}
+.boxInstrucciones li {
+	list-style-image: url(../img/bullet-rojo.png);
+	padding-bottom: 2px;
+}
+.boxDescargas li {
+	list-style-image: url(../img/pdf_icon_16x16.gif);
+	padding-bottom: 2px;
+}
+.boxDescargas {
+	background-color: #f7f7f7;
+	border: 1px dashed #ccc;
+	padding: 5px;
+	border-radius: 4px;
+}
+.boxDescargas h4 {
+	text-align: center;
+	color: #26A600;
+}
+.boxDescargas a{
+	color: #4d4d4d;
+}
+.boxDescargas a:hover{
+	color: #F10015
+}
+
