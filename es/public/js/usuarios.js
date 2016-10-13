@@ -146,7 +146,7 @@ $(function()
 		}
 
 		if (accion == 'ingresar'){
-			if(correo != "" && pass != ""){
+			if(correo != "" && pass != "" && categoria != ""){
 				$.ajax({
 					type: 'post',
 					url:  'app/db/usuarios.php',
@@ -193,6 +193,13 @@ $(function()
 					$('input[name="clave"]').css('border-color','#F00');
 				else
 					$('input[name="clave"]').css('border-color','#ccc');
+
+				if(categoria == "")
+					$.fn.SimpleModal({
+						btn_ok:   'Aceptar',
+						title:    'Mensaje',
+						contents: 'Você deve selecionar a categoria na qual a participar'
+					}).showModal();
 			}
 		} 
 	});
