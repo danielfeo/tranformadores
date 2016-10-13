@@ -37,13 +37,10 @@ $(function()
                     contenedor.find('input[type="file"]').val('');
                     contenedor.find('div.archivos').append('<p><a href="'+data.url+'" data-role="file" target="_blank">'+data.file+'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>');
                 } else {
-                    $.fn.SimpleModal({
-                        model: 'modal',
-                        btn_ok : 'Aceptar',
+                     $.fn.SimpleModal({
+                        btn_ok:   'Aceptar',
                         title:    'Error',
                         contents: 'No se pudo enviar el archivo, recuerde que los formatos admitidos son (PDF, DOCX, DOC, XLSX, XLS) y el tamaño maxímo es 5mb'
-                    }).addButton("Aceptar", "btn primary", function(){
-                        this.hide();
                     }).showModal();
                 }
                 validar_archivos();

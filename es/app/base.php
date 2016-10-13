@@ -241,8 +241,8 @@
 
                                                                     /* ¿tiene respuestas dependientes? */
                                                                     $conderes = is_array($respuesta_dependiente);
-
-                                                                    echo '<div class="'.($conderes || $conres ? '' : 'oculto').'" data-role="pregunta" data-dependiente="'.$preguntas_dependientes[$p]['id_pregunta_dependiente'].'" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'" data-type="'.$tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo'].'">';
+                                                                        
+                                                                    echo '<div class="'.($conderes || $conres ? '' : 'oculto').' '.($mostrar_pendientes && !$conderes ? 'has-error' : '').'" data-role="pregunta" data-dependiente="'.$preguntas_dependientes[$p]['id_pregunta_dependiente'].'" data-rel="'.$preguntas_dependientes[$p]['id_pregunta'].'" data-type="'.$tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo'].'">';
                                                                         echo '<div class="col-xs-12 form-group inset-form-group">';
                                                                             echo '<label class="'.(!$conderes && $pendiente ? 'pendiente' : '').'" style="margin-top:0px;">'.$preguntas_dependientes[$p]['pregunta'].'</label>';
                                                                             switch($tipos[$preguntas_dependientes[$p]['id_tipo']-1]['tipo']) {
