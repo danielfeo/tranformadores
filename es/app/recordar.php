@@ -16,12 +16,13 @@
             <div class="container">
                 <div class="row login">
                     <div class="col-md-4 col-md-offset-4 form-group">
-                        <label for="usuario">E-mail</label>
-                        <input type="text" placeholder="E-mail" class="form-control" name="usuario">
+                        <label for="usuario">Correo</label>
+                        <p><small class="grey">Revise su bandeja de entrada o en la carpeta Spam</small></p>
+                        <input type="text" placeholder="Correo" class="form-control" name="usuario">
                     </div>
                     <div class="col-md-4 col-md-offset-4 form-group">
                         <input class="btn btn-default enviar" type="button" value="Enviar" name="enviar">
-                        <a id="olvido" class="pull-right" style="padding-top:15px;" href="login">Entrar</a>
+                        <a id="olvido" class="pull-right" style="padding-top:15px;" href="login">Ingresar de nuevo</a>
                     </div>
                     <div class="col-md-12" style="height:400px">
                     </div>

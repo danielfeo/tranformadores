@@ -198,7 +198,7 @@ $(function()
 					$.fn.SimpleModal({
 						btn_ok:   'Aceptar',
 						title:    'Mensaje',
-						contents: 'Você deve selecionar a categoria na qual a participar'
+						contents: 'Debe seleccionar la categoría en la que quiere participar.'
 					}).showModal();
 			}
 		} 

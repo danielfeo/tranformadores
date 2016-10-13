@@ -32,6 +32,7 @@
                                 <label for="">Categoría</label>
                                 <p><small class="grey">Usted podrá participar en una o en las dos categorías.</small></p>
                                 <select name="categoria" id="" class="form-control">
+                                    <option value="">Seleccione la categoría</option>
                                     <option value="1">Inversión social privada</option>
                                     <option value="2">Negocios</option>
                                 </select>
