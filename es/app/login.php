@@ -32,8 +32,8 @@
                                 <p class="grey"><small>Você pode participar em uma ou ambas as categorias</small></p>
                                 <select name="categoria" id="" class="form-control">
                                     <option value="">Selecione a categoria</option>
-                                    <option value="1">Inversión social privada</option>
-                                    <option value="2">Negocios</option>
+                                    <option value="1">Investimento Social Privado e Comunidades Sustentáveis</option>
+                                    <option value="2">Negócios e Comunidades Sustentáveis</option>
                                 </select>
                             </div>
                         </div>
