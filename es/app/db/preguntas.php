@@ -20,11 +20,8 @@ $categoria = $_SESSION['categoria'];
 
 switch ($accion) {
     case 'guardarAcepto':
-        $acepto = true;
-        
-               
-                   $sql = 'INSERT INTO `terminos`(`id_experiencia`, `id_usuario`, `estado`) VALUES ('.$experiencia.','.$usuario.',1)';
-                        
+            $acepto = true;   
+            $sql = 'INSERT INTO `terminos`(`id_experiencia`, `id_usuario`, `estado`) VALUES ('.$experiencia.','.$usuario.',1)';   
             if($sql != '')
                 $resultado = $mysql->runQuery($sql)->getRows();
 
@@ -95,14 +92,28 @@ switch ($accion) {
                     $sobreescribir = false;
                     $nombre = $key['name'];
                     $temporal = $key['tmp_name'];
-                    $tamano= ($key['size'] / 1000)."kb";
-                    $tipo = $key['type'];
-                    
+                    $tamano= ($key['size'] / 1000);
+                    $tipo = $key['type'];                    
                     $url = $directorio.$nombre;
-
                     $exp_nombre = explode(".", $nombre);
                     $extension = end($exp_nombre);
-                    if ($extension == "pdf" || $extension == "docx" || $extension == "doc" || $extension == "xlsx" || $extension == "xls"){
+                    $extensiones = [
+                        "jpg",
+                        "jpeg",
+                        "png",
+                        "gif",
+                        "doc",
+                        "docx",
+                        "ppt",
+                        "pptx",
+                        "xls",
+                        "xlsx",
+                        "pdf",
+                        "avi",
+                        "mov",
+                        "mpg"
+                    ];
+                    if (in_array($extension, $extensiones) || tamano > 5120){
                         if (file_exists($directorio.$nombre)){
                             if (!$sobreescribir){
                                 $i = 1;
