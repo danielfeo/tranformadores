@@ -81,6 +81,7 @@
 
                                 if($finalizado){
                                     echo '<div class="col-xs-12" style="text-align:center">';
+                                    echo '<p>Usted ya ha enviado la totalidad del formulario aquí podrá descargar una versión en PDF de lo que diligenció.</p>';
                                         echo '<a style="font-size:1.4em; display:block; width:100%; text-align:center; margin-top:20px; float:left" target="_blank" href="pdf'.$experiencia_ejecutada[0]['id_experiencia'].'-'.$experiencia_ejecutada[0]['id_categoria'].'-'.$experiencia_ejecutada[0]['id_usuario'].'"><i class="fa fa-file-pdf-o"></i> Descargue aquí su formulario</a>';
                                     echo '</div>';
                                 } else {
