@@ -32,6 +32,10 @@ nav div.login{
     background: #fff;
 }
 
+.grey{
+    color: gray;
+}
+
 nav div.login ul {
     height: 22px;
     margin-top: 7px;

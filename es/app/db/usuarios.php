@@ -88,7 +88,7 @@ switch ($accion) {
 		$consulta = $mysql->runQuery('SELECT pass FROM usuarios WHERE email = "'.$_POST['_usuario'].'"')->getRows();
 		echo $_POST['usuario'];
 		if (is_array($consulta)){
-			$estado = $mail->send($mailserver['user'], $_POST['_usuario'], 'Recordatorio de clave Redeamerica.org', 'Su clave actual es : '.$consulta[0]['pass'].' ');
+			$estado = $mail->send($mailserver['user'], $_POST['_usuario'], 'Recordatorio de clave www.redeamerica.org/transformadores/pr', 'Su clave actual es : '.$consulta[0]['pass'].' ');
 		}else{
 			$estado = 0;
 		}

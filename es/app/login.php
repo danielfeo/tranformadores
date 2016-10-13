@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-4 col-md-offset-4 form-group">
                                 <label for="">Categoria</label>
-                                <p><small>Você pode participar em uma ou ambas as categorias</small></p>
+                                <p class="grey"><small>Você pode participar em uma ou ambas as categorias</small></p>
                                 <select name="categoria" id="" class="form-control">
                                     <option value="">Selecione a categoria</option>
                                     <option value="1">Inversión social privada</option>

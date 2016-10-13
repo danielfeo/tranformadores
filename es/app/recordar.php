@@ -17,6 +17,7 @@
                 <div class="row login">
                     <div class="col-md-4 col-md-offset-4 form-group">
                         <label for="usuario">E-mail</label>
+                        <p class="grey"><small>Revise su bandeja de entrada o en la carpeta Spam</small></p>
                         <input type="text" placeholder="E-mail" class="form-control" name="usuario">
                     </div>
                     <div class="col-md-4 col-md-offset-4 form-group">
