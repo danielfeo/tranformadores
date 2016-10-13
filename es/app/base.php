@@ -8,9 +8,16 @@
         $categoria = $_SESSION['categoria'];
         $experiencia_fecha = $_SESSION['experiencia_fecha'];
         $terminos = $app['mysql']->runQuery('SELECT * FROM terminos WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
-        if ($terminos[0]["estado"]!=''){$estado_terminos=true;}
+        if ($terminos[0]["estado"]!='')
+        {
+            $estado_terminos=true;
+        }
         $experiencia_ejecutada = $app['mysql']->runQuery('SELECT * FROM experiencias_usuarios WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_categoria = '.$categoria)->getRows();
         $categoria_detalle = $app['mysql']->runQuery('SELECT descripcion FROM categoria WHERE id_categoria = '.$categoria)->getRows();
+        $total_preguntas = $mysql->runQuery('SELECT COUNT(*) AS total_preguntas FROM preguntas WHERE id_lenguaje = '.$_SESSION['lenguaje'].' AND id_categoria = '.$_SESSION['categoria'].' AND requerida = 1 AND (id_grupo != 16 OR id_grupo != 22)')->getRows();
+        $total_respuestas = $mysql->runQuery('SELECT COUNT(*) AS total_respuestas FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.' AND id_pregunta IN (SELECT id_pregunta FROM preguntas WHERE id_categoria = '.$_SESSION['categoria'].' AND id_lenguaje = '.$_SESSION['lenguaje'].' AND requerida = 1)')->getRows();
+        $porcentaje_diligenciado = ($total_respuestas[0]['total_respuestas'] * 100) / $total_preguntas[0]['total_preguntas'];
+        $mostrar_pendientes = $porcentaje_diligenciado > 85 ? true : false;
         if(isset($_SESSION['experiencia_actual']['pendientes']))
             $pendiente = $_SESSION['experiencia_actual']['pendientes'];
         else
@@ -97,12 +104,12 @@
                                                     $respuesta = $app['mysql']->runQuery('SELECT * FROM respuestas WHERE id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario.' AND id_pregunta = '.$preguntas[$i]['id_pregunta'])->getRows();
 
                                                     /* ¿tiene respuestas? */
-                                                    $conres = is_array($respuesta);
+                                                    $conres = is_array($respuesta) ? 1 : 0;
 
                                                     echo '<div class="col-xs-12 col-sm-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                         echo '<div class="row">';
-                                                            echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].'">';
-                                                                echo '<label class="'.((!$conres && $pendiente) && $preguntas[$i]['requerida'] == 1 ? 'pendiente' : '').'">'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
+                                                            echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].' '.($mostrar_pendientes && !$conres ? 'has-error' : '').'">';
+                                                                echo '<label>'.$preguntas[$i]['pregunta'].'-'.$mostrar_pendientes.'-'.$conres.'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
                                                                 switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                     case 'textarea':
                                                                         echo '<textarea class="form-control" class="question" data-role="respuesta" style="'.$preguntas[$i]['inline'].'" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
