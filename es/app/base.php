@@ -109,7 +109,7 @@
                                                     echo '<div class="col-xs-12 col-sm-'.$size.'" data-role="pregunta" data-rel="'.$preguntas[$i]['id_pregunta'].'" data-type="'.$tipos[$preguntas[$i]['id_tipo']-1]['tipo'].'">';
                                                         echo '<div class="row">';
                                                             echo '<div class="col-xs-12 form-group '.$preguntas[$i]['clases'].' '.($mostrar_pendientes && !$conres ? 'has-error' : '').'">';
-                                                                echo '<label>'.$preguntas[$i]['pregunta'].'-'.$mostrar_pendientes.'-'.$conres.'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
+                                                                echo '<label>'.$preguntas[$i]['pregunta'].'</label>'.($preguntas[$i]['comentarios'] ? '<p><small>'.$preguntas[$i]['comentarios'].'</small></p>' : '');
                                                                 switch($tipos[$preguntas[$i]['id_tipo']-1]['tipo']) {
                                                                     case 'textarea':
                                                                         echo '<textarea class="form-control" class="question" data-role="respuesta" style="'.$preguntas[$i]['inline'].'" data-rel="'.$preguntas[$i]['id_pregunta'].'">'.($conres ? $respuesta[0]['respuesta'] : '').'</textarea>';
