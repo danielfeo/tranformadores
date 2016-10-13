@@ -44,8 +44,8 @@
                             <div class="boxDescargas">
                                 <h4>Recursos</h4>
                                 <ul>
-                                    <li><a href="<?=($categoria=1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-es.pdf'?>" target="_blank">Descargar las preguntas de este formulario</a></li>
-                                    <li><a href="<?=($categoria=1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-negocios-es.pdf'?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                    <li><a href="<?=($categoria==1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-es.pdf'?>" target="_blank">Descargar las preguntas de este formulario</a></li>
+                                    <li><a href="<?=($categoria==1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-negocios-es.pdf'?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
 
                                 if($finalizado){
                                     echo '<div class="col-xs-12" style="text-align:center">';
-                                    echo '<p>Usted ya ha enviado la totalidad del formulario aquí podrá descargar una versión en PDF de lo que diligenció.</p>';
+                                    echo '<br><p>Usted ya ha enviado la totalidad del formulario aquí podrá descargar una versión en PDF de lo que diligenció.</p>';
                                         echo '<a style="font-size:1.4em; display:block; width:100%; text-align:center; margin-top:20px; float:left" target="_blank" href="pdf'.$experiencia_ejecutada[0]['id_experiencia'].'-'.$experiencia_ejecutada[0]['id_categoria'].'-'.$experiencia_ejecutada[0]['id_usuario'].'"><i class="fa fa-file-pdf-o"></i> Descargue aquí su formulario</a>';
                                     echo '</div>';
                                 } else {
