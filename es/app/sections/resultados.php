@@ -9,7 +9,7 @@ echo '</div>';
 echo '<br><h4>Usuarios</h4><br>';
 echo '<table id="tabla_experiencias_usuarios" width="100%" class="table table-striped">';
 	echo '<thead>';
-		echo '<tr><th>Organización</th><th>Usuario</th><th>Lenguaje</th><th>Categoria</th><th>Fecha</th><th></th></tr>';
+		echo '<tr><th>Organización</th><th>Usuario</th><th>Lenguaje</th><th>Categoria</th><th>Fecha</th></tr>';
 	echo '</thead>';
 	echo '<tbody>';
 	echo '</tbody>';
