@@ -29,7 +29,8 @@
                                 <input type="hidden" value="ingresar" name="accion"> 
                             </div>
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <label for="">Categoria</label>
+                                <label for="">Categoría</label>
+                                <p><small class="grey">Usted podrá participar en una o en las dos categorías.</small></p>
                                 <select name="categoria" id="" class="form-control">
                                     <option value="1">Inversión social privada</option>
                                     <option value="2">Negocios</option>

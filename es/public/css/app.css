@@ -15,6 +15,9 @@ footer > div {
     width: 100%;
     display: block;
 }
+.grey{
+    color: gray;
+}
 
 h2 {
     font-family:'Exo', sans-serif;
