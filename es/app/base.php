@@ -45,8 +45,8 @@
                             <div class="boxDescargas">
                                 <h4>Recursos</h4>
                                 <ul>
-                                    <li><a href="#" target="_blank">Descargar las preguntas de este formulario</a></li>
-                                    <li><a href="#" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                    <li><a href="<?=($categoria=1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-es.pdf'?>" target="_blank">Descargar las preguntas de este formulario</a></li>
+                                    <li><a href="<?=($categoria=1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-negocios-es.pdf'?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
                                 </ul>
                             </div>
                         </div>
