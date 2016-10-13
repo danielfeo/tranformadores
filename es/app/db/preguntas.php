@@ -58,7 +58,7 @@ switch ($accion) {
         echo json_encode(array('estado' => $estado));
     break;
     case 'enviarPreguntas':
-        $total_preguntas = $mysql->runQuery('SELECT COUNT(*) AS total_preguntas FROM preguntas WHERE id_lenguaje = '.$_SESSION['lenguaje'].' AND id_categoria = '.$_SESSION['categoria'].' AND requerida = 1 AND id_grupo != 16')->getRows();
+        $total_preguntas = $mysql->runQuery('SELECT COUNT(*) AS total_preguntas FROM preguntas WHERE id_lenguaje = '.$_SESSION['lenguaje'].' AND id_categoria = '.$_SESSION['categoria'].' AND requerida = 1 AND (id_grupo != 16 OR id_grupo != 22)')->getRows();
         $total_respuestas = $mysql->runQuery('SELECT COUNT(*) AS total_respuestas FROM respuestas WHERE id_usuario = '.$usuario.' AND id_experiencia = '.$experiencia.' AND id_pregunta IN (SELECT id_pregunta FROM preguntas WHERE id_categoria = '.$_SESSION['categoria'].' AND id_lenguaje = '.$_SESSION['lenguaje'].' AND requerida = 1)')->getRows();
         
         if($total_preguntas[0]['total_preguntas'] > $total_respuestas[0]['total_respuestas'])

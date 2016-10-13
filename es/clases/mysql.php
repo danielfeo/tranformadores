@@ -35,9 +35,12 @@ class MySQL{
         $mysqli = mysqli_connect($this->server, $this->user, $this->pass, $this->database);
         mysqli_set_charset($mysqli, 'utf8');
         if($this->resultado = mysqli_query($mysqli, $query))
+        {
             $this->estado = true;
-        else
+        } else {
+            echo mysqli_error($mysqli);
             $this->estado = false;
+        }
         
         mysqli_close($mysqli);
         return $this;

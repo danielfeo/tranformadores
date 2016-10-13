@@ -105,4 +105,3 @@ $mpdf->WriteHTML($stylesheet,1);
 
 $mpdf->WriteHTML($html, 2);
 $mpdf->Output($usuarios[0]['organizacion'].'_'.date('Ymd').'_'.($categoria[0]['id_categoria'] == '1' ? 'ISP' : 'Negocios').'.pdf', 'D');
-exit;
