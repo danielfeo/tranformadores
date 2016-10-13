@@ -5,7 +5,6 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <span class="intro"></span>
-                        <span ><a href="http://www.redeamerica.org/PremioLatinoamericano.aspx" class="SkinObject">Premio Latinoamericano</a></span>
                     </div>
                 </div>
             </div>
