@@ -57,7 +57,7 @@
                </div>
             </div>
             <div class="col-xs-2 idioma" id="idioma">
-               <a href="/Transformadores"><img alt="" src="public/img/icon-es.png" />Español</a>
+               
             </div>
             <div class="col-xs-2 redes">
                <a href="//www.facebook.com/RedEAmerica/" target="_blank"><img src="public/img/fb.png"></a>
