@@ -8,6 +8,7 @@ body {
     font-size: 12px;
 }
 
+
 nav > div,
 section > div,
 footer > div {
@@ -479,3 +480,5 @@ nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; tex
 .nav>li>a {
     padding: 0 15px;
 }
+
+

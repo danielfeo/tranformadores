@@ -35,7 +35,7 @@
                                 <p></p>
                                 <ul>
                                     <li>Usted podrá diligenciar el formulario gradualmente e ir guardando las respuestas hasta el 30 de noviembre de 2016.</li>
-                                    <li>El premio cuenta con dos categorías. Podrá postular sus iniciativas en ambas categorías de acuerdo al reglamento. Antes de dar clic en “Enviar" usted deberá aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a>para poder participar.</li>   
+                                    <li>El premio cuenta con dos categorías. Podrá postular sus iniciativas en ambas categorías de acuerdo al reglamento. Antes de dar clic en “Enviar" usted deberá aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a> para poder participar.</li>   
                                     <li>Al enviar su formulario de postulación podrá descargarlo en versión PDF. No será posible  modificar ninguna respuesta.</li>
                                 </ul>
                             </div>
@@ -45,7 +45,7 @@
                                 <h4>Recursos</h4>
                                 <ul>
                                     <li><a href="<?=($categoria==1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-es.pdf'?>" target="_blank">Descargar las preguntas de este formulario</a></li>
-                                    <li><a href="<?=($categoria==1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-negocios-es.pdf'?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                    <li><a href="<?=($categoria==1)?'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-ISP-es.pdf':'http://www.redeamerica.org/Portals/0/Transformadores/docs/Reglamento-negocios-es.pdf'?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -265,7 +265,7 @@
                                     if( !$finalizado)
                                     {
                                         if (!$estado_terminos) {
-                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" name="acepto" value="option1" type="checkbox"> Acepto los <a class="btn-link" href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">terminos y condiciones</a></label></div>';
+                                        echo '<div class="col-sm-12 text-center"><label class="checkbox-inline terminosCondiciones"><input id="acepto" name="acepto" value="option1" type="checkbox">  Acepto los <a class="btn-link" href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank"> terminos y condiciones</a></label></div>';
                                         }
                                         echo '<button class="btn btn-default guardar" id="guardar">Guardar</button>';
                                         if (!$estado_terminos) {

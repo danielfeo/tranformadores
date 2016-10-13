@@ -43,10 +43,10 @@ switch ($accion) {
                 if($respuesta['respuesta'] == '')
                     $sql = 'DELETE FROM `respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
                 else
-                    $sql = 'UPDATE `respuestas` SET `respuesta` = "'.$respuesta['respuesta'].'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
+                    $sql = 'UPDATE `respuestas` SET `respuesta` = "'.htmlspecialchars($respuesta['respuesta']).'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
             }else{
                 if($respuesta['respuesta'] != '')
-                   $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.$respuesta['respuesta'].'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';
+                   $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.htmlspecialchars($respuesta['respuesta']).'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';
             }
             
             if($sql != '')
