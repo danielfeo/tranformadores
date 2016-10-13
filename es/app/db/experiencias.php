@@ -15,7 +15,7 @@ $mail = new JMail($mailserver['host'], $mailserver['user'], $mailserver['pass'],
 $accion = $_POST['_accion'];
 switch ($accion) {
 	case 'guardar_experiencia':
-		$resultados = $mysql->runQuery('INSERT INTO experiencias(inicio, fin) VALUES("'.$_POST['_fecha_i'].'" , "'.$_POST['_fecha_f'].'")')->getRows();
+		$resultados = $mysql->runQuery('INSERT INTO experiencias(inicio, fin, activo) VALUES("'.$_POST['_fecha_i'].'" , "'.$_POST['_fecha_f'].'", 1)')->getRows();
 		echo json_encode(array('estado' => $resultados));
 	break;
 	case 'obtener_experiencias':

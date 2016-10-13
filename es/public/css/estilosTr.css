@@ -2482,3 +2482,6 @@ nav div.banner .SkinFecha { color:#999999; font-size:11px; line-height:60px; tex
 	color: #F10015
 }
 
+.has-error label {
+    color: #b40404;
+}
