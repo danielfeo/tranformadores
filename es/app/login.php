@@ -20,17 +20,18 @@
                                 <input type="text" placeholder="Organización" class="form-control" name="organizacion">
                             </div>
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <label for="usuario">Correo</label>
+                                <label for="usuario">E-mail</label>
                                 <input type="text" placeholder="Correo" class="form-control" name="usuario">
                             </div>
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <label for="clave">Contraseña</label>
+                                <label for="clave">Senha</label>
                                 <input type="password" placeholder="Contraseña" class="form-control" name="clave">
                                 <input type="hidden" value="ingresar" name="accion"> 
                             </div>
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <label for="">Categoria</label>
+                                <label for="">Selecione a categoria</label>
                                 <select name="categoria" id="" class="form-control">
+                                    <option value="">Selecione</option>
                                     <option value="1">Inversión social privada</option>
                                     <option value="2">Negocios</option>
                                 </select>
@@ -38,8 +39,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <input class="btn btn-default enviar" type="button" value="Ingresar" name="guardar">
-                                <a id="olvido" class="pull-right" style="padding-top:15px;" href="Recordar">Olvido su contraseña</a>
+                                <input class="btn btn-default enviar" type="button" value="Entrar" name="guardar">
+                                <a id="olvido" class="pull-right" style="padding-top:15px;" href="Recordar">Esqueceu sua senha</a>
                             </div>
                         </div>
                     </div>
