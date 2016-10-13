@@ -34,10 +34,9 @@
                             <div class="boxInstrucciones">
                                 <p></p>
                                 <ul>
-                                    <li>Usted podrá diligenciar el formulario gradualmente e ir guardando las respuestas desde el 18 de octubre hasta el 30 de noviembre de 2016.</li>
-                                    <li>Antes de dar click en “Enviar" usted deberá Aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a>para poder participar.</li>
-                                    <li>Podrá postular su iniciativa en una o en las dos categrías del premio.</li>
-                                    <li>Al enviar su postulación usted ya no podrá modificar ninguna respuesta, al ingresar al formulario podrá descarga un PDF con los datos que suministró.</li>
+                                    <li>Usted podrá diligenciar el formulario gradualmente e ir guardando las respuestas hasta el 30 de noviembre de 2016.</li>
+                                    <li>El premio cuenta con dos categorías. Podrá postular sus iniciativas en ambas categorías de acuerdo al reglamento. Antes de dar clic en “Enviar" usted deberá aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a>para poder participar.</li>
+                                    <li>Al enviar su formulario de postulación podrá descargarlo en versión PDF. No será posible  modificar ninguna respuesta.</li>
                                 </ul>
                             </div>
                         </div>
@@ -45,8 +44,8 @@
                             <div class="boxDescargas">
                                 <h4>Recursos</h4>
                                 <ul>
-                                    <li><a href="#" target="_blank">Descargar las preguntas de este formulario</a></li>
-                                    <li><a href="#" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-pt.pdf' ?>" target="_blank">Descargar las preguntas de este formulario</a></li>
+                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-negocios-pt.pdf' ?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -82,7 +81,8 @@
 
                                 if($finalizado){
                                     echo '<div class="col-xs-12" style="text-align:center">';
-                                        echo '<a style="font-size:1.4em; display:block; width:100%; text-align:center; margin-top:20px; float:left" target="_blank" href="pdf'.$experiencia_ejecutada[0]['id_experiencia'].'-'.$experiencia_ejecutada[0]['id_categoria'].'-'.$experiencia_ejecutada[0]['id_usuario'].'"><i class="fa fa-file-pdf-o"></i> Descargue aquí su formulario</a>';
+                                        echo '<br><p>Você já enviou o formulário inteiro aqui você pode baixar uma versão em PDF do que esses alunos concluída.</p>';
+                                        echo '<a class="btn btn-default enviar" style="font-size:1.4em; display:inline-block; margin: 20px auto; text-align:center;" target="_blank" href="pdf'.$experiencia_ejecutada[0]['id_experiencia'].'-'.$experiencia_ejecutada[0]['id_categoria'].'-'.$experiencia_ejecutada[0]['id_usuario'].'"><i class="fa fa-file-pdf-o"></i>  Baixar uma versão em PDF</a>';
                                     echo '</div>';
                                 } else {
                                     foreach($sub_grupos as &$grupo){
