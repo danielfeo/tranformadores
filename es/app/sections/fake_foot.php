@@ -10,12 +10,6 @@
 				    <a href="/Transformadores">El Premio</a>
 				    </li>
 				    <li>
-				    <a href="/Transformadores/Reglamento">Reglamento</a>
-				    </li>
-				    <li>
-				    <a href="/Transformadores/Criterios-Evaluacion">Criterios de evaluacion</a>
-				    </li>
-				    <li>
 				    <a href="/Transformadores/Experiencias">Experiencias</a>
 				    </li>
 				    <li>

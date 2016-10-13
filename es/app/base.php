@@ -55,7 +55,14 @@
                 <div class="col-sm-12">
                     <h1 class="tituloForm" style="color:#E87820;">
                     <?php
-                        echo $categoria_detalle[0]['descripcion'];
+                        switch ($_SESSION['lenguaje']) {
+                            case '1':
+                                echo $categoria == '1' ? 'Inversión Social Privada y Comunidades Sostenibles' : 'Negocios y Comunidades Sostenibles';
+                            break;
+                            case '2':
+                                echo $categoria == '1' ? 'Investimento Social Privado e Comunidades Sustentáveis' : 'Negócios e Comunidades Sustentáveis';
+                            break;
+                        }
                     ?>
                     </h1>
                 </div>
