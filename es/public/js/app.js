@@ -354,10 +354,46 @@ $(function() {
     });
 
     $('.saida').on('click', function(e) {
+        var respuestas = new Array();
+        $('div[data-role="pregunta"]').each(function(i, e) {
+            var id = $(this).data('rel');
+            var tipo = $(this).data('type');
+            var respuesta = '';
+            switch (tipo) {
+                case 'textarea':
+                case 'text':
+                case 'select':
+                case 'date':
+                    respuesta = $(this).find('[data-role="respuesta"]').val();
+                    break;
+                case 'radio':
+                    respuesta = $(this).find('input[name="pregunta_' + id + '"]:checked').val();
+                    break;
+            }
+            respuestas.push({
+                id_pregunta: id,
+                tipo: tipo,
+                respuesta: respuesta
+            });
+        });
+
+        $.ajax({
+            type: 'post',
+            url: 'app/db/preguntas.php',
+            dataType: 'json',
+            async: false,
+            data: {
+                _accion: 'guardarPreguntas',
+                _respuestas: respuestas
+            },
+            success: function(data) {}
+        });
+
         $.ajax({
             type: 'post',
             url: 'app/db/usuarios.php',
             dataType: 'json',
+            async: false,
             data: {
                 _accion: 'cerrar_sesion'
             },
@@ -365,6 +401,7 @@ $(function() {
                 window.location.href = url + '/' + lang;
             }
         });
+
         e.preventDefault();
     });
 
