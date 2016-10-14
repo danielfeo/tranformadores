@@ -13,7 +13,7 @@ $grupos_preguntas = $app['mysql']->runQuery('SELECT GROUP_CONCAT(DISTINCT p.id_g
 $usuarios = $app['mysql']->runQuery('SELECT * FROM usuarios WHERE id_usuario = '.$app['pdf_usuario'])->getRows();
 $lenguaje = $app['mysql']->runQuery('SELECT p.id_lenguaje FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND r.`id_usuario` = '.$app['pdf_usuario'].' ORDER BY r.id_pregunta')->getRows();
 $grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_lenguaje = '.$lenguaje[0]['id_lenguaje'].' and id_grupo = id_grupo_padre OR id_grupo IN ('.$grupos_preguntas[0]['grupos'].') ORDER BY id_grupo_padre, id_grupo')->getRows();
-$archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
+$archivos = glob('../formulario/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
 $categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
 
 switch ($lenguaje[0]['id_lenguaje']) {
