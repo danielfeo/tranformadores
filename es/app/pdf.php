@@ -15,19 +15,28 @@ $lenguaje = $app['mysql']->runQuery('SELECT p.id_lenguaje FROM respuestas r, pre
 $grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_lenguaje = '.$lenguaje[0]['id_lenguaje'].' and id_grupo = id_grupo_padre OR id_grupo IN ('.$grupos_preguntas[0]['grupos'].') ORDER BY id_grupo_padre, id_grupo')->getRows();
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
 $categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
+$lenguaje[0]['id_lenguaje'] = "1";
+
+switch ($lenguaje[0]['id_lenguaje']) {
+    case '1':
+        if($app['pdf_categoria'] == "1")
+            $titulo = '<td width="322px"><img width="142px" src="public/img/logo-transformadores.png" alt=""></td><td><span class="tituloForm ColRojo">Inversión Social Privada y Comunidades Sostenibles</td>';
+        else
+            $titulo ='<td width="420px"><img width="142px" src="public/img/logo-transformadores.png" alt=""></td><td><span class="tituloForm ColRojo">Negocios y Comunidades Sostenibles</td>';
+    break;
+    case '2':
+        if($app['pdf_categoria'] == "1")
+            $titulo = '<td width="285px"><img width="142px" src="public/img/logo-transformadores.png" alt=""></td><td><span class="tituloForm ColRojo">Investimento Social Privado e Comunidades Sustentáveis</td>';
+        else
+            $titulo ='<td width="410px"><img width="142px" src="public/img/logo-transformadores.png" alt=""></td><td><span class="tituloForm ColRojo">Negócios e Comunidades Sustentáveis</td>';
+    break;
+}
 
 $mpdf=new mPDF('utf-8', 'A4', 11, 'Helvetica', 15, 15, 35, 25, 12, 12, 'P');
 $header = '<div class="container">
                 <div class="header">
                     <table width="100%">
-                        <tr>
-                            <td width="500px">
-                                <img width="142px" src="public/img/logo-transformadores.png" alt="">
-                            </td>
-                            <td>
-                                <span class="tituloForm ColRojo">Comunidades Sostenibles</span>
-                            </td>
-                        </tr>
+                        <tr>'.$titulo.'</tr>
                     </table>
                 </div>
                 <div class="fecha">
