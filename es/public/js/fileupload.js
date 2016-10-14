@@ -10,17 +10,18 @@ $(function()
 
     var mostrarProceso = function(e){
         if (e.loaded == e.total){
-            $('.file_uploader button i').removeClass('fa-circle-o-notch fa-spin').addClass('fa-upload');
+            $('#jbtngreen span').removeClass('fast-right-spinner glyphicon-repeat').addClass('glyphicon-cloud-upload');
         }
     }
 
     $('.file_uploader').delegate('button', 'click', function(){
         var contenedor = $(this).closest('.file_uploader');
-        $(this).find('i').removeClass('fa-upload').addClass('fa-circle-o-notch fa-spin');
+        $('#jbtngreen span').removeClass('glyphicon-cloud-upload').addClass('fast-right-spinner glyphicon-repeat');
         var formData = new FormData();
         var file = contenedor.find('input[type="file"]')[0];
         formData.append('_archivo', file.files[0]);
         formData.append('_accion', 'cargarArchivo');
+
         $.ajax({
             type: 'post',
             url:'app/db/preguntas.php',
@@ -39,8 +40,8 @@ $(function()
                 } else {
                      $.fn.SimpleModal({
                         btn_ok:   'Aceptar',
-                        title:    'Error',
-                        contents: 'No se pudo enviar el archivo, recuerde que los formatos admitidos son (PDF, DOCX, DOC, XLSX, XLS) y el tamaño maxímo es 5mb'
+                        title:    'Error', 
+                        contents: 'No se pudo enviar el archivo, recuerde que los formatos admitidos son (JPG, JPEG, PNG, GIF, DOC, DOCX, PPT, PPTX, XLS, XLSX, PDF, AVI, MOV, MPG) y el tamaño maxímo es 5mb'
                     }).showModal();
                 }
                 validar_archivos();
