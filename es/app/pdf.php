@@ -57,7 +57,7 @@ $html = '<div class="container">
                         {
                             if($preguntas[$i]['id_tipo'] != 8) 
                             {
-                                $html .= '<div class="item conCalificacion">'.$preguntas[$i]['pregunta'].'<p style="color:#585858;">'.$preguntas[$i]['respuesta'].'</p></div>';
+                                $html .= '<div class="item conCalificacion"><b>'.$preguntas[$i]['pregunta'].'</b><p style="color:#585858;">'.$preguntas[$i]['respuesta'].'</p></div>';
                             } else {
                                 $links = explode(',', $preguntas[$i]['respuesta']);
                                 if (count($links) > 0)
@@ -98,7 +98,7 @@ $html = '<div class="container">
                 }
     $html .= '</div>
         </div>';
-        
+
 $mpdf->WriteHTML($stylesheet,1);
 
 $mpdf->WriteHTML($html, 2);
