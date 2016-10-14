@@ -273,42 +273,78 @@ $(function(){
     });
 
     $('#enviar').on('click', function(e) {
+        var respuestas = new Array();
+        $('div[data-role="pregunta"]').each(function(i, e) {
+            var id = $(this).data('rel');
+            var tipo = $(this).data('type');
+            var respuesta = '';
+            switch (tipo) {
+                case 'textarea':
+                case 'text':
+                case 'select':
+                case 'date':
+                case 'multitext':
+                    respuesta = $(this).find('[data-role="respuesta"]').val();
+                    break;
+                case 'radio':
+                    respuesta = $(this).find('input[name="pregunta_' + id + '"]:checked').val();
+                    break;
+            }
+                respuestas.push({
+                id_pregunta: id,
+                tipo: tipo,
+                respuesta: respuesta
+            });
+        });
+
         $.ajax({
             type: 'post',
             url: 'app/db/preguntas.php',
             dataType: 'json',
             async: false,
             data: {
-                _accion: 'enviarPreguntas',
+                _accion: 'guardarPreguntas',
+                _respuestas: respuestas
             },
             success: function(data) {
-                if (data.estado) {
-                    $.fn.SimpleModal({
-                        model: 'modal',
-                        btn_ok: 'Aceptar',
-                        title: 'Alerta',
-                        contents: id_lang == '1' ? 'Gracias por postular su experiencia' : 'Obrigada por candidatizar a sua experiência.'
-                    }).addButton("Aceptar", "btn primary", function() {
-                        this.hide();
-                        window.location.reload();
-                    }).showModal();
-                } else {
-                    var mensaje = 'Diligencie las preguntas pendientes en las siguientes secciones: <br><br>';
-                    mensaje += '<ul>';
-                    for (var i = 0; i < data.preguntas.length; i++) {
-                        mensaje += '<li> - ' + data.preguntas[i].titulo.replace(/<br>/g, '') + '</li>';
+                 $.ajax({
+                    type: 'post',
+                    url: 'app/db/preguntas.php',
+                    dataType: 'json',
+                    async: false,
+                    data: {
+                        _accion: 'enviarPreguntas',
+                    },
+                    success: function(data) {
+                        if (data.estado) {
+                            $.fn.SimpleModal({
+                                model: 'modal',
+                                btn_ok: 'Aceptar',
+                                title: 'Alerta',
+                                contents: id_lang == '1' ? 'Gracias por postular su experiencia' : 'Obrigada por candidatizar a sua experiência.'
+                            }).addButton("Aceptar", "btn primary", function() {
+                                this.hide();
+                                window.location.reload();
+                            }).showModal();
+                        } else {
+                            var mensaje = 'Diligencie las preguntas pendientes en las siguientes secciones: <br><br>';
+                            mensaje += '<ul>';
+                            for (var i = 0; i < data.preguntas.length; i++) {
+                                mensaje += '<li> - ' + data.preguntas[i].titulo.replace(/<br>/g, '') + '</li>';
+                            }
+                            mensaje += '</ul>';
+                            $.fn.SimpleModal({
+                                model: 'modal',
+                                btn_ok: 'Aceptar',
+                                title: 'Alerta',
+                                contents: mensaje
+                            }).addButton("Aceptar", "btn primary", function() {
+                                this.hide();
+                                window.location.reload();
+                            }).showModal();
+                        }
                     }
-                    mensaje += '</ul>';
-                    $.fn.SimpleModal({
-                        model: 'modal',
-                        btn_ok: 'Aceptar',
-                        title: 'Alerta',
-                        contents: mensaje
-                    }).addButton("Aceptar", "btn primary", function() {
-                        this.hide();
-                        window.location.reload();
-                    }).showModal();
-                }
+                });
             }
         });
     });

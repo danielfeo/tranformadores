@@ -48,8 +48,8 @@ $html = '<div class="container">
                         $html .= '<h2 style="color:'.$grupo['color'].'; border-bottom-color:'.$grupo['color'].'">'.str_replace('<br>', '', $grupo['titulo']).'</h2>';
                     else 
                         $html .= '<h3 style="color:'.$grupo['color'].';">'.str_replace('<br>', '', $grupo['titulo']).'</h3>';
-                    
-                    $preguntas = $app['mysql']->runQuery('SELECT p.*, r.* FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` = '.$grupo['id_grupo'].' AND r.`id_usuario` = '.$app['pdf_usuario'].' ORDER BY r.id_pregunta')->getRows();
+                
+                    $preguntas = $app['mysql']->runQuery('SELECT p.*, r.* FROM respuestas r, preguntas p, grupos g, experiencias_usuarios e WHERE e.`id_experiencia` = '.$app['pdf_experiencia'].' AND e.`id_categoria` = '.$app['pdf_categoria'].' AND r.`id_experiencia` = e.`id_experiencia` AND p.`id_categoria` = e.`id_categoria` AND r.`id_pregunta` = p.`id_pregunta` AND p.`id_grupo` = g.`id_grupo` AND g.`id_grupo` = '.$grupo['id_grupo'].' AND r.`id_usuario` = '.$app['pdf_usuario'].' GROUP BY r.id_pregunta ORDER BY r.id_pregunta')->getRows();
 
                     if (is_array($preguntas))
                     {
@@ -98,7 +98,7 @@ $html = '<div class="container">
                 }
     $html .= '</div>
         </div>';
-
+        
 $mpdf->WriteHTML($stylesheet,1);
 
 $mpdf->WriteHTML($html, 2);
