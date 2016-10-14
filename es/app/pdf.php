@@ -15,7 +15,6 @@ $lenguaje = $app['mysql']->runQuery('SELECT p.id_lenguaje FROM respuestas r, pre
 $grupos = $app['mysql']->runQuery('SELECT * FROM grupos WHERE id_lenguaje = '.$lenguaje[0]['id_lenguaje'].' and id_grupo = id_grupo_padre OR id_grupo IN ('.$grupos_preguntas[0]['grupos'].') ORDER BY id_grupo_padre, id_grupo')->getRows();
 $archivos = glob('../'.($lenguaje[0]['id_lenguaje'] == '1' ? 'es' : 'pr').'/public/archivos/'.$app['pdf_usuario'].'/'.$app['pdf_categoria'].'/*');
 $categoria = $app['mysql']->runQuery('SELECT * FROM categoria WHERE id_categoria = '.$app['pdf_categoria'])->getRows();
-$lenguaje[0]['id_lenguaje'] = "1";
 
 switch ($lenguaje[0]['id_lenguaje']) {
     case '1':
