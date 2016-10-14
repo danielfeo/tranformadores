@@ -82,9 +82,14 @@ switch ($accion) {
         $nombre = '';
         $url = '';
         $estado = '1';
-        
+
         if (!file_exists($directorio))
-            mkdir($directorio, 0777, true);
+        {
+            if (!@mkdir($directorio, 0777, true)) {
+                $error = error_get_last();
+                echo $error['message'];
+            }
+        }
         
         if ($_FILES != null){
             foreach ($_FILES as &$key) {
