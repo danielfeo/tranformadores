@@ -34,9 +34,9 @@
                             <div class="boxInstrucciones">
                                 <p></p>
                                 <ul>
-                                    <li>Usted podrá diligenciar el formulario gradualmente e ir guardando las respuestas hasta el 30 de noviembre de 2016.</li>
-                                    <li>El premio cuenta con dos categorías. Podrá postular sus iniciativas en ambas categorías de acuerdo al reglamento. Antes de dar clic en “Enviar" usted deberá aceptar los <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">términos y condiciones</a> para poder participar.</li>
-                                    <li>Al enviar su formulario de postulación podrá descargarlo en versión PDF. No será posible  modificar ninguna respuesta.</li>
+                                    <li>Você poderá preencher o formulário de maneira gradual e guardar as respostas até 30 de novembro de 2016.</li>
+                                    <li>O prêmio tem duas categorias. Você pode inscrever suas iniciativas em ambas categorias de acordo com o regulamento. Antes de clicar em "Enviar", você deve aceitar os  <a href="http://www.redeamerica.org/Terminos-Condiciones" target="_blank">termos e condições</a> de participação.</li>
+                                    <li>Ao enviar o seu formulário de inscrição você poderá baixar na versão PDF. Você não pode alterar nenhuma respo</li>
                                 </ul>
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                             <div class="boxDescargas">
                                 <h4>Recursos</h4>
                                 <ul>
-                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-pt.pdf' ?>" target="_blank">Descargar las preguntas de este formulario</a></li>
-                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-negocios-pt.pdf' ?>" target="_blank">Descargar el reglamento para esta categoría</a></li>
+                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/form-negocios-pt.pdf' ?>" target="_blank">Baixe as perguntas neste formulário</a></li>
+                                    <li><a href="<?php echo $categoria == '1' ? 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-ISP-pt.pdf' : 'http://www.redeamerica.org/Portals/0/Transformadores/docs/Regulamento-negocios-pt.pdf' ?>" target="_blank">Baixe o regulamento para esta categoria</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                                                                                             </span>
                                                                                         </div>
                                                                                         <br><br>
-                                                                                        <p class="help-block">Agregue hasta 5 archivos cada uno con un máximo de 5 Mb.</p>' ;
+                                                                                        <p class="help-block">Adicione até 5 arquivos, cada um com peso até 5 Mb.</p>' ;
                                                                                         echo '<div class="row"><div class="col-xs-12">';
                                                                                             echo '<div class="archivos filesAtach" data-user="'.$usuario.'" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                                 for($a = 0; $a < count($archivos); $a++){
@@ -202,7 +202,7 @@
                                                                                     <button class="btn btn-default addFile" data-role="add-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'" type="button">
                                                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                                                                     </button>
-                                                                                    <p class="help-block">Agregue hasta 5 links diferentes</p>';
+                                                                                    <p class="help-block">Adicione até 5 ligações diferentes</p>';
                                                                                     $links = split(',', ($conres ? $respuesta[0]['respuesta'] : ''));
 
                                                                                     echo '<div class="row">
