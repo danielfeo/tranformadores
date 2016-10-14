@@ -53,7 +53,6 @@ $(function() {
     var validar_multitext = function()
     {
         var total = $('.links').find('p').length;
-        console.log(total);
 
         if(total >= 5)
             $('.addFile').prop('disabled', true);
@@ -68,7 +67,7 @@ $(function() {
         $lista.html('');
         $.each(data, function(i, e) {
             if (e)
-                $lista.append('<p><a data-role="file" href="' + e + '">' + e + '</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>')
+                $lista.append('<p><a data-role="file" data-uri="' + e + '" href="' + (e.startsWith('http', 0) ? e : 'http://'+e) + '">' + e + '</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>')
         });
 
         validar_multitext();
@@ -225,7 +224,7 @@ $(function() {
         $(this).closest('p').remove();
 
         $('div[data-role="lista-multitext"][data-rel="' + rel + '"]').find('p').each(function(i, e) {
-            data += $(this).find('>a').prop('href') + ',';
+            data += $(this).find('>a').data('uri') + ',';
         });
 
         var $respuesta = $('input[data-role="respuesta"][data-rel="' + rel + '"]');
