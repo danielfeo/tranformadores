@@ -33,14 +33,14 @@ switch ($accion) {
         $estado = true;
         foreach($_POST['_respuestas'] as &$respuesta) {
             $resultado = true;
-            $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.htmlspecialchars($respuesta['id_pregunta']).' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
+            $pregunta_anterior = $mysql->runQuery('SELECT * FROM respuestas WHERE id_pregunta = '.$respuesta['id_pregunta'].' AND id_experiencia = '.$experiencia.' AND id_usuario = '.$usuario)->getRows();
             $sql = '';
             if(is_array($pregunta_anterior))
             {
                 if($respuesta['respuesta'] == '')
                     $sql = 'DELETE FROM `respuestas` WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
                 else
-                    $sql = 'UPDATE `respuestas` SET `respuesta` = "'.$respuesta['respuesta'].'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
+                    $sql = 'UPDATE `respuestas` SET `respuesta` = "'.htmlspecialchars($respuesta['respuesta']).'" WHERE `id_respuesta` = '.$pregunta_anterior[0]['id_respuesta'];
             }else{
                 if($respuesta['respuesta'] != '')
                    $sql = 'INSERT INTO `respuestas`(`respuesta`, `id_experiencia`, `id_usuario`, `id_pregunta`) VALUES ("'.htmlspecialchars($respuesta['respuesta']).'",'.$experiencia.','.$usuario.','.$respuesta['id_pregunta'].')';
