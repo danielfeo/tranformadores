@@ -210,7 +210,7 @@
                                                                                                 <div class="links linksAtach" data-role="lista-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                                 for($a = 0; $a < count($links); $a++)
                                                                                                 {
-                                                                                                    if($links[$a] != '') echo '<p><a data-role="file" href="'.$links[$a].'">'.$links[$a].'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
+                                                                                                    if($links[$a] != '') echo '<p><a data-role="file" data-uri="'.$links[$a].'" href="'.(substr($links[$a], 0, 4) === 'http' ? $links[$a] : 'http://'.$links[$a]).'">'.$links[$a].'</a>&nbsp;<a href="#" data-role="delete" title="borrar"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></p>';
                                                                                                 }
                                                                                         echo '</div>
                                                                                         </div>
@@ -223,7 +223,7 @@
                                                                                             <div class="links linksAtach" data-role="lista-multitext" data-rel="'.$preguntas[$i]['id_pregunta'].'">';
                                                                                                 for($a = 0; $a < count($links); $a++)
                                                                                                 {
-                                                                                                    if($links[$a] != '') echo '<p><a data-role="file" href="'.$links[$a].'">'.$links[$a].'</a>&nbsp;</p>';
+                                                                                                    if($links[$a] != '') echo '<p><a data-role="file" data-uri="'.$links[$a].'" href="'.(substr($links[$a], 0, 4) === 'http' ? $links[$a] : 'http://'.$links[$a]).'">'.$links[$a].'</a>&nbsp;</p>';
                                                                                                 }
                                                                                         echo '</div>
                                                                                         </div>
