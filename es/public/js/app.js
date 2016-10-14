@@ -122,8 +122,34 @@ $(function() {
             $(this).val(value);
         }
     });
+    function validarEmail( email ) {
+    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( !expr.test(email) )
+        return false;
+    }
 
     $('#guardar, .pagSeccion a, .pasosInscripcion a').on('click', function(e) {
+        var email ='';
+        var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        if ($('.email input').val()!=''){
+            email = $('.email input').val();
+             // Se utiliza la funcion test() nativa de JavaScript
+            if (regex.test(email)) {
+               
+            } else {
+                 $.fn.SimpleModal({
+                            model: 'modal',
+                            btn_ok : 'Aceptar',
+                            title:    'Mensaje',
+                            contents: 'La direccón de correo no es valida'
+                        }).addButton("Aceptar", "btn primary", function(){
+                            this.hide();
+                            return; 
+                        }).showModal();
+                return; 
+            }
+           
+        }        
         var respuestas = new Array();
         var url = "";
         if ($(this).prop('href') !== '')
