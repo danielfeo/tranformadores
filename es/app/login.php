@@ -39,7 +39,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 form-group">
-                                <input class="btn btn-default enviar" type="button" data-lenguaje="1"  value="Entrar" name="guardar">
+                                <input class="btn btn-default enviar" type="button" data-lenguaje="2"  value="Entrar" name="guardar">
                                 <a id="olvido" class="pull-right" style="padding-top:15px;" href="Recordar">Esqueceu sua senha</a>
                             </div>
                         </div>
