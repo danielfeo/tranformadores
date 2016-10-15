@@ -70,6 +70,12 @@
                         include 'sections/menu.php';
                     ?>
                 </div>
+                <div class="col-md-12">
+                    <div class="progressbar">
+                        <div class="progreso" style="width: <?php echo $porcentaje_diligenciado ?>%;"></div>
+                        <span class="progreso-label" style="left: <?php echo $porcentaje_diligenciado ?>%;"><?php echo round($porcentaje_diligenciado) ?>%</span>
+                    </div>
+                </div>
                 <div class="col-sm-12">
                     <div class="row formularioTransf">
                         <?php
