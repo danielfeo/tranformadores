@@ -43,7 +43,7 @@ $(function()
 					{
 						//if(data[i].id_rol == 1){check="checked";}else{check="";}
 						texto += '<tr data-id="'+data[i].id_usuario+'" >';
-							texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td><td data-campo-hab="'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td><td align="center" data-campo-rol="'+data[i].id_rol+'">'+(data[i].id_rol == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +'</td>        <td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
+							texto += '<td data-pass="'+data[i].pass+'" data-campo="organizacion">'+data[i].organizacion+'</td><td data-campo="email">'+data[i].email+'</td><td data-campo-lang="'+data[i].id_lenguaje+'">'+(data[i].id_lenguaje == 1 ? 'Español' : 'Portugues')+'</td><td data-campo-hab="'+data[i].habilitado+'" align="center"> '+(data[i].habilitado == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +' </td><td align="center" data-campo-rol="'+data[i].id_rol+'">'+(data[i].id_rol == 1 ? '<i class="fa fa-check-square-o"></i>'  : '<i class="fa fa-square-o"></i>') +'</td><td align="center"><a data-rol="modificar" href="#"><i title="editar" class="fa fa-pencil-square-o"></i></a></td><td align="center"><a data-rol="eliminar" href="#"><i title="eliminar" class="fa fa-trash"></i></a></td>';
 						texto += '</tr>';
 					}
 					$('#tabla_usuarios tbody').html(texto);
@@ -53,7 +53,7 @@ $(function()
 			                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 			            },
 			            "aoColumnDefs": [
-				        	{'bSortable': false, 'aTargets': [2, 3, 4, 5]}
+				        	{'bSortable': false, 'aTargets': [3, 4, 5, 6]}
 				       	],
 			            "bDestroy": true
 			        });
@@ -217,11 +217,12 @@ $(function()
 		var id = $('input[name="id"]').val();
 		var organizacion = $('input[name="organizacion"]').val();
 		var correo = $('input[name="usuario"]').val();
+		var lenguaje = $('select[name="lenguaje"]').val();
 		var pass = $('input[name="contraseña"]').val();
 		var habilitado = $('input[name="habilitado"]').is(':checked') ? 1 : 0;
 		var rol = $('input[name="administrador"]').is(':checked') ? 1 : 2;
 		
-		if( organizacion != "" && correo != "" && pass != "" ){
+		if (organizacion != "" && correo != "" && pass != "" && lenguaje != ""){
 			$.ajax({
 				type: 'post',
 				url:  'app/db/usuarios.php',
@@ -233,7 +234,8 @@ $(function()
 					_correo : correo,
 					_pass : pass,
 					_habilitado : habilitado,
-					_rol : rol
+					_rol : rol,
+					_lenguaje : lenguaje
 				},
 				success: function(data){
 					if (data.estado){
@@ -257,7 +259,7 @@ $(function()
 			});	
 		} else {
 			if(organizacion == "")
-				$('input[name="organizacion"]').css('border-color','#F00');
+				$('input[name="organizacion"]').css('border-color','#f00');
 			else
 				$('input[name="organizacion"]').css('border-color','#ccc');
 			if(correo == "")
@@ -265,9 +267,13 @@ $(function()
 			else
 				$('input[name="usuario"]').css('border-color','#ccc');
 			if(pass == "")
-				$('input[name="contraseña"]').css('border-color','#F00');
+				$('input[name="contraseña"]').css('border-color','#f00');
 			else
 				$('input[name="contraseña"]').css('border-color','#ccc');
+			if(lenguaje == "")
+				$('select[name="lenguaje"]').css('border-color','#f00');
+			else
+				$('select[name="lenguaje"]').css('border-color','#ccc');
 		}
 	});
 	
@@ -279,11 +285,12 @@ $(function()
 		var pass = tr.find('td[data-pass]').data('pass');
 		var hab = tr.find('td[data-campo-hab]').data('campo-hab') == 1 ? true : false;
 		var rol = tr.find('td[data-campo-rol]').data('campo-rol') == 1 ? true : false;
+		var lang = tr.find('td[data-campo-lang]').data('campo-lang');
 		$('input[name="id"]').val(id);
 		$('input[name="organizacion"]').val(orga);
 		$('input[name="usuario"]').val(usua);
 		$('input[name="contraseña"]').val(pass);
-		console.log(hab);
+		$('select[name="lenguaje"]').val(lang);
 		$('input[name="habilitado"]').prop('checked', hab);
 		$('input[name="administrador"]').prop('checked', rol);
 		$('input[name="crear_nuevo"]').val("Modificar");
