@@ -77,6 +77,7 @@ $(function()
 	});
 	
 	$('input[name="guardar"]').on('click', function(e){
+		var lenguaje = $(this).data('lenguaje');
 		var organizacion = $('input[name="organizacion"]').val();
 		var correo = $('input[name="usuario"]').val();
 		var pass = $('input[name="clave"]').val();
@@ -155,6 +156,7 @@ $(function()
 						_correo: correo,
 						_pass: pass,
 						_categoria: categoria,
+						_lenguaje: lenguaje,
 						_accion: 'ingresar'
 					},
 					success: function (data){
@@ -177,8 +179,13 @@ $(function()
 								title:    'Mensaje',
 								contents: 'Su usuario aún no ha sido habilitado para diligenciar el formulario.'
 							}).showModal();
+						}else if(data.estado == 4){
+							$.fn.SimpleModal({
+								btn_ok:   'Aceptar',
+								title:    'Mensaje',
+								contents: 'El usuario con el que intenta acceder no esta habilitado para diligenciar el formulario en ' + (lenguaje == 1 ? 'español' : 'portugues')
+							}).showModal();
 						}else if(data.estado == 1){
-
 							window.location.reload();
 						}
 					}
