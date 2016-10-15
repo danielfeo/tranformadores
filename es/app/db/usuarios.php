@@ -19,7 +19,7 @@ switch ($accion) {
 		if ($validacion_correo[0]['email'] == 1){
 			$estado = 2;
 		}else{
-			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'")')->getRows();
+			$resultado = $mysql->runQuery('INSERT INTO usuarios(organizacion, email, pass, habilitado, id_rol, id_lenguaje) VALUES ("'.$_POST['_organizacion'].'", "'.$_POST['_correo'].'", "'.$_POST['_pass'].'", "'.$_POST['_habilitado'].'", "'.$_POST['_rol'].'", "'.$_POST['_lenguaje'].'")')->getRows();
 			$variables_sesion = $mysql->runQuery('SELECT id_usuario, id_rol FROM usuarios WHERE email ="'.$_POST['_correo'].'" AND pass ="'.$_POST['_pass'].'" ')->getRows();
 			$estado = $resultado;
 			if($estado)
@@ -84,7 +84,7 @@ switch ($accion) {
 		echo json_encode($usuarios);
 	break;
 	case 'modificar':
-		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'" WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
+		$consulta = $mysql->runQuery('UPDATE usuarios SET organizacion = "'.$_POST['_organizacion'].'", email = "'.$_POST['_correo'].'", pass = "'.$_POST['_pass'].'" , habilitado ="'.$_POST['_habilitado'].'", id_rol ="'.$_POST['_rol'].'", id_lenguaje ="'.$_POST['_lenguaje'].'" WHERE id_usuario ="'.$_POST['_id'].'" ')->getRows();
 		if($_POST['_habilitado'] == 1)
 		{
 			$mail->send($mailserver['user'], $_POST['_correo'], 'Cambio estado Redeamerica.org', 'Se ha habilitado su usuario para diligenciar el formulario en http://www.redeamerica.org/transformadores/pr/');
