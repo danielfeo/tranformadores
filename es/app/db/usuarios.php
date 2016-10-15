@@ -35,29 +35,42 @@ switch ($accion) {
 	break;
 	case 'ingresar':
 		$login = $mysql->runQuery('SELECT * FROM usuarios WHERE email = "'.$_POST['_correo'].'" AND pass = "'.$_POST['_pass'].'"')->getRows();
+		$lenguaje = $mysql->runQuery('SELECT id_lenguaje FROM usuarios WHERE email = "'.$_POST['_correo'].'" AND pass = "'.$_POST['_pass'].'"')->getRows();
 		$experiencia = $mysql->runQuery('SELECT *, YEAR(inicio) as fecha_inicio FROM experiencias WHERE CURDATE() BETWEEN inicio AND fin')->getRows();
-		if (is_array($login)){
+
+		if (is_array($login))
+		{
 			$estado = 1;
-			if($login[0]['id_rol'] == 1 && $login[0]['habilitado'] == '1')
+			$lenguaje_valido = $lenguaje[0]['id_lenguaje'] == $_POST['_lenguaje'] ? true : false;
+
+			if($login[0]['id_rol'] == 1 && $login[0]['habilitado'] == '1' && $lenguaje_valido)
 			{
 				$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 				$_SESSION['usuario']['rol'] =  $login[0]['id_rol'];
 				$_SESSION['categoria'] = $_POST['_categoria'];
 			}
 
-			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1') 
+			if($login[0]['id_rol'] == 2 && $login[0]['habilitado'] == '1' && $lenguaje_valido) 
 			{
-				if(is_array($experiencia)) {
+				if(is_array($experiencia)) 
+				{
 					$_SESSION['usuario']['id'] = $login[0]['id_usuario']; 
 					$_SESSION['usuario']['rol'] = $login[0]['id_rol'];
 					$_SESSION['categoria'] = $_POST['_categoria'];
 					$_SESSION['experiencia'] = $experiencia[0]['id_experiencia'];
 					$_SESSION['experiencia_fecha'] = $experiencia[0]['fecha_inicio'];
-				}else{
+				} else {
 					$estado = 2;
 				}
 			}
-			if($login[0]['habilitado'] == '0') {
+
+			if(!$lenguaje_valido)
+			{
+				$estado = 4;
+			}
+
+			if($login[0]['habilitado'] == '0') 
+			{
 				$estado = 3;
 			}
 		}else{
